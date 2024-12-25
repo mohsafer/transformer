@@ -315,12 +315,13 @@ class Solver(object):
         
         matrix = [self.index]
         scores_simple = combine_all_evaluation_scores(pred, gt, test_energy)
+        print('==================== EVALUATION Metrics ===================\n')
         for key, value in scores_simple.items():
             matrix.append(value)
-            print('==================== EVALUATION Metrics ===================\n')
+            
             print('{0:21} : {1:0.4f}'.format(key, value))
             
-        print('============================= =============================')
+        print('==========================================================')
 
         gt = np.array(gt)
         pred = np.array(pred)
