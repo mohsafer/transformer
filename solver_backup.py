@@ -272,7 +272,7 @@ class Solver(object):
         test_energy = np.array(attens_energy)
         combined_energy = np.concatenate([train_energy, test_energy], axis=0)
         thresh = np.percentile(combined_energy, 100 - self.anormly_ratio)
-        print('====================  Threshhold  ===================')
+        print('====================  Threshhold  ===================\n')
         print("Threshold :", thresh)
 
         # (3) evaluation on the test set
@@ -317,9 +317,10 @@ class Solver(object):
         scores_simple = combine_all_evaluation_scores(pred, gt, test_energy)
         for key, value in scores_simple.items():
             matrix.append(value)
-            print('==================== EVALUATION Metrics ===================')
+            print('==================== EVALUATION Metrics ===================\n')
             print('{0:21} : {1:0.4f}'.format(key, value))
-            print('============================= =============================')
+            
+        print('============================= =============================')
 
         gt = np.array(gt)
         pred = np.array(pred)
@@ -333,7 +334,7 @@ class Solver(object):
 
         else:
 
-            print("Anomaly detected starting at index:", ", ".join(map(str, anomaly_starts)))
+            print("Anomaly detected starting at index:\n", ", ".join(map(str, anomaly_starts)))
 
         print(f"Total number of indices: {len(gt)}")
         for start in anomaly_starts:
