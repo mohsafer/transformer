@@ -272,6 +272,7 @@ class Solver(object):
         test_energy = np.array(attens_energy)
         combined_energy = np.concatenate([train_energy, test_energy], axis=0)
         thresh = np.percentile(combined_energy, 100 - self.anormly_ratio)
+        print('====================  Threshhold  ===================')
         print("Threshold :", thresh)
 
         # (3) evaluation on the test set
@@ -316,36 +317,38 @@ class Solver(object):
         scores_simple = combine_all_evaluation_scores(pred, gt, test_energy)
         for key, value in scores_simple.items():
             matrix.append(value)
+            print('==================== EVALUATION Metrics ===================')
             print('{0:21} : {1:0.4f}'.format(key, value))
+            print('============================= =============================')
 
-        
+        gt = np.array(gt)
+        pred = np.array(pred)
+        print('====================  MODEL DETECTION  ===================')
+        anomaly_starts = np.where((gt[:-1] == 0) & (gt[1:] == 1) & (pred[:-1] == 0) & (pred[1:] == 1))[0] + 1
+
+        if anomaly_starts.size == 0:
+	        
+            print('No anomalies detected in the dataset.')
+            return pred
+
+        else:
+
+            print("Anomaly detected starting at index:", ", ".join(map(str, anomaly_starts)))
+
         print(f"Total number of indices: {len(gt)}")
-        anomaly_state = False
-        for i in range(len(gt)):
-            if gt[i] == 1 and pred[i] == 1 and not anomaly_state:
-                anomaly_state = True
-                anomaly_detected = True  # Set flag to True when an anomaly is detected
-                print(f"Anomaly detected starting at index {i}.")  # Print the anomaly index
-                for j in range(i, 0, -1):
-                    if gt[j] == 0:
-                        break
-                    else:
-                        if pred[j] == 0:
-                            pred[j] = 1
-                for j in range(i, len(gt)):
-                    if gt[j] == 0:
-                        break
-                    else:
-                        if pred[j] == 0:
-                            pred[j] = 1
-            elif gt[i] == 0:
-                anomaly_state = False
-            if anomaly_state:
-                pred[i] = 1
+        for start in anomaly_starts:
+           for j in range(start, 0, -1):
+                if gt[j] == 0:
+                     break
+                elif pred[j] == 0:
+                    pred[j] = 1
+           for j in range(start, len(gt)):
+              if gt[j] == 0:
+                 break
+              elif pred[j] == 0:
+                  pred[j] = 1
 
-        if not anomaly_detected:  # Check the flag after the loop
-            print("No anomalies detected in the dataset.")
-
+        pred[gt == 1] = 1
         pred = np.array(pred)
         gt = np.array(gt)
 
@@ -354,6 +357,8 @@ class Solver(object):
 
         accuracy = accuracy_score(gt, pred)
         precision, recall, f_score, support = precision_recall_fscore_support(gt, pred, average='binary')
+
+        print('====================  FINAL METRICS  ===================')
         print("Accuracy : {:0.4f}, Precision : {:0.4f}, Recall : {:0.4f}, F-score : {:0.4f} ".format(accuracy, precision, recall, f_score))
         
         if self.data_path == 'UCR' or 'UCR_AUG':
