@@ -124,12 +124,12 @@ if __name__ == '__main__':
             print('%s: %s' % (str(k), str(v)))
         print('====================  Train  ===================')
     elif config.mode == 'test':
-        print('====================  Test in progress  ===================')
-        while True:
-         for i in ["/", "-", "\\", "|"]:
-            print(f"\r{i}", end="")
-            sys.stdout.flush()
-            time.sleep(0.1)
+          print('====================  Test in progress  ===================')
+        #   while True:
+        #    for i in ["/", "-", "\\", "|"]:
+        #     print(f"\r{i}", end="")
+        #     sys.stdout.flush()
+        #     time.sleep(0.1)
     main(config)
 
     
