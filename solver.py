@@ -155,7 +155,15 @@ class Solver(object):
                 input = input_data.float().to(self.device)
                 labels = labels.to(self.device)  # NEW CODE : Move labels to the same device as input
                 series, prior = self.model(input)
-                
+                # NEW CODE : Calculate the average of all tensors in the series list
+                series_avg = torch.mean(torch.stack(series), dim=0)  # Average all tensors in the list
+
+                # NEW CODE : Debugging - Print shapes
+                print(f"Series shape: {[s.shape for s in series]}")  # Print shapes of all tensors in the series list
+                print(f"Labels shape: {labels.shape}")  # Print shape of labels
+
+                # NEW CODE : Transform the output shape to match labels
+                series_avg = self.fc(series_avg)  # Use a linear layer to adjust the shape                
                 series_loss = 0.0
                 prior_loss = 0.0
 
