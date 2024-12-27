@@ -412,6 +412,7 @@ class Solver(object):
             if len(data) <= segment_length:
                 return data  # Return the entire data if it's shorter than the segment length
             start_idx = np.random.randint(0, len(data) - segment_length)
+            print(f"Extracting random segment from index {start_idx} to {start_idx + segment_length}")
             return data[start_idx:start_idx + segment_length]
 
         # Extract random segments of length 150
