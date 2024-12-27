@@ -408,14 +408,14 @@ class Solver(object):
         # plt.show()
         # writer.close()
         # Function to extract a random segment of length 150
-        def extract_random_segment(data, segment_length=500):
+        def extract_random_segment(data, segment_length=5000):
             if len(data) <= segment_length:
                 return data  # Return the entire data if it's shorter than the segment length
             start_idx = np.random.randint(0, len(data) - segment_length)
             return data[start_idx:start_idx + segment_length]
 
         # Extract random segments of length 150
-        segment_length = 500
+        segment_length = 5000
         test_energy_segment = extract_random_segment(test_energy, segment_length)
         gt_segment = extract_random_segment(gt, segment_length)
 
@@ -430,7 +430,7 @@ class Solver(object):
         plt.legend()
 
         # Save the plot to a file
-        plot_filename = 'anomaly_scores_plot_random_segment500.png'
+        plot_filename = 'anomaly_scores_plot_random_segment5000.png'
         plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
         print(f"Plot saved to {plot_filename}")
         plt.show()
