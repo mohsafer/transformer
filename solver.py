@@ -408,14 +408,14 @@ class Solver(object):
         # plt.show()
         # writer.close()
         # Function to extract a random segment of length 150
-        def extract_random_segment(data, segment_length=5000):
+        def extract_random_segment(data, segment_length=10000):
             if len(data) <= segment_length:
                 return data  # Return the entire data if it's shorter than the segment length
             start_idx = np.random.randint(0, len(data) - segment_length)
             return data[start_idx:start_idx + segment_length]
 
         # Extract random segments of length 150
-        segment_length = 5000
+        segment_length = 10000
         test_energy_segment = extract_random_segment(test_energy, segment_length)
         gt_segment = extract_random_segment(gt, segment_length)
 
