@@ -151,7 +151,7 @@ class Solver(object):
                 self.optimizer.zero_grad()
                 iter_count += 1
                 input = input_data.float().to(self.device)
-                output, series, prior = self.model(input)
+                series, prior = self.model(input)
 
               
                 series_loss = 0.0
