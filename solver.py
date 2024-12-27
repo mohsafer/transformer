@@ -11,6 +11,7 @@ from data_factory.data_loader import get_loader_segment
 from einops import rearrange
 from metrics.metrics import *
 import warnings
+import matplotlib.pyplot as plt
 warnings.filterwarnings('ignore')
 #comment from vscode Ssh
 #second commit fromssh hahahahahah
@@ -220,7 +221,7 @@ class Solver(object):
                 break
             adjust_learning_rate(self.optimizer, epoch + 1, self.lr)
             
-        writer.close()    #writer.flush()
+        #writer.close()    #writer.flush()
             
     def test(self):
         self.model.load_state_dict(
@@ -257,7 +258,8 @@ class Solver(object):
             metric = torch.softmax((-series_loss - prior_loss), dim=-1)
             cri = metric.detach().cpu().numpy()
             attens_energy.append(cri)
-
+            # NEW CODE : Log anomaly scores to TensorBoard
+            writer.add_scalar('Anomaly Score', np.mean(cri), i)
         attens_energy = np.concatenate(attens_energy, axis=0).reshape(-1)
         train_energy = np.array(attens_energy)
 
@@ -390,5 +392,19 @@ class Solver(object):
             with open('result/'+self.data_path+'.csv', 'a+') as f:
                 writer = csv.writer(f)
                 writer.writerow(matrix)
-
+            # NEW CODE : Plot anomaly scores with matplotlib
+        plt.figure(figsize=(12, 6))
+        plt.plot(test_energy, label='Anomaly Scores', color='blue')
+        plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
+        plt.fill_between(range(len(test_energy)), 0, 1, where=(gt == 1), color='yellow', alpha=0.3, label='Ground Truth Anomalies')
+        plt.xlabel('Time')
+        plt.ylabel('Anomaly Score')
+        plt.title('Anomaly Scores Over Time')
+        plt.legend()
+        # Save the plot to a file
+        plot_filename = 'anomaly_scores_plot.png'
+        plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
+        print(f"Plot saved to {plot_filename}")
+        plt.show()
+        writer.close()
         return accuracy, precision, recall, f_score
