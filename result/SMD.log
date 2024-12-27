@@ -8359,3 +8359,101 @@ Series shape: [torch.Size([105, 1, 105, 105]), torch.Size([105, 1, 105, 105]), t
 Labels shape: torch.Size([105, 105])
 Series shape: [torch.Size([105, 1, 105, 105]), torch.Size([105, 1, 105, 105]), torch.Size([105, 1, 105, 105]), torch.Size([105, 1, 105, 105]), torch.Size([105, 1, 105, 105]), torch.Size([105, 1, 105, 105])]
 Labels shape: torch.Size([105, 105])
+
+
+
+2024-12-27 04:59:16
+================ Hyperparameters ===============
+anormly_ratio: 0.5
+batch_size: 105
+d_model: 256
+data_path: SMD
+dataset: SMD
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 38
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 3
+output_c: 38
+patch_size: [5, 7]
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+	speed: 0.1041s/iter; left time: 2096.3553s
+	speed: 0.0834s/iter; left time: 1670.7984s
+	speed: 0.0836s/iter; left time: 1666.3065s
+	speed: 0.0836s/iter; left time: 1659.1216s
+	speed: 0.0839s/iter; left time: 1656.0598s
+	speed: 0.0842s/iter; left time: 1654.0651s
+	speed: 0.0842s/iter; left time: 1643.9679s
+	speed: 0.0841s/iter; left time: 1635.1115s
+	speed: 0.0843s/iter; left time: 1629.1059s
+	speed: 0.0843s/iter; left time: 1621.0847s
+	speed: 0.0843s/iter; left time: 1612.6005s
+	speed: 0.0843s/iter; left time: 1605.5889s
+	speed: 0.0845s/iter; left time: 1599.4404s
+	speed: 0.0845s/iter; left time: 1592.3733s
+	speed: 0.0846s/iter; left time: 1585.1285s
+	speed: 0.0843s/iter; left time: 1570.6059s
+	speed: 0.0846s/iter; left time: 1568.8475s
+	speed: 0.0845s/iter; left time: 1558.0871s
+	speed: 0.0844s/iter; left time: 1548.1540s
+	speed: 0.0845s/iter; left time: 1541.2185s
+	speed: 0.0848s/iter; left time: 1537.0788s
+	speed: 0.0846s/iter; left time: 1526.5259s
+	speed: 0.0847s/iter; left time: 1519.1313s
+	speed: 0.0846s/iter; left time: 1509.5009s
+	speed: 0.0844s/iter; left time: 1496.7242s
+	speed: 0.0843s/iter; left time: 1486.9664s
+	speed: 0.0843s/iter; left time: 1478.2296s
+	speed: 0.0844s/iter; left time: 1471.7215s
+	speed: 0.0848s/iter; left time: 1470.9473s
+	speed: 0.0849s/iter; left time: 1462.6366s
+	speed: 0.0848s/iter; left time: 1452.5553s
+	speed: 0.0847s/iter; left time: 1442.6467s
+	speed: 0.0846s/iter; left time: 1431.9925s
+	speed: 0.0847s/iter; left time: 1425.8100s
+	speed: 0.0847s/iter; left time: 1417.6117s
+	speed: 0.0846s/iter; left time: 1408.1848s
+	speed: 0.0846s/iter; left time: 1398.9429s
+	speed: 0.0847s/iter; left time: 1391.7900s
+	speed: 0.0847s/iter; left time: 1384.3334s
+	speed: 0.0845s/iter; left time: 1371.7352s
+	speed: 0.0847s/iter; left time: 1366.4088s
+	speed: 0.0845s/iter; left time: 1354.7874s
+	speed: 0.0848s/iter; left time: 1350.7993s
+	speed: 0.0847s/iter; left time: 1340.6316s
+	speed: 0.0847s/iter; left time: 1332.4467s
+	speed: 0.0846s/iter; left time: 1322.4962s
+	speed: 0.0849s/iter; left time: 1318.3432s
+	speed: 0.0847s/iter; left time: 1307.3563s
+	speed: 0.0847s/iter; left time: 1299.7210s
+	speed: 0.0845s/iter; left time: 1287.3503s
+	speed: 0.0848s/iter; left time: 1283.3632s
+	speed: 0.0846s/iter; left time: 1272.7120s
+	speed: 0.0848s/iter; left time: 1267.2833s
+	speed: 0.0847s/iter; left time: 1256.3626s
+	speed: 0.0849s/iter; left time: 1251.0815s
+	speed: 0.0846s/iter; left time: 1238.6381s
+	speed: 0.0847s/iter; left time: 1231.8986s
+	speed: 0.0846s/iter; left time: 1221.0819s
+	speed: 0.0848s/iter; left time: 1215.3688s
+	speed: 0.0846s/iter; left time: 1203.7021s
+	speed: 0.0848s/iter; left time: 1198.7960s
+	speed: 0.0848s/iter; left time: 1189.6780s
+	speed: 0.0849s/iter; left time: 1183.3704s
+	speed: 0.0846s/iter; left time: 1170.6758s
+	speed: 0.0848s/iter; left time: 1164.3270s
+	speed: 0.0846s/iter; left time: 1153.6958s
+	speed: 0.0846s/iter; left time: 1145.6896s
+Epoch [1/3], Loss: 34.1224, Accuracy: 1102500.00%
