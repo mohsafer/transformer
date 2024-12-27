@@ -387,11 +387,11 @@ class Solver(object):
         print('====================  FINAL METRICS  ===================')
         print("Accuracy : {:0.4f}, Precision : {:0.4f}, Recall : {:0.4f}, F-score : {:0.4f} ".format(accuracy, precision, recall, f_score))
         
-        if self.data_path == 'UCR' or 'UCR_AUG':
-            import csv
-            with open('result/'+self.data_path+'.csv', 'a+') as f:
-                writer = csv.writer(f)
-                writer.writerow(matrix)
+        # if self.data_path == 'UCR' or 'UCR_AUG':
+        #     import csv
+        #     with open('result/'+self.data_path+'.csv', 'a+') as f:
+        #         writer = csv.writer(f)
+        #         writer.writerow(matrix)
             # NEW CODE : Plot anomaly scores with matplotlib
         # plt.figure(figsize=(12, 6))
         # plt.plot(test_energy, label='Anomaly Scores', color='blue')
