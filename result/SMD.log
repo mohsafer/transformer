@@ -7728,3 +7728,36 @@ use_multi_gpu: True
 win_size: 105
 ====================  Train  ===================
 ====================  Test in progress  ===================
+
+
+
+2024-12-27 04:37:53
+================ Hyperparameters ===============
+anormly_ratio: 0.5
+batch_size: 256
+d_model: 256
+data_path: SMD
+dataset: SMD
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 38
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 3
+output_c: 38
+patch_size: [5, 7]
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Series shape: [torch.Size([256, 1, 105, 105]), torch.Size([256, 1, 105, 105]), torch.Size([256, 1, 105, 105]), torch.Size([256, 1, 105, 105]), torch.Size([256, 1, 105, 105]), torch.Size([256, 1, 105, 105])]
+Labels shape: torch.Size([256, 105])
+====================  Test in progress  ===================
