@@ -10640,3 +10640,18 @@ Accuracy : 0.9943, Precision : 0.8807, Recall : 1.0000, F-score : 0.9365
 Extracting random segment from index 468398 to 468598
 Extracting random segment from index 86427 to 86627
 ====================  Test in progress  ===================
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+Threshold : 0.9999293088912964
+==========================================================
+====================  MODEL DETECTION  ===================
+Anomaly detected starting at index:
+ 252648
+Total number of indices: 698880
+====================  FINAL METRICS  ===================
+Accuracy : 0.9943, Precision : 0.8807, Recall : 1.0000, F-score : 0.9365 
+Extracting random segment from index 247480 to 247680
+Extracting random segment from index 595132 to 595332
+Plot saved to anomaly_scores_35_200.png
+Figure(1200x600)
