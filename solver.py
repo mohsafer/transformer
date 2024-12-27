@@ -189,6 +189,9 @@ class Solver(object):
                 loss = prior_loss - series_loss 
                 running_loss += prior_loss.item()
                 
+
+                epoch_accuracy = 100 * correct / total
+                avg_epoch_loss = running_loss / len(self.train_loader)
              # NEW CODE : Calculate accuracy######################################
                 _, predicted = torch.max(series_avg.data, 1)
 
@@ -215,8 +218,8 @@ class Solver(object):
                 print(f'Epoch [{epoch+1}/{self.num_epochs}], Loss: {avg_epoch_loss:.4f}, Accuracy: {epoch_accuracy:.2f}%')            
                 vali_loss1, vali_loss2 = self.vali(self.test_loader)
             # NEW CODE : Calculate training accuracy for the epoch
-            epoch_accuracy = 100 * correct / total
-            avg_epoch_loss = running_loss / len(self.train_loader)
+            # epoch_accuracy = 100 * correct / total
+            # avg_epoch_loss = running_loss / len(self.train_loader)
 
             # NEW CODE : Log accuracy and loss to TensorBoard
             # writer.add_scalar('Train/Accuracy', epoch_accuracy, epoch)
