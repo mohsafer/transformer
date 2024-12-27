@@ -433,4 +433,5 @@ class Solver(object):
         plot_filename = 'anomaly_scores_plot_random_segment500.png'
         plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
         print(f"Plot saved to {plot_filename}")
+        plt.show()
         return accuracy, precision, recall, f_score
