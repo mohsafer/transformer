@@ -259,7 +259,7 @@ class Solver(object):
             cri = metric.detach().cpu().numpy()
             attens_energy.append(cri)
             # NEW CODE : Log anomaly scores to TensorBoard
-            writer.add_scalar('Anomaly Score', np.mean(cri), i)
+            #writer.add_scalar('Anomaly Score', np.mean(cri), i)
         attens_energy = np.concatenate(attens_energy, axis=0).reshape(-1)
         train_energy = np.array(attens_energy)
 
