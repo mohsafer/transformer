@@ -10318,3 +10318,236 @@ Extracting random segment from index 146385 to 146885
 Extracting random segment from index 589648 to 590148
 Plot saved to anomaly_scores_plot_random_segment.500.png
 Figure(1200x600)
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+Threshold : 0.999096155166626
+==========================================================
+====================  MODEL DETECTION  ===================
+Anomaly detected starting at index:
+ 29736, 34450, 75285
+Total number of indices: 698880
+====================  FINAL METRICS  ===================
+Accuracy : 0.9952, Precision : 0.8972, Recall : 1.0000, F-score : 0.9458 
+Extracting random segment from index 500520 to 500770
+Extracting random segment from index 551922 to 552172
+Plot saved to anomaly_scores_plot_random_segment.250.png
+Figure(1200x600)
+
+
+
+2024-12-27 14:51:03
+================ Hyperparameters ===============
+anormly_ratio: 0.5
+batch_size: 256
+d_model: 256
+data_path: SMD
+dataset: SMD
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 38
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 3
+output_c: 38
+patch_size: [5, 7]
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+	speed: 0.2292s/iter; left time: 1879.4236s
+	speed: 0.1978s/iter; left time: 1602.1746s
+====================  Test in progress  ===================
+
+
+
+2024-12-27 14:53:33
+================ Hyperparameters ===============
+anormly_ratio: 0.5
+batch_size: 256
+d_model: 256
+data_path: SMD
+dataset: SMD
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 38
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 5
+output_c: 38
+patch_size: [5, 7]
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+	speed: 0.2307s/iter; left time: 3167.1617s
+	speed: 0.1991s/iter; left time: 2714.4476s
+	speed: 0.1996s/iter; left time: 2700.6468s
+	speed: 0.1997s/iter; left time: 2681.9333s
+	speed: 0.2005s/iter; left time: 2672.2621s
+	speed: 0.2004s/iter; left time: 2652.0099s
+	speed: 0.2003s/iter; left time: 2630.6775s
+	speed: 0.2007s/iter; left time: 2615.5618s
+	speed: 0.2008s/iter; left time: 2596.5308s
+	speed: 0.2005s/iter; left time: 2572.0135s
+	speed: 0.2005s/iter; left time: 2553.1635s
+	speed: 0.2005s/iter; left time: 2533.0702s
+	speed: 0.2008s/iter; left time: 2516.3374s
+	speed: 0.2006s/iter; left time: 2493.8743s
+	speed: 0.2005s/iter; left time: 2472.8999s
+	speed: 0.2008s/iter; left time: 2455.5896s
+	speed: 0.2005s/iter; left time: 2432.6787s
+	speed: 0.2004s/iter; left time: 2410.6880s
+	speed: 0.2006s/iter; left time: 2393.0217s
+	speed: 0.2004s/iter; left time: 2370.3651s
+	speed: 0.2002s/iter; left time: 2348.8101s
+	speed: 0.2004s/iter; left time: 2330.6547s
+	speed: 0.2003s/iter; left time: 2309.5629s
+	speed: 0.2001s/iter; left time: 2287.5187s
+	speed: 0.2002s/iter; left time: 2268.7842s
+	speed: 0.2004s/iter; left time: 2251.2474s
+	speed: 0.2001s/iter; left time: 2227.1215s
+Epoch: 1, Cost time: 781.531s 
+	speed: 2.5807s/iter; left time: 28297.1887s
+	speed: 0.1999s/iter; left time: 2172.4166s
+	speed: 0.2000s/iter; left time: 2153.2162s
+	speed: 0.2001s/iter; left time: 2134.2782s
+	speed: 0.2000s/iter; left time: 2113.1383s
+	speed: 0.2001s/iter; left time: 2093.7989s
+	speed: 0.2000s/iter; left time: 2072.9008s
+	speed: 0.2001s/iter; left time: 2053.7079s
+	speed: 0.2000s/iter; left time: 2032.5784s
+	speed: 0.2000s/iter; left time: 2013.1933s
+	speed: 0.2003s/iter; left time: 1995.8986s
+	speed: 0.1999s/iter; left time: 1971.8915s
+	speed: 0.1999s/iter; left time: 1952.1643s
+	speed: 0.2000s/iter; left time: 1933.4020s
+	speed: 0.2000s/iter; left time: 1912.7763s
+	speed: 0.2001s/iter; left time: 1893.5841s
+	speed: 0.2000s/iter; left time: 1873.4676s
+	speed: 0.2001s/iter; left time: 1853.9215s
+	speed: 0.1999s/iter; left time: 1832.1511s
+	speed: 0.2001s/iter; left time: 1813.7778s
+	speed: 0.2001s/iter; left time: 1794.3130s
+	speed: 0.2000s/iter; left time: 1773.2365s
+	speed: 0.2000s/iter; left time: 1752.9469s
+	speed: 0.2002s/iter; left time: 1734.4071s
+	speed: 0.1999s/iter; left time: 1712.1780s
+	speed: 0.1999s/iter; left time: 1692.3967s
+	speed: 0.2002s/iter; left time: 1674.6718s
+Epoch: 2, Cost time: 778.033s 
+	speed: 2.5803s/iter; left time: 21155.6279s
+	speed: 0.2000s/iter; left time: 1619.6759s
+	speed: 0.1997s/iter; left time: 1597.6958s
+	speed: 0.1999s/iter; left time: 1579.0818s
+	speed: 0.1999s/iter; left time: 1559.1370s
+	speed: 0.1999s/iter; left time: 1539.0977s
+	speed: 0.1999s/iter; left time: 1519.1143s
+	speed: 0.2001s/iter; left time: 1500.3527s
+	speed: 0.2001s/iter; left time: 1480.4726s
+	speed: 0.1998s/iter; left time: 1458.5665s
+	speed: 0.2000s/iter; left time: 1439.5511s
+	speed: 0.2001s/iter; left time: 1420.2148s
+	speed: 0.1998s/iter; left time: 1398.6350s
+	speed: 0.1998s/iter; left time: 1378.6502s
+	speed: 0.2001s/iter; left time: 1360.3470s
+	speed: 0.2000s/iter; left time: 1339.8891s
+	speed: 0.1998s/iter; left time: 1318.5652s
+	speed: 0.2000s/iter; left time: 1299.7401s
+	speed: 0.2001s/iter; left time: 1280.6946s
+	speed: 0.1998s/iter; left time: 1258.5943s
+	speed: 0.1997s/iter; left time: 1237.8391s
+	speed: 0.2002s/iter; left time: 1221.1814s
+	speed: 0.2000s/iter; left time: 1199.5624s
+	speed: 0.1998s/iter; left time: 1178.5095s
+	speed: 0.2000s/iter; left time: 1159.8523s
+	speed: 0.2001s/iter; left time: 1140.2848s
+	speed: 0.2000s/iter; left time: 1119.7914s
+Epoch: 3, Cost time: 777.834s 
+	speed: 2.5807s/iter; left time: 14020.7542s
+	speed: 0.1997s/iter; left time: 1064.9654s
+	speed: 0.1998s/iter; left time: 1045.8109s
+	speed: 0.1998s/iter; left time: 1025.5463s
+	speed: 0.1999s/iter; left time: 1006.2935s
+	speed: 0.1998s/iter; left time: 985.6393s
+	speed: 0.2001s/iter; left time: 967.2225s
+	speed: 0.2000s/iter; left time: 946.8034s
+	speed: 0.1999s/iter; left time: 926.3588s
+	speed: 0.2002s/iter; left time: 907.3878s
+	speed: 0.1998s/iter; left time: 885.7795s
+	speed: 0.1999s/iter; left time: 866.0727s
+	speed: 0.2000s/iter; left time: 846.7415s
+	speed: 0.2000s/iter; left time: 826.6762s
+	speed: 0.2000s/iter; left time: 806.5407s
+	speed: 0.1998s/iter; left time: 785.7779s
+	speed: 0.2000s/iter; left time: 766.6018s
+	speed: 0.1999s/iter; left time: 746.2651s
+	speed: 0.1998s/iter; left time: 725.8594s
+	speed: 0.1999s/iter; left time: 706.1052s
+	speed: 0.2000s/iter; left time: 686.7204s
+	speed: 0.1999s/iter; left time: 666.3551s
+	speed: 0.1998s/iter; left time: 646.0488s
+	speed: 0.2001s/iter; left time: 626.7816s
+	speed: 0.1999s/iter; left time: 606.4029s
+	speed: 0.1999s/iter; left time: 586.4137s
+	speed: 0.2000s/iter; left time: 566.5526s
+Epoch: 4, Cost time: 777.638s 
+	speed: 2.5788s/iter; left time: 6877.7373s
+	speed: 0.1999s/iter; left time: 513.0920s
+	speed: 0.1998s/iter; left time: 492.7874s
+	speed: 0.1998s/iter; left time: 472.9500s
+	speed: 0.2003s/iter; left time: 454.0165s
+	speed: 0.1999s/iter; left time: 433.1559s
+	speed: 0.1999s/iter; left time: 413.1846s
+	speed: 0.1999s/iter; left time: 393.1200s
+	speed: 0.1999s/iter; left time: 373.1978s
+	speed: 0.2001s/iter; left time: 353.5842s
+	speed: 0.2000s/iter; left time: 333.4406s
+	speed: 0.1999s/iter; left time: 313.2408s
+	speed: 0.1998s/iter; left time: 293.1413s
+	speed: 0.2000s/iter; left time: 273.4288s
+	speed: 0.2000s/iter; left time: 253.4060s
+	speed: 0.2002s/iter; left time: 233.6100s
+	speed: 0.1999s/iter; left time: 213.2786s
+	speed: 0.2000s/iter; left time: 193.4198s
+	speed: 0.2001s/iter; left time: 173.5199s
+	speed: 0.1999s/iter; left time: 153.3317s
+	speed: 0.1999s/iter; left time: 133.3209s
+	speed: 0.1997s/iter; left time: 113.2334s
+	speed: 0.1999s/iter; left time: 93.3677s
+	speed: 0.1998s/iter; left time: 73.3408s
+	speed: 0.2000s/iter; left time: 53.4049s
+	speed: 0.2000s/iter; left time: 33.4046s
+	speed: 0.1999s/iter; left time: 13.3928s
+Epoch: 5, Cost time: 777.502s 
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+Threshold : 0.9999949932098389
+==========================================================
+====================  MODEL DETECTION  ===================
+Anomaly detected starting at index:
+ 252648
+Total number of indices: 698880
+====================  FINAL METRICS  ===================
+Accuracy : 0.9952, Precision : 0.8979, Recall : 1.0000, F-score : 0.9462 
+Extracting random segment from index 36738 to 36988
+Extracting random segment from index 166754 to 167004
+Plot saved to anomaly_scores_plot_random_segment.250.png
+Figure(1200x600)
