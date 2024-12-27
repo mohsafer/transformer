@@ -173,15 +173,16 @@ class Solver(object):
                         my_kl_loss(series[u].detach(), (
                                 prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                        self.win_size)))))
-
                 series_loss = series_loss / len(prior)
                 prior_loss = prior_loss / len(prior)
-
+                series_avg = torch.mean(torch.stack(series), dim=0)  # Average all tensors in the list
                 loss = prior_loss - series_loss 
                 running_loss += prior_loss.item()
                 
              # NEW CODE : Calculate accuracy######################################
-                _, predicted = torch.max(series[0].data, 1)  # Use the first tensor in the list               
+                _, predicted = torch.max(series_avg.data, 1)
+
+                #_, predicted = torch.max(series[0].data, 1)  # Use the first tensor in the list               
                 total += labels.size(0)
                 correct += (predicted == labels).sum().item()              
              
