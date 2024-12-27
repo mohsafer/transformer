@@ -175,7 +175,7 @@ class Solver(object):
                 series_loss = series_loss / len(prior)
                 prior_loss = prior_loss / len(prior)
                 series_avg = torch.mean(torch.stack(series), dim=0)  # Average all tensors in the list
-                loss = prior_loss - series_loss 
+                loss = prior_loss + series_loss 
                 running_loss += prior_loss.item()
                 avg_epoch_loss = running_loss / len(self.train_loader)
                 writer.add_scalar('Train/Loss', loss, epoch * len(self.train_loader) + i)
