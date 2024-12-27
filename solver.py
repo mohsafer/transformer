@@ -407,7 +407,7 @@ class Solver(object):
         # print(f"Plot saved to {plot_filename}")
         # plt.show()
         # writer.close()
-        # Function to extract a random segment of length 150
+        # Function to extract a randffom segment of length 150
         def extract_random_segment(data, segment_length=250):
             if len(data) <= segment_length:
                 return data  # Return the entire data if it's shorter than the segment length
@@ -431,7 +431,7 @@ class Solver(object):
         plt.legend()
 
         # Save the plot to a file
-        plot_filename = f'anomaly_scores_plot_{segment_length}.png'
+        plot_filename = f'anomaly_scores_plotv2_{segment_length}.png'
         plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
         print(f"Plot saved to {plot_filename}")
         plt.show()
