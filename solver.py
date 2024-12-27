@@ -161,8 +161,8 @@ class Solver(object):
                 series_avg = torch.mean(torch.stack(series), dim=0)  # Average all tensors in the list
                 series_avg = series_avg.to(self.device)
                 # NEW CODE : Debugging - Print shapes
-                #print(f"Series shape: {[s.shape for s in series]}")  # Print shapes of all tensors in the series list
-                #print(f"Labels shape: {labels.shape}")  # Print shape of labels
+                print(f"Series shape: {[s.shape for s in series]}")  # Print shapes of all tensors in the series list
+                print(f"Labels shape: {labels.shape}")  # Print shape of labels
 
                 # NEW CODE : Transform the output shape to match labels
                 series_avg = self.fc(series_avg)  # Use a linear layer to adjust the shape                
