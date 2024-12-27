@@ -136,16 +136,24 @@ class Solver(object):
         early_stopping = EarlyStopping(patience=5, verbose=True, dataset_name=self.data_path)
         train_steps = len(self.train_loader)
         running_loss = 0.0
+        
+        correct = 0  # Counter for correct predictions
+        total = 0    # Counter for total samples
         for epoch in range(self.num_epochs):
             iter_count = 0
 
             epoch_time = time.time()
             self.model.train()
+            correct = 0  # NEW CODE : Counter for correct predictions
+            total = 0    # NEW CODE : Counter for total samples
+            epoch_loss = 0.0  # NEW CODE : To accumulate loss for the epoch
+
             for i, (input_data, labels) in enumerate(self.train_loader):
 
                 self.optimizer.zero_grad()
                 iter_count += 1
                 input = input_data.float().to(self.device)
+                labels = labels.to(self.device)  # NEW CODE : Move labels to the same device as input
                 series, prior = self.model(input)
                 
                 series_loss = 0.0
@@ -172,7 +180,10 @@ class Solver(object):
                 loss = prior_loss - series_loss 
                 running_loss += prior_loss.item()
                 
-               
+             # NEW CODE : Calculate accuracy######################################
+                _, predicted = torch.max(series.data, 1)  # Assuming `series` contains predictions
+                total += labels.size(0)
+                correct += (predicted == labels).sum().item()              
              
                 if (i + 1) % 100 == 0:
                     speed = (time.time() - time_now) / iter_count
@@ -189,8 +200,16 @@ class Solver(object):
                 #writer.add_scalar('training loss', loss.item() , epoch * len(self.train_loader) + i)
                 #print('epoch {}, loss_perior {}, loss_series {}'.format(epoch * len(self.train_loader) + i, prior_loss.item(), series_loss.item()))
                 
+            # NEW CODE : Calculate training accuracy for the epoch
+            epoch_accuracy = 100 * correct / total
+            avg_epoch_loss = running_loss / len(self.train_loader)
+
+            # NEW CODE : Log accuracy and loss to TensorBoard
+            writer.add_scalar('Train/Accuracy', epoch_accuracy, epoch)
+            writer.add_scalar('Train/Loss', avg_epoch_loss, epoch)
+            print(f'Epoch [{epoch+1}/{self.num_epochs}], Loss: {avg_epoch_loss:.4f}, Accuracy: {epoch_accuracy:.2f}%')            
             vali_loss1, vali_loss2 = self.vali(self.test_loader)
-       
+            ######################################################################################
             print(
                 "Epoch: {0}, Cost time: {1:.3f}s ".format(
                     epoch + 1, time.time() - epoch_time))
