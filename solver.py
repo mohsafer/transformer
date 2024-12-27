@@ -87,14 +87,13 @@ class Solver(object):
 
     def build_model(self):
         self.model = DCdetector(win_size=self.win_size, enc_in=self.input_c, c_out=self.output_c, n_heads=self.n_heads, d_model=self.d_model, e_layers=self.e_layers, patch_size=self.patch_size, channel=self.input_c)
-        # NEW CODE : Define a fully connected layer to adjust the output shape
-        self.fc = nn.Linear(self.win_size, 105)  # Adjust input and output dimensions as needed       
         
         if torch.cuda.is_available():
             self.model.cuda()
-            self.fc.cuda()  # NEW CODE : Move the fc layer to the GPU if available                        
-        #self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.lr)
-        self.optimizer = torch.optim.Adam(list(self.model.parameters()) + list(self.fc.parameters()), lr=self.lr)  # NEW CODE : Include fc layer parameters in the optimizer
+            
+        self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.lr)
+
+
         
     def vali(self, vali_loader):
         self.model.eval()
@@ -139,16 +138,13 @@ class Solver(object):
         train_steps = len(self.train_loader)
         running_loss = 0.0
         
-        correct = 0  # Counter for correct predictions
-        total = 0    # Counter for total samples
+
         for epoch in range(self.num_epochs):
             iter_count = 0
 
             epoch_time = time.time()
             self.model.train()
-            correct = 0  # NEW CODE : Counter for correct predictions
-            total = 0    # NEW CODE : Counter for total samples
-            epoch_loss = 0.0  # NEW CODE : To accumulate loss for the epoch
+
 
             for i, (input_data, labels) in enumerate(self.train_loader):
 
@@ -157,15 +153,8 @@ class Solver(object):
                 input = input_data.float().to(self.device)
                 labels = labels.to(self.device)  # NEW CODE : Move labels to the same device as input
                 series, prior = self.model(input)
-                # NEW CODE : Calculate the average of all tensors in the series list
-                series_avg = torch.mean(torch.stack(series), dim=0)  # Average all tensors in the list
-                series_avg = series_avg.to(self.device)
-                # NEW CODE : Debugging - Print shapes
-                #print(f"Series shape: {[s.shape for s in series]}")  # Print shapes of all tensors in the series list
-                #print(f"Labels shape: {labels.shape}")  # Print shape of labels
 
-                # NEW CODE : Transform the output shape to match labels
-                series_avg = self.fc(series_avg)  # Use a linear layer to adjust the shape                
+              
                 series_loss = 0.0
                 prior_loss = 0.0
 
@@ -190,14 +179,7 @@ class Solver(object):
                 running_loss += prior_loss.item()
                 
 
-                epoch_accuracy = 100 * correct / total
-                avg_epoch_loss = running_loss / len(self.train_loader)
-             # NEW CODE : Calculate accuracy######################################
-                _, predicted = torch.max(series_avg.data, 1)
-
-                #_, predicted = torch.max(series[0].data, 1)  # Use the first tensor in the list               
-                total += labels.size(0)
-                correct += (predicted == labels).sum().item()              
+            
              
                 if (i + 1) % 100 == 0:
                     speed = (time.time() - time_now) / iter_count
@@ -213,10 +195,10 @@ class Solver(object):
                 #writer.add_scalar("Loss/train", loss.item(), epoch * len(self.train_loader) + i)
                 #writer.add_scalar('training loss', loss.item() , epoch * len(self.train_loader) + i)
                 #print('epoch {}, loss_perior {}, loss_series {}'.format(epoch * len(self.train_loader) + i, prior_loss.item(), series_loss.item()))
-                writer.add_scalar('Train/Accuracy', epoch_accuracy, epoch)
-                writer.add_scalar('Train/Loss', avg_epoch_loss, epoch)
-                print(f'Epoch [{epoch+1}/{self.num_epochs}], Loss: {avg_epoch_loss:.4f}, Accuracy: {epoch_accuracy:.2f}%')            
-                vali_loss1, vali_loss2 = self.vali(self.test_loader)
+                # writer.add_scalar('Train/Accuracy', epoch_accuracy, epoch)
+                # writer.add_scalar('Train/Loss', avg_epoch_loss, epoch)
+                # print(f'Epoch [{epoch+1}/{self.num_epochs}], Loss: {avg_epoch_loss:.4f}, Accuracy: {epoch_accuracy:.2f}%')            
+                # vali_loss1, vali_loss2 = self.vali(self.test_loader)
             # NEW CODE : Calculate training accuracy for the epoch
             # epoch_accuracy = 100 * correct / total
             # avg_epoch_loss = running_loss / len(self.train_loader)
@@ -235,7 +217,7 @@ class Solver(object):
                 break
             adjust_learning_rate(self.optimizer, epoch + 1, self.lr)
             
-        writer.close()    #writer.flush()
+       # writer.close()    #writer.flush()
             
     def test(self):
         self.model.load_state_dict(
