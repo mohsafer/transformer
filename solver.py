@@ -152,7 +152,7 @@ class Solver(object):
                 iter_count += 1
                 input = input_data.float().to(self.device)
                 labels = labels.to(self.device)  # NEW CODE : Move labels to the same device as input
-                series, prior = self.model(input)
+                output, series, prior = self.model(input)
 
               
                 series_loss = 0.0
@@ -175,11 +175,11 @@ class Solver(object):
                 series_loss = series_loss / len(prior)
                 prior_loss = prior_loss / len(prior)
                 series_avg = torch.mean(torch.stack(series), dim=0)  # Average all tensors in the list
-                loss = prior_loss + series_loss 
+                loss = prior_loss - series_loss 
                 running_loss += prior_loss.item()
-                avg_epoch_loss = running_loss / len(self.train_loader)
-                writer.add_scalar('Train/Loss', loss, epoch * len(self.train_loader) + i)
-                print(f'Epoch [{epoch+1}/{self.num_epochs}], Loss: {avg_epoch_loss:.4f}') 
+
+                rec_loss = self.criterion(output, input)
+
              
                 if (i + 1) % 100 == 0:
                     speed = (time.time() - time_now) / iter_count
@@ -190,6 +190,10 @@ class Solver(object):
  
                 loss.backward()
                 self.optimizer.step()
+
+                writer.add_scalar('training loss', rec_loss.item() , epoch * len(self.train_loader) + i)
+                print('epoch {},  rec_loss_ {}'.format(epoch * len(self.train_loader) + i  , rec_loss.item()))                
+
                 #writer.add_scalar("Loss/train", loss, epoch)##################################################################################
                 #running_loss += loss.item()
                 #writer.add_scalar("Loss/train", loss.item(), epoch * len(self.train_loader) + i)
