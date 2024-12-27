@@ -89,11 +89,12 @@ class Solver(object):
         self.model = DCdetector(win_size=self.win_size, enc_in=self.input_c, c_out=self.output_c, n_heads=self.n_heads, d_model=self.d_model, e_layers=self.e_layers, patch_size=self.patch_size, channel=self.input_c)
         # NEW CODE : Define a fully connected layer to adjust the output shape
         self.fc = nn.Linear(self.win_size, self.output_c)  # Adjust input and output dimensions as needed       
+        
         if torch.cuda.is_available():
             self.model.cuda()
-            
-        self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.lr)
-        
+            self.fc.cuda()  # NEW CODE : Move the fc layer to the GPU if available                        
+        #self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.lr)
+        self.optimizer = torch.optim.Adam(list(self.model.parameters()) + list(self.fc.parameters()), lr=self.lr)  # NEW CODE : Include fc layer parameters in the optimizer
         
     def vali(self, vali_loader):
         self.model.eval()
@@ -158,10 +159,10 @@ class Solver(object):
                 series, prior = self.model(input)
                 # NEW CODE : Calculate the average of all tensors in the series list
                 series_avg = torch.mean(torch.stack(series), dim=0)  # Average all tensors in the list
-
+                series_avg = series_avg.to(self.device)
                 # NEW CODE : Debugging - Print shapes
-                print(f"Series shape: {[s.shape for s in series]}")  # Print shapes of all tensors in the series list
-                print(f"Labels shape: {labels.shape}")  # Print shape of labels
+                #print(f"Series shape: {[s.shape for s in series]}")  # Print shapes of all tensors in the series list
+                #print(f"Labels shape: {labels.shape}")  # Print shape of labels
 
                 # NEW CODE : Transform the output shape to match labels
                 series_avg = self.fc(series_avg)  # Use a linear layer to adjust the shape                
