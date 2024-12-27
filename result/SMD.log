@@ -10153,3 +10153,60 @@ Anomaly detected starting at index:
 Total number of indices: 698880
 ====================  FINAL METRICS  ===================
 Accuracy : 0.9952, Precision : 0.8972, Recall : 1.0000, F-score : 0.9458 
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+Threshold : 0.9990963935852051
+==========================================================
+====================  MODEL DETECTION  ===================
+Anomaly detected starting at index:
+ 29736, 34450, 75285
+Total number of indices: 698880
+====================  FINAL METRICS  ===================
+Accuracy : 0.9952, Precision : 0.8972, Recall : 1.0000, F-score : 0.9458 
+Plot saved to anomaly_scores_plot_random_segment.png
+====================  Test in progress  ===================
+
+
+
+2024-12-27 12:40:17
+================ Hyperparameters ===============
+anormly_ratio: 0.5
+batch_size: 256
+d_model: 256
+data_path: SMD
+dataset: SMD
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 38
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 3
+output_c: 38
+patch_size: [5, 7]
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+	speed: 0.2284s/iter; left time: 1872.4928s
+	speed: 0.1979s/iter; left time: 1602.9030s
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+Threshold : 0.9990962743759155
+==========================================================
+====================  MODEL DETECTION  ===================
+Anomaly detected starting at index:
+ 29736, 34450, 75285
+Total number of indices: 698880
+====================  FINAL METRICS  ===================
+Accuracy : 0.9952, Precision : 0.8972, Recall : 1.0000, F-score : 0.9458 
+Plot saved to anomaly_scores_plot_random_segment.png
