@@ -152,7 +152,7 @@ class Solver(object):
                 iter_count += 1
                 input = input_data.float().to(self.device)
                 labels = labels.to(self.device)  # NEW CODE : Move labels to the same device as input
-                output, series, prior = self.model(input)
+                output, series, prior, _ = self.model(input)
 
               
                 series_loss = 0.0
