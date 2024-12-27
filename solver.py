@@ -178,7 +178,7 @@ class Solver(object):
                 loss = prior_loss - series_loss 
                 running_loss += prior_loss.item()
                 avg_epoch_loss = running_loss / len(self.train_loader)
-                writer.add_scalar('Train/Loss', avg_epoch_loss, epoch)
+                writer.add_scalar('Train/Loss', loss, epoch * len(self.train_loader) + i)
                 print(f'Epoch [{epoch+1}/{self.num_epochs}], Loss: {avg_epoch_loss:.4f}') 
              
                 if (i + 1) % 100 == 0:
