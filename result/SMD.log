@@ -8550,3 +8550,66 @@ use_multi_gpu: True
 win_size: 255
 ====================  Train  ===================
 ====================  Test in progress  ===================
+
+
+
+2024-12-27 05:28:11
+================ Hyperparameters ===============
+anormly_ratio: 0.5
+batch_size: 105
+d_model: 256
+data_path: SMD
+dataset: SMD
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 38
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 3
+output_c: 38
+patch_size: [5, 7]
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+	speed: 0.1038s/iter; left time: 2090.8813s
+	speed: 0.0833s/iter; left time: 1668.1772s
+	speed: 0.0834s/iter; left time: 1661.9785s
+	speed: 0.0837s/iter; left time: 1659.7616s
+	speed: 0.0837s/iter; left time: 1651.3573s
+	speed: 0.0838s/iter; left time: 1646.1623s
+	speed: 0.0842s/iter; left time: 1645.1157s
+	speed: 0.0838s/iter; left time: 1628.4548s
+	speed: 0.0839s/iter; left time: 1623.1036s
+	speed: 0.0841s/iter; left time: 1618.2406s
+	speed: 0.0842s/iter; left time: 1610.2978s
+	speed: 0.0842s/iter; left time: 1601.9782s
+	speed: 0.0842s/iter; left time: 1593.9641s
+	speed: 0.0841s/iter; left time: 1584.3298s
+	speed: 0.0843s/iter; left time: 1579.3381s
+	speed: 0.0842s/iter; left time: 1569.3908s
+	speed: 0.0843s/iter; left time: 1563.4213s
+	speed: 0.0842s/iter; left time: 1552.5838s
+	speed: 0.0842s/iter; left time: 1543.7722s
+	speed: 0.0842s/iter; left time: 1534.8337s
+	speed: 0.0843s/iter; left time: 1528.4538s
+	speed: 0.0842s/iter; left time: 1519.3920s
+	speed: 0.0843s/iter; left time: 1511.1604s
+	speed: 0.0843s/iter; left time: 1503.9366s
+	speed: 0.0843s/iter; left time: 1494.9338s
+	speed: 0.0843s/iter; left time: 1486.4420s
+	speed: 0.0843s/iter; left time: 1477.7268s
+	speed: 0.0843s/iter; left time: 1469.8291s
+	speed: 0.0842s/iter; left time: 1459.9293s
+	speed: 0.0843s/iter; left time: 1452.5061s
+	speed: 0.0844s/iter; left time: 1446.2663s
+	speed: 0.0843s/iter; left time: 1436.3921s
+	speed: 0.0844s/iter; left time: 1429.1515s
