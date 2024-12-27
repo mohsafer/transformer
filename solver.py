@@ -177,9 +177,9 @@ class Solver(object):
                 series_avg = torch.mean(torch.stack(series), dim=0)  # Average all tensors in the list
                 loss = prior_loss - series_loss 
                 running_loss += prior_loss.item()
-                
-
-            
+                avg_epoch_loss = running_loss / len(self.train_loader)
+                writer.add_scalar('Train/Loss', avg_epoch_loss, epoch)
+                print(f'Epoch [{epoch+1}/{self.num_epochs}], Loss: {avg_epoch_loss:.4f}') 
              
                 if (i + 1) % 100 == 0:
                     speed = (time.time() - time_now) / iter_count
@@ -217,7 +217,7 @@ class Solver(object):
                 break
             adjust_learning_rate(self.optimizer, epoch + 1, self.lr)
             
-       # writer.close()    #writer.flush()
+        writer.close()    #writer.flush()
             
     def test(self):
         self.model.load_state_dict(

@@ -8705,3 +8705,90 @@ use_multi_gpu: True
 win_size: 105
 ====================  Train  ===================
 	speed: 0.1033s/iter; left time: 2080.0272s
+
+
+
+2024-12-27 05:46:32
+================ Hyperparameters ===============
+anormly_ratio: 0.5
+batch_size: 256
+d_model: 256
+data_path: SMD
+dataset: SMD
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 38
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 3
+output_c: 38
+patch_size: [5, 7]
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+	speed: 0.2279s/iter; left time: 1868.4731s
+	speed: 0.1973s/iter; left time: 1598.2489s
+	speed: 0.1980s/iter; left time: 1584.1271s
+	speed: 0.1985s/iter; left time: 1568.0180s
+	speed: 0.1988s/iter; left time: 1550.4826s
+	speed: 0.1991s/iter; left time: 1533.0322s
+	speed: 0.1994s/iter; left time: 1515.5237s
+	speed: 0.1994s/iter; left time: 1495.5923s
+	speed: 0.1995s/iter; left time: 1475.8316s
+	speed: 0.1998s/iter; left time: 1458.6138s
+	speed: 0.2001s/iter; left time: 1440.2795s
+	speed: 0.1999s/iter; left time: 1419.1470s
+	speed: 0.2000s/iter; left time: 1399.8225s
+	speed: 0.2000s/iter; left time: 1379.8345s
+	speed: 0.2000s/iter; left time: 1359.7418s
+	speed: 0.1998s/iter; left time: 1338.7119s
+	speed: 0.2003s/iter; left time: 1321.9089s
+	speed: 0.2002s/iter; left time: 1301.1392s
+	speed: 0.1998s/iter; left time: 1278.7211s
+	speed: 0.2002s/iter; left time: 1261.0612s
+	speed: 0.1999s/iter; left time: 1239.3089s
+	speed: 0.1998s/iter; left time: 1218.6935s
+	speed: 0.1999s/iter; left time: 1199.0984s
+	speed: 0.1998s/iter; left time: 1178.4031s
+	speed: 0.1997s/iter; left time: 1157.9481s
+	speed: 0.1997s/iter; left time: 1138.0625s
+	speed: 0.2000s/iter; left time: 1119.8968s
+Epoch: 1, Cost time: 779.151s 
+	speed: 2.5789s/iter; left time: 14011.1089s
+	speed: 0.1995s/iter; left time: 1063.7055s
+	speed: 0.1994s/iter; left time: 1043.2402s
+	speed: 0.1993s/iter; left time: 1023.0198s
+	speed: 0.1995s/iter; left time: 1003.9334s
+	speed: 0.1995s/iter; left time: 983.9440s
+	speed: 0.1995s/iter; left time: 964.0336s
+	speed: 0.1994s/iter; left time: 943.8985s
+	speed: 0.1995s/iter; left time: 924.4360s
+	speed: 0.1993s/iter; left time: 903.5010s
+	speed: 0.1993s/iter; left time: 883.3174s
+	speed: 0.1995s/iter; left time: 864.2927s
+	speed: 0.1993s/iter; left time: 843.7657s
+	speed: 0.1992s/iter; left time: 823.3068s
+	speed: 0.1993s/iter; left time: 803.8964s
+	speed: 0.1991s/iter; left time: 783.1674s
+	speed: 0.1991s/iter; left time: 762.9827s
+	speed: 0.1990s/iter; left time: 742.8779s
+	speed: 0.1990s/iter; left time: 723.0738s
+	speed: 0.1991s/iter; left time: 703.5687s
+	speed: 0.1990s/iter; left time: 683.0296s
+	speed: 0.1989s/iter; left time: 663.0100s
+	speed: 0.1991s/iter; left time: 643.6164s
+	speed: 0.1989s/iter; left time: 623.2187s
+	speed: 0.1991s/iter; left time: 603.9091s
+	speed: 0.1990s/iter; left time: 583.5293s
+	speed: 0.1990s/iter; left time: 563.7114s
+Epoch: 2, Cost time: 776.238s 
+	speed: 2.5832s/iter; left time: 6889.3124s
