@@ -1,1 +1,3 @@
-hello
+hellohello
+
+hello            _, predicted = torch.max(series[0].data, 1)  # Use the first tensor in the list

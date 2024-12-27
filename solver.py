@@ -181,7 +181,7 @@ class Solver(object):
                 running_loss += prior_loss.item()
                 
              # NEW CODE : Calculate accuracy######################################
-                _, predicted = torch.max(series.data, 1)  # Assuming `series` contains predictions
+                _, predicted = torch.max(series[0].data, 1)  # Use the first tensor in the list               
                 total += labels.size(0)
                 correct += (predicted == labels).sum().item()              
              

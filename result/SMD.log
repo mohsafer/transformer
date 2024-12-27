@@ -7426,3 +7426,53 @@ use_gpu: True
 use_multi_gpu: True
 win_size: 105
 ====================  Train  ===================
+
+
+
+2024-12-27 03:53:28
+================ Hyperparameters ===============
+anormly_ratio: 0.4
+batch_size: 512
+d_model: 256
+data_path: SMD
+dataset: SMD
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 38
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 3
+output_c: 38
+patch_size: [5, 7]
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+Threshold : 1.0
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9580
+pa_precision          : 0.0000
+pa_recall             : 0.0000
+pa_f_score            : 0.0000
+MCC_score             : nan
+Affiliation precision : nan
+Affiliation recall    : 0.0000
+R_AUC_ROC             : 0.5105
+R_AUC_PR              : 0.5407
+VUS_ROC               : 0.5104
+VUS_PR                : 0.5404
+==========================================================
+====================  MODEL DETECTION  ===================
+No anomalies detected in the dataset.
