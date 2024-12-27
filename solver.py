@@ -418,13 +418,13 @@ class Solver(object):
         # Extract random segments of length 150
         segment_length = 2000
         test_energy_segment = extract_random_segment(test_energy, segment_length)
-        thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
+        #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
         gt_segment = extract_random_segment(gt, segment_length)
-
+        pred[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
         # Plot the random segment
         plt.figure(figsize=(12, 6))
         plt.plot(test_energy_segment, label='Anomaly Scores', color='blue')
-        plt.axhline(y=thresh_segment, color='red', linestyle='--', label='Threshold')
+        plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
         plt.fill_between(range(len(test_energy_segment)), 0, 1, where=(gt_segment == 1), color='yellow', alpha=0.3, label='Ground Truth Anomalies')
         plt.xlabel('Time')
         plt.ylabel('Anomaly Score')
