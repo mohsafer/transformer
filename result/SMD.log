@@ -10249,3 +10249,16 @@ Total number of indices: 698880
 Accuracy : 0.9952, Precision : 0.8972, Recall : 1.0000, F-score : 0.9458 
 Plot saved to anomaly_scores_plot_random_segment5000.png
 Figure(1200x600)
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+Threshold : 0.9990962743759155
+==========================================================
+====================  MODEL DETECTION  ===================
+Anomaly detected starting at index:
+ 29736, 34450, 75285
+Total number of indices: 698880
+====================  FINAL METRICS  ===================
+Accuracy : 0.9952, Precision : 0.8972, Recall : 1.0000, F-score : 0.9458 
+Plot saved to anomaly_scores_plot_random_segment10000.png
+Figure(1200x600)
