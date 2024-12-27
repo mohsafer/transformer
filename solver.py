@@ -432,7 +432,7 @@ class Solver(object):
         plt.legend()
 
         # Save the plot to a file
-        plot_filename = f'anomaly_scores_thresh_segment_test_{segment_length}.png'
+        plot_filename = f'anomaly_scores_thresh_segment_test2000_{segment_length}.png'
         plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
         print(f"Plot saved to {plot_filename}")
         plt.show()
