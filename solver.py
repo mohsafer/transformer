@@ -344,37 +344,63 @@ class Solver(object):
         #     matrix.append(value)
             
         #     print('{0:21} : {1:0.4f}'.format(key, value))
-            
-        print('==========================================================')
+        # 
+        # 
 
-        gt = np.array(gt)
-        pred = np.array(pred)
-        print('====================  MODEL DETECTION  ===================')
-        anomaly_starts = np.where((gt[:-1] == 0) & (gt[1:] == 1) & (pred[:-1] == 0) & (pred[1:] == 1))[0] + 1
+        anomaly_state = False
+        for i in range(len(gt)):
+            if gt[i] == 1 and pred[i] == 1 and not anomaly_state:
+                anomaly_state = True
+                for j in range(i, 0, -1):
+                    if gt[j] == 0:
+                        break
+                    else:
+                        if pred[j] == 0:
+                            pred[j] = 1
+                for j in range(i, len(gt)):
+                    if gt[j] == 0:
+                        break
+                    else:
+                        if pred[j] == 0:
+                            pred[j] = 1
+            elif gt[i] == 0:
+                anomaly_state = False
+            if anomaly_state:
+                pred[i] = 1
 
-        if anomaly_starts.size == 0:
+
+
+        # print('==========================================================')
+
+        # gt = np.array(gt)
+        # pred = np.array(pred)
+        # print('====================  MODEL DETECTION  ===================')
+        # anomaly_starts = np.where((gt[:-1] == 0) & (gt[1:] == 1) & (pred[:-1] == 0) & (pred[1:] == 1))[0] + 1
+
+        # if anomaly_starts.size == 0:
 	        
-            print('No anomalies detected in the dataset.')
-            return pred
+        #     print('No anomalies detected in the dataset.')
+        #     return pred
 
-        else:
+        # else:
 
-            print("Anomaly detected starting at index:\n", ", ".join(map(str, anomaly_starts)))
+        #     print("Anomaly detected starting at index:\n", ", ".join(map(str, anomaly_starts)))
 
-        print(f"Total number of indices: {len(gt)}")
-        for start in anomaly_starts:
-           for j in range(start, 0, -1):
-                if gt[j] == 0:
-                     break
-                elif pred[j] == 0:
-                    pred[j] = 1
-           for j in range(start, len(gt)):
-              if gt[j] == 0:
-                 break
-              elif pred[j] == 0:
-                  pred[j] = 1
+        # print(f"Total number of indices: {len(gt)}")
+        # for start in anomaly_starts:
+        #    for j in range(start, 0, -1):
+        #         if gt[j] == 0:
+        #              break
+        #         elif pred[j] == 0:
+        #             pred[j] = 1
+        #    for j in range(start, len(gt)):
+        #       if gt[j] == 0:
+        #          break
+        #       elif pred[j] == 0:
+        #           pred[j] = 1
 
-        pred[gt == 1] = 1
+        # pred[gt == 1] = 1
+
         pred = np.array(pred)
         gt = np.array(gt)
 
@@ -392,6 +418,8 @@ class Solver(object):
         #     with open('result/'+self.data_path+'.csv', 'a+') as f:
         #         writer = csv.writer(f)
         #         writer.writerow(matrix)
+
+        
             # NEW CODE : Plot anomaly scores with matplotlib
         # plt.figure(figsize=(12, 6))
         # plt.plot(test_energy, label='Anomaly Scores', color='blue')
@@ -407,6 +435,9 @@ class Solver(object):
         # print(f"Plot saved to {plot_filename}")
         # plt.show()
         # writer.close()
+
+
+
         # Function to extract a randffom segment of length 150
         def extract_random_segment(data, segment_length=200):
             if len(data) <= segment_length:
@@ -421,11 +452,11 @@ class Solver(object):
         
         #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
         gt_segment = extract_random_segment(gt, segment_length)
-        pred_segment = (test_energy_segment > thresh).astype(int)
-        pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
+        #pred_segment = (test_energy_segment > thresh).astype(int)
+        #pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
 
-        pred_segment=np.array(pred_segment)
-        gt_segment=np.array(gt_segment)
+        #pred_segment=np.array(pred_segment)
+        #gt_segment=np.array(gt_segment)
 
 
         # Plot the random segment
