@@ -461,19 +461,15 @@ class Solver(object):
         #pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
 
         #test_attens_energy=np.array(test_attens_energy)
-        print('test shape', test_energy_segment.shape)
+        print('test_energy shape', test_energy_segment.shape)
         print(f"test energy values\n {test_energy_segment}")
-        
         #gt_segment=np.array(gt_segment) 
         print('gt shap', gt_segment.shape)
         print(f"gt values {gt_segment}")
 
-        # Plot the random segment
-
-        max_value_rounded = math.ceil(max(test_energy_segment))
+        #max_value_rounded = math.ceil(max(test_energy_segment))
         # Plot the random segment
         ymin, ymax = plt.ylim()
-       
         plt.figure(figsize=(12, 6))
         plt.plot(test_energy_segment, label='Anomaly Scores', color='blue')
         plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
@@ -488,7 +484,7 @@ class Solver(object):
         plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
         print(f"Plot saved to {plot_filename}")
         plt.show()
-
+        return accuracy, precision, recall, f_score
 
         # # Function to extract a randffom segment of length 150
         # def extract_random_segment(data, segment_length=200):
@@ -530,4 +526,4 @@ class Solver(object):
         # plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
         # print(f"Plot saved to {plot_filename}")
         # plt.show()
-        return accuracy, precision, recall, f_score
+        
