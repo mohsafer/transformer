@@ -10910,3 +10910,15 @@ gt values [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 Plot saved to anomaly_scores_idx_68050.png
 Figure(640x480)
 Figure(1200x600)
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+Threshold : 0.9999293088912964
+==========================================================
+====================  MODEL DETECTION  ===================
+Anomaly detected starting at index:
+ 252648
+Total number of anomalies detected: 1
+Total number of indices: 698880
+====================  FINAL METRICS  ===================
+Accuracy : 0.9943, Precision : 0.8807, Recall : 1.0000, F-score : 0.9365 

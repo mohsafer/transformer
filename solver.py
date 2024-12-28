@@ -437,7 +437,7 @@ class Solver(object):
         # Function to extract a randffom segment of length 150
         
         ###############################################START SEGMENT EXTRACTION#########################################
-
+        start_idx = np.random.choice(anomaly_starts)
         #start_idx = 68050
         def extract_random_segment(data, segment_length=200, start_idx=None):
             if len(data) <= segment_length:
@@ -445,14 +445,16 @@ class Solver(object):
             
             # Generate a random start index if not provided
             if start_idx is None:
-                start_idx = np.random.randint(0, len(anomaly_starts) - segment_length)
+                #start_idx = np.random.randint(0, len(test_energy) - segment_length)
+                start_idx = np.random.choice(anomaly_starts)
             
             print(f"Extracting random segment from index {start_idx} to {start_idx + segment_length}")
             return data[start_idx:start_idx + segment_length]
 
         # Extract random segments of lengthfgdfg 150
         segment_length = 200
-        start_idx = np.random.randint(0, len(anomaly_starts) - segment_length)
+        #start_idx = np.random.randint(0, len(anomaly_starts) - segment_length)
+        
         print(f"start_idx: {start_idx}")
         test_energy_segment = extract_random_segment(test_energy, segment_length, start_idx)
         
