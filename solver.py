@@ -457,7 +457,7 @@ class Solver(object):
         print(f"test energy values\n {test_energy_segment}")
         #gt_segment=np.array(gt_segment) 
         print('gt shap', gt_segment.shape)
-        print(f"gt values {gt_segment}")
+        print(f"gt values\n {gt_segment}")
 
         #max_value_rounded = math.ceil(max(test_energy_segment))
         # Plot the random segment
