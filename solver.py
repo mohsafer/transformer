@@ -418,9 +418,9 @@ class Solver(object):
         print('====================  FINAL METRICS  ===================')
         print("Accuracy : {:0.4f}, Precision : {:0.4f}, Recall : {:0.4f}, F-score : {:0.4f} ".format(accuracy, precision, recall, f_score))
         
-        print('====================  GT values equal 1   ===================')
-        indices = np.where(gt == 1)[0]
-        print("Indices where gt is equal to 1:", ", ".join(map(str, indices)))
+        # print('====================  GT values equal 1   ===================')
+        # indices = np.where(gt == 1)[0]
+        # print("Indices where gt is equal to 1:", ", ".join(map(str, indices)))
 
         # if self.data_path == 'UCR' or 'UCR_AUG':
         #     import csv
@@ -437,7 +437,7 @@ class Solver(object):
         
         ###############################################START SEGMENT EXTRACTION#########################################
 
-        start_idx = 43050
+        start_idx = 68050
         def extract_random_segment(data, segment_length=200, start_idx=None):
             if len(data) <= segment_length:
                 return data  # Return the entire data if it's shorter than the segment length
