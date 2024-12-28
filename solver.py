@@ -386,6 +386,7 @@ class Solver(object):
 
             print("Anomaly detected starting at index:\n", ", ".join(map(str, anomaly_starts)))
 
+        print (f"Total number of anomalies detected: {len(anomaly_starts)}")
         print(f"Total number of indices: {len(gt)}")
         for start in anomaly_starts:
            for j in range(start, 0, -1):
@@ -437,7 +438,7 @@ class Solver(object):
         
         ###############################################START SEGMENT EXTRACTION#########################################
 
-        start_idx = 68050
+        #start_idx = 68050
         def extract_random_segment(data, segment_length=200, start_idx=None):
             if len(data) <= segment_length:
                 return data  # Return the entire data if it's shorter than the segment length
