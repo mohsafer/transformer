@@ -11056,3 +11056,183 @@ gt values [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 Plot saved to anomaly_scores_idx_252648.png
 Figure(640x480)
 Figure(1200x600)
+
+
+
+2024-12-28 15:06:59
+================ Hyperparameters ===============
+anormly_ratio: 0.5
+batch_size: 256
+d_model: 256
+data_path: SMD
+dataset: SMD
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 38
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 3
+output_c: 38
+patch_size: [5, 7]
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+	speed: 0.2280s/iter; left time: 1869.7355s
+	speed: 0.1977s/iter; left time: 1601.1792s
+	speed: 0.1984s/iter; left time: 1586.8820s
+	speed: 0.1990s/iter; left time: 1571.7729s
+	speed: 0.1993s/iter; left time: 1554.0986s
+	speed: 0.1997s/iter; left time: 1537.5142s
+	speed: 0.2000s/iter; left time: 1519.6487s
+	speed: 0.2002s/iter; left time: 1501.1657s
+	speed: 0.2005s/iter; left time: 1483.5585s
+	speed: 0.2003s/iter; left time: 1462.0526s
+	speed: 0.2004s/iter; left time: 1442.9662s
+	speed: 0.2008s/iter; left time: 1425.4903s
+	speed: 0.2003s/iter; left time: 1402.1289s
+	speed: 0.2002s/iter; left time: 1381.3481s
+	speed: 0.2005s/iter; left time: 1363.0751s
+	speed: 0.2009s/iter; left time: 1345.9832s
+	speed: 0.2005s/iter; left time: 1322.9250s
+	speed: 0.2005s/iter; left time: 1302.9227s
+	speed: 0.2005s/iter; left time: 1283.2076s
+	speed: 0.2005s/iter; left time: 1263.2327s
+	speed: 0.2005s/iter; left time: 1242.9499s
+	speed: 0.2006s/iter; left time: 1223.6435s
+	speed: 0.2004s/iter; left time: 1201.9812s
+	speed: 0.2003s/iter; left time: 1181.3590s
+	speed: 0.2004s/iter; left time: 1162.2886s
+	speed: 0.2004s/iter; left time: 1141.9745s
+	speed: 0.2003s/iter; left time: 1121.6791s
+Epoch: 1, Cost time: 780.527s 
+	speed: 2.5792s/iter; left time: 14012.8751s
+	speed: 0.2001s/iter; left time: 1067.0826s
+	speed: 0.2003s/iter; left time: 1048.2656s
+	speed: 0.2000s/iter; left time: 1026.8001s
+	speed: 0.2000s/iter; left time: 1006.7351s
+	speed: 0.2003s/iter; left time: 987.8990s
+	speed: 0.1999s/iter; left time: 966.2525s
+	speed: 0.1998s/iter; left time: 945.7436s
+	speed: 0.1999s/iter; left time: 925.9843s
+	speed: 0.1999s/iter; left time: 905.9398s
+	speed: 0.1998s/iter; left time: 885.5035s
+	speed: 0.1998s/iter; left time: 865.7983s
+	speed: 0.1998s/iter; left time: 845.7142s
+	speed: 0.1997s/iter; left time: 825.5415s
+	speed: 0.1999s/iter; left time: 806.1547s
+	speed: 0.1999s/iter; left time: 786.3448s
+	speed: 0.1997s/iter; left time: 765.5220s
+	speed: 0.1996s/iter; left time: 745.1974s
+	speed: 0.1998s/iter; left time: 725.7836s
+	speed: 0.1998s/iter; left time: 705.7999s
+	speed: 0.1997s/iter; left time: 685.6191s
+	speed: 0.1996s/iter; left time: 665.1633s
+	speed: 0.1997s/iter; left time: 645.6475s
+	speed: 0.1997s/iter; left time: 625.6491s
+	speed: 0.1997s/iter; left time: 605.5428s
+	speed: 0.1996s/iter; left time: 585.3398s
+	speed: 0.1995s/iter; left time: 565.1399s
+Epoch: 2, Cost time: 777.288s 
+	speed: 2.5775s/iter; left time: 6874.1637s
+	speed: 0.1993s/iter; left time: 511.5406s
+	speed: 0.1993s/iter; left time: 491.7398s
+	speed: 0.1994s/iter; left time: 472.0141s
+	speed: 0.1994s/iter; left time: 451.9807s
+	speed: 0.1994s/iter; left time: 432.0794s
+	speed: 0.1994s/iter; left time: 412.2606s
+	speed: 0.1995s/iter; left time: 392.4767s
+	speed: 0.1993s/iter; left time: 372.1546s
+	speed: 0.1994s/iter; left time: 352.2680s
+	speed: 0.1994s/iter; left time: 332.3671s
+	speed: 0.1994s/iter; left time: 312.4775s
+	speed: 0.1993s/iter; left time: 292.3938s
+	speed: 0.1992s/iter; left time: 272.3311s
+	speed: 0.1993s/iter; left time: 252.5330s
+	speed: 0.1994s/iter; left time: 232.7484s
+	speed: 0.1994s/iter; left time: 212.7262s
+	speed: 0.1993s/iter; left time: 192.6949s
+	speed: 0.1992s/iter; left time: 172.7376s
+	speed: 0.1994s/iter; left time: 152.9780s
+	speed: 0.1993s/iter; left time: 132.9253s
+	speed: 0.1995s/iter; left time: 113.1103s
+	speed: 0.1993s/iter; left time: 93.0604s
+	speed: 0.1994s/iter; left time: 73.1979s
+	speed: 0.1995s/iter; left time: 53.2736s
+	speed: 0.1992s/iter; left time: 33.2646s
+	speed: 0.1994s/iter; left time: 13.3627s
+Epoch: 3, Cost time: 775.933s 
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+Threshold : 0.9981864094734192
+==================== EVALUATION Metrics ===================
+
+====================  MODEL DETECTION  ===================
+Anomaly detected starting at index:
+ 42345, 61292, 68022, 79225, 91789, 127673, 133644, 140720, 146504, 152943, 160890, 167873, 192152, 192948, 202369, 218419, 238952, 240412, 241863, 246421, 247407, 258336, 260894, 263262, 264082, 283877, 292229, 292514, 309553, 310020, 311151, 311505, 326103, 330243, 341253, 368042, 380193, 384837, 394146, 407145, 414305, 438865, 439987, 444329, 446402, 451177, 494668, 514871, 515985, 517093, 518389, 519808, 532130, 532987, 533376, 546146, 567331, 574102, 592469, 603691, 617171, 617996, 620876, 661631, 666627, 667782, 670270, 671675, 680929, 685119
+Total number of anomalies detected: 70
+Total number of indices: 698880
+====================  FINAL METRICS  ===================
+Accuracy : 0.9952, Precision : 0.8968, Recall : 1.0000, F-score : 0.9456 
+start_idx: 666627
+Extracting random segment from index 666627 to 666827
+Extracting random segment from index 666627 to 666827
+test_energy shape (200,)
+test energy values
+ [0.0000000e+00 0.0000000e+00 1.3150990e-08 0.0000000e+00 1.0871834e-40
+ 0.0000000e+00 0.0000000e+00 0.0000000e+00 0.0000000e+00 1.2593255e-17
+ 1.4273311e-22 0.0000000e+00 0.0000000e+00 0.0000000e+00 0.0000000e+00
+ 2.8764095e-38 0.0000000e+00 8.4311317e-04 0.0000000e+00 1.2781686e-35
+ 0.0000000e+00 6.7183153e-40 1.1473760e-32 9.9967659e-01 6.4521891e-36
+ 0.0000000e+00 2.8986218e-32 0.0000000e+00 5.0279714e-32 2.4167728e-20
+ 9.5987982e-18 6.5567334e-33 0.0000000e+00 3.6746549e-26 0.0000000e+00
+ 0.0000000e+00 9.2839350e-19 6.9028828e-22 8.4101131e-27 0.0000000e+00
+ 3.6433760e-44 0.0000000e+00 0.0000000e+00 1.9537685e-12 4.0925461e-11
+ 5.6051939e-45 0.0000000e+00 0.0000000e+00 0.0000000e+00 2.2420775e-44
+ 2.0718610e-31 4.5930801e-10 0.0000000e+00 0.0000000e+00 8.5690046e-39
+ 0.0000000e+00 4.5121811e-43 7.6921541e-36 3.2282202e-04 2.0856184e-39
+ 0.0000000e+00 2.8567022e-38 0.0000000e+00 5.6978993e-38 2.7361104e-26
+ 1.0867125e-23 7.4303515e-39 0.0000000e+00 4.9019155e-32 0.0000000e+00
+ 0.0000000e+00 1.2384582e-24 9.2083073e-28 1.2650780e-32 0.0000000e+00
+ 0.0000000e+00 0.0000000e+00 0.0000000e+00 1.0855640e-17 2.2761453e-16
+ 0.0000000e+00 0.0000000e+00 0.0000000e+00 0.0000000e+00 0.0000000e+00
+ 2.7484941e-35 6.0930997e-14 0.0000000e+00 0.0000000e+00 1.5478743e-41
+ 0.0000000e+00 1.4012985e-45 1.3881725e-38 6.2136996e-07 4.0147201e-42
+ 0.0000000e+00 4.1517993e-39 0.0000000e+00 8.2972550e-39 3.9882049e-27
+ 1.5840122e-24 1.0820042e-39 0.0000000e+00 4.2588581e-32 0.0000000e+00
+ 0.0000000e+00 1.0759911e-24 8.0003159e-28 1.1088217e-32 0.0000000e+00
+ 0.0000000e+00 0.0000000e+00 0.0000000e+00 1.1255058e-17 2.3575892e-16
+ 0.0000000e+00 0.0000000e+00 0.0000000e+00 0.0000000e+00 0.0000000e+00
+ 3.0363696e-35 6.7312861e-14 0.0000000e+00 8.7716313e-07 9.8867170e-10
+ 1.9913293e-09 0.0000000e+00 0.0000000e+00 0.0000000e+00 0.0000000e+00
+ 2.0186034e-16 4.1690709e-18 1.6195536e-13 0.0000000e+00 0.0000000e+00
+ 0.0000000e+00 0.0000000e+00 5.4024991e-22 8.5042957e-05 5.5077183e-04
+ 0.0000000e+00 0.0000000e+00 0.0000000e+00 0.0000000e+00 4.0483745e-12
+ 1.4190904e-15 1.6857146e-13 0.0000000e+00 0.0000000e+00 0.0000000e+00
+ 0.0000000e+00 1.0063671e-21 6.8037900e-21 9.9387568e-01 0.0000000e+00
+ 0.0000000e+00 0.0000000e+00 0.0000000e+00 4.3835766e-09 4.9360117e-12
+ 9.9515630e-12 0.0000000e+00 0.0000000e+00 0.0000000e+00 0.0000000e+00
+ 5.3091562e-21 1.0965130e-22 4.2596096e-18 0.0000000e+00 0.0000000e+00
+ 0.0000000e+00 0.0000000e+00 1.9402700e-26 4.6481001e-09 3.0102935e-08
+ 0.0000000e+00 0.0000000e+00 0.0000000e+00 0.0000000e+00 4.3832764e-16
+ 1.5349848e-19 1.8216041e-17 0.0000000e+00 0.0000000e+00 0.0000000e+00
+ 0.0000000e+00 2.8290174e-25 1.9126260e-24 2.6352946e-03 0.0000000e+00
+ 0.0000000e+00 0.0000000e+00 0.0000000e+00 4.1007097e-11 4.6220087e-14
+ 9.3003140e-14 0.0000000e+00 0.0000000e+00 0.0000000e+00 0.0000000e+00]
+gt shap (200,)
+gt values [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+Plot saved to anomaly_scores_idx_666627.png
