@@ -337,11 +337,11 @@ class Solver(object):
         pred = (test_energy > thresh).astype(int)
         gt = test_labels.astype(int)
         
-        # matrix = [self.index]
-        # scores_simple = combine_all_evaluation_scores(pred, gt, test_energy)
-        # print('==================== EVALUATION Metrics ===================\n')
-        # for key, value in scores_simple.items():
-        #     matrix.append(value)
+        matrix = [self.index]
+        scores_simple = combine_all_evaluation_scores(pred, gt, test_energy)
+        print('==================== EVALUATION Metrics ===================\n')
+        for key, value in scores_simple.items():
+            matrix.append(value)
             
         #     print('{0:21} : {1:0.4f}'.format(key, value))
         # 
@@ -369,8 +369,6 @@ class Solver(object):
         #         pred[i] = 1
 
 
-
-        print('==========================================================')
 
         gt = np.array(gt)
         pred = np.array(pred)
@@ -406,10 +404,6 @@ class Solver(object):
         gt = np.array(gt)
 
 
-
-
-
-
         from sklearn.metrics import precision_recall_fscore_support
         from sklearn.metrics import accuracy_score
 
@@ -423,18 +417,13 @@ class Solver(object):
         # indices = np.where(gt == 1)[0]
         # print("Indices where gt is equal to 1:", ", ".join(map(str, indices)))
 
-        # if self.data_path == 'UCR' or 'UCR_AUG':
-        #     import csv
-        #     with open('result/'+self.data_path+'.csv', 'a+') as f:
-        #         writer = csv.writer(f)
-        #         writer.writerow(matrix)
+        if self.data_path == 'UCR' or 'UCR_AUG':
+            import csv
+            with open('result/'+self.data_path+'.csv', 'a+') as f:
+                writer = csv.writer(f)
+                writer.writerow(matrix)
 
 
-        # print('====================  GT values equal 1   ===================')
-        # indices = np.where(gt == 1)[0]
-        # print("Indices where gt is equal to 1:", ", ".join(map(str, indices)))
-
-        # Function to extract a randffom segment of length 150
         
         ###############################################START SEGMENT EXTRACTION#########################################
         start_idx = np.random.choice(anomaly_starts)
