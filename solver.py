@@ -452,7 +452,7 @@ class Solver(object):
 
         # Extract random segments of lengthfgdfg 150
         segment_length = 200
-        #start_idx = np.random.randint(0, len(test_energy) - segment_length)
+        start_idx = np.random.randint(0, len(anomaly_starts) - segment_length)
         print(f"start_idx: {start_idx}")
         test_energy_segment = extract_random_segment(test_energy, segment_length, start_idx)
         
