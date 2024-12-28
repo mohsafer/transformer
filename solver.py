@@ -419,7 +419,7 @@ class Solver(object):
         #         writer = csv.writer(f)
         #         writer.writerow(matrix)
 
-        
+
             # NEW CODE : Plot anomaly scores with matplotlib
         # plt.figure(figsize=(12, 6))
         # plt.plot(test_energy, label='Anomaly Scores', color='blue')
@@ -470,7 +470,7 @@ class Solver(object):
         plt.legend()
 
         # Save the plot to a file
-        plot_filename = f'anomaly_scores_40_{segment_length}.png'
+        plot_filename = f'anomaly_scores_41_{segment_length}.png'
         plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
         print(f"Plot saved to {plot_filename}")
         plt.show()
