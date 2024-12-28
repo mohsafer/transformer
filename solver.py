@@ -452,12 +452,15 @@ class Solver(object):
             if len(data) <= segment_length:
                 return data  # Return the entire data if it's shorter than the segment length
             start_idx = np.random.randint(0, len(data) - segment_length)
+            start_idx = 618200
             print(f"Extracting random segment from index {start_idx} to {start_idx + segment_length}")
             return data[start_idx:start_idx + segment_length]
 
         # Extract random segments of lengthfgdfg 150
         segment_length = 200
-        start_idx = np.random.randint(0, len(test_energy) - segment_length)
+        start_idx = 618200
+        #start_idx = np.random.randint(0, len(test_energy) - segment_length)
+
         test_energy_segment = extract_random_segment(test_energy, segment_length, start_idx)
         
         #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
@@ -480,7 +483,7 @@ class Solver(object):
         plt.legend()
 
         # Save the plot to a file
-        plot_filename = f'anomaly_scores_41_{segment_length}.png'
+        plot_filename = f'anomaly_idx{start_idx}.png'
         plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
         print(f"Plot saved to {plot_filename}")
         plt.show()
