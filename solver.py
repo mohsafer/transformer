@@ -444,7 +444,7 @@ class Solver(object):
             
             # Generate a random start index if not provided
             if start_idx is None:
-                start_idx = np.random.randint(0, len(test_energy) - segment_length)
+                start_idx = np.random.randint(0, len(anomaly_starts) - segment_length)
             
             print(f"Extracting random segment from index {start_idx} to {start_idx + segment_length}")
             return data[start_idx:start_idx + segment_length]
