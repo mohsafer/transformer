@@ -432,14 +432,14 @@ class Solver(object):
         plt.figure(figsize=(12, 6))
         plt.plot(test_energy_segment, label='Anomaly Scores', color='blue')
         plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
-        plt.fill_between(range(len(test_energy_segment)), 0, 1, where=(pred_segment == 1), color='yellow', alpha=0.3, label='Ground Truth Anomalies')
+        plt.fill_between(range(len(test_energy)), 0, 1, where=(gt_segment == 1), color='yellow', alpha=0.3, label='Ground Truth Anomalies')
         plt.xlabel('Time')
         plt.ylabel('Anomaly Score')
         plt.title(f'Anomaly Scores Over Time (Random Segment of Length {segment_length})')
         plt.legend()
 
         # Save the plot to a file
-        plot_filename = f'anomaly_scores_35_{segment_length}.png'
+        plot_filename = f'anomaly_scores_40_{segment_length}.png'
         plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
         print(f"Plot saved to {plot_filename}")
         plt.show()
