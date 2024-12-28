@@ -448,10 +448,11 @@ class Solver(object):
 
         # Extract random segments of lengthfgdfg 150
         segment_length = 200
-        test_energy_segment = extract_random_segment(test_energy, segment_length)
+        start_idx = np.random.randint(0, len(test_energy) - segment_length)
+        test_energy_segment = extract_random_segment(test_energy, segment_length, start_idx)
         
         #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
-        gt_segment = extract_random_segment(gt, segment_length)
+        gt_segment = extract_random_segment(gt, segment_length, start_idx)
         #pred_segment = (test_energy_segment > thresh).astype(int)
         #pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
 

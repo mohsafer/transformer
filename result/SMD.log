@@ -10699,3 +10699,24 @@ Extracting random segment from index 501332 to 501532
 Plot saved to anomaly_scores_40_200.png
 Figure(1200x600)
 ====================  Test in progress  ===================
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+Threshold : 0.9999293088912964
+====================  FINAL METRICS  ===================
+Accuracy : 0.9880, Precision : 0.8624, Recall : 0.8496, F-score : 0.8560 
+Extracting random segment from index 300016 to 300216
+Extracting random segment from index 482 to 682
+Plot saved to anomaly_scores_41_200.png
+Figure(1200x600)
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+Threshold : 0.9999293088912964
+====================  FINAL METRICS  ===================
+Accuracy : 0.9880, Precision : 0.8624, Recall : 0.8496, F-score : 0.8560 
+Extracting random segment from index 646150 to 646350
+Extracting random segment from index 194886 to 195086
+Plot saved to anomaly_scores_41_200.png
+Figure(1200x600)
+====================  Test in progress  ===================
