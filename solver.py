@@ -429,38 +429,30 @@ class Solver(object):
         #         writer.writerow(matrix)
 
 
-            # NEW CODE : Plot anomaly scores with matplotlib
-        # plt.figure(figsize=(12, 6))
-        # plt.plot(test_energy, label='Anomaly Scores', color='blue')
-        # plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
-        # plt.fill_between(range(len(test_energy)), 0, 1, where=(gt == 1), color='yellow', alpha=0.3, label='Ground Truth Anomalies')
-        # plt.xlabel('Time')
-        # plt.ylabel('Anomaly Score')
-        # plt.title('Anomaly Scores Over Time')
-        # plt.legend()
-        # # Save the plot to a file
-        # plot_filename = 'anomaly_scores_plot.png'
-        # plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
-        # print(f"Plot saved to {plot_filename}")
-        # plt.show()
-        # writer.close()
-
-
+        # print('====================  GT values equal 1   ===================')
+        # indices = np.where(gt == 1)[0]
+        # print("Indices where gt is equal to 1:", ", ".join(map(str, indices)))
 
         # Function to extract a randffom segment of length 150
-        def extract_random_segment(data, segment_length=200):
+        
+        ###############################################START SEGMENT EXTRACTION#########################################
+
+        start_idx = 43050
+        def extract_random_segment(data, segment_length=200, start_idx=None):
             if len(data) <= segment_length:
                 return data  # Return the entire data if it's shorter than the segment length
-            start_idx = np.random.randint(0, len(data) - segment_length)
-            start_idx = 618200
+            
+            # Generate a random start index if not provided
+            if start_idx is None:
+                start_idx = np.random.randint(0, len(test_energy) - segment_length)
+            
             print(f"Extracting random segment from index {start_idx} to {start_idx + segment_length}")
             return data[start_idx:start_idx + segment_length]
 
         # Extract random segments of lengthfgdfg 150
         segment_length = 200
-        start_idx = 618200
         #start_idx = np.random.randint(0, len(test_energy) - segment_length)
-
+        print(f"start_idx: {start_idx}")
         test_energy_segment = extract_random_segment(test_energy, segment_length, start_idx)
         
         #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
@@ -468,23 +460,74 @@ class Solver(object):
         #pred_segment = (test_energy_segment > thresh).astype(int)
         #pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
 
-        #pred_segment=np.array(pred_segment)
-        #gt_segment=np.array(gt_segment)
-
+        #test_attens_energy=np.array(test_attens_energy)
+        print('test shape', test_energy_segment.shape)
+        print(f"test energy values\n {test_energy_segment}")
+        
+        #gt_segment=np.array(gt_segment) 
+        print('gt shap', gt_segment.shape)
+        print(f"gt values {gt_segment}")
 
         # Plot the random segment
+
+        max_value_rounded = math.ceil(max(test_energy_segment))
+        # Plot the random segment
+        ymin, ymax = plt.ylim()
+       
         plt.figure(figsize=(12, 6))
         plt.plot(test_energy_segment, label='Anomaly Scores', color='blue')
         plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
-        plt.fill_between(range(len(test_energy_segment)), 0, 1, where=(gt_segment == 1), color='yellow', alpha=0.3, label='Ground Truth Anomalies')
+        plt.fill_between(range(len(test_energy_segment)), ymin,  plt.ylim()[1], where=(gt_segment == 1), color='yellow', alpha=0.3, label='Ground Truth')
         plt.xlabel('Time')
         plt.ylabel('Anomaly Score')
-        plt.title(f'Anomaly Scores Over Time (Random Segment of Length {segment_length})')
+        plt.title(f'Anomaly Scores Over Time (Area{start_idx})')
         plt.legend()
-
+        #plt.ylim([ymin, ymax])
         # Save the plot to a file
-        plot_filename = f'anomaly_idx{start_idx}.png'
+        plot_filename = f'anomaly_scores_idx_{start_idx}.png'
         plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
         print(f"Plot saved to {plot_filename}")
         plt.show()
+
+
+        # # Function to extract a randffom segment of length 150
+        # def extract_random_segment(data, segment_length=200):
+        #     if len(data) <= segment_length:
+        #         return data  # Return the entire data if it's shorter than the segment length
+        #     start_idx = np.random.randint(0, len(data) - segment_length)
+        #     start_idx = 618200
+        #     print(f"Extracting random segment from index {start_idx} to {start_idx + segment_length}")
+        #     return data[start_idx:start_idx + segment_length]
+
+        # # Extract random segments of lengthfgdfg 150
+        # segment_length = 200
+        # start_idx = 618200
+        # #start_idx = np.random.randint(0, len(test_energy) - segment_length)
+
+        # test_energy_segment = extract_random_segment(test_energy, segment_length, start_idx)
+        
+        # #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
+        # gt_segment = extract_random_segment(gt, segment_length, start_idx)
+        # #pred_segment = (test_energy_segment > thresh).astype(int)
+        # #pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
+
+        # #pred_segment=np.array(pred_segment)
+        # #gt_segment=np.array(gt_segment)
+
+
+        # # Plot the random segment
+        # plt.figure(figsize=(12, 6))
+        # plt.plot(test_energy_segment, label='Anomaly Scores', color='blue')
+        # plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
+        # plt.fill_between(range(len(test_energy_segment)), 0, 1, where=(gt_segment == 1), color='yellow', alpha=0.3, label='Ground Truth Anomalies')
+        # plt.xlabel('Time')
+        # plt.ylabel('Anomaly Score')
+        # plt.title(f'Anomaly Scores Over Time (Random Segment of Length {segment_length})')
+        # plt.legend()
+
+        # # Save the plot to a file
+        # plot_filename = f'anomaly_idx{start_idx}.png'
+        # plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
+        # print(f"Plot saved to {plot_filename}")
+        # plt.show()
         return accuracy, precision, recall, f_score
