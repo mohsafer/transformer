@@ -80,7 +80,7 @@ class Solver(object):
         self.build_model()
         
         #self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        self.devices = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.devices = torch.device("cuda:0,1" if torch.cuda.is_available() else "cpu")
         if self.loss_fuc == 'MAE':
             self.criterion = nn.L1Loss()
         elif self.loss_fuc == 'MSE':
