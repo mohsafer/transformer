@@ -139,8 +139,8 @@ class Solver(object):
         train_steps = len(self.train_loader)
         running_loss = 0.0
         
-
-        for epoch in range(self.num_epochs):
+        from tqdm import tqdm
+        for epoch in tqdm(range(self.num_epochs)):
             iter_count = 0
 
             epoch_time = time.time()

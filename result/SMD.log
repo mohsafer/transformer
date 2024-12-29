@@ -11783,3 +11783,39 @@ gt values
  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
 Plot saved to anomaly_scores_idx_309553.png
+
+
+
+2024-12-29 05:26:42
+================ Hyperparameters ===============
+anormly_ratio: 0.5
+batch_size: 256
+d_model: 256
+data_path: SMD
+dataset: SMD
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 38
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 5
+output_c: 38
+patch_size: [5, 7]
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+	speed: 0.2281s/iter; left time: 3131.8600s
+	speed: 0.1976s/iter; left time: 2693.3502s
+	speed: 0.1983s/iter; left time: 2683.3659s
+	speed: 0.1990s/iter; left time: 2672.1940s
+	speed: 0.1994s/iter; left time: 2657.5867s
+	speed: 0.1996s/iter; left time: 2640.4102s
