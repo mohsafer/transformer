@@ -344,8 +344,7 @@ class Solver(object):
         print('==================== EVALUATION Metrics ===================\n')
         for key, value in scores_simple.items():
             matrix.append(value)
-            
-        print('{0:21} : {1:0.4f}'.format(key, value))
+            print('{0:21} : {1:0.4f}'.format(key, value))
         # س
         # 
 
