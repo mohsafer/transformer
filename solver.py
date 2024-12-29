@@ -17,7 +17,7 @@ warnings.filterwarnings('ignore')
 #second commit fromssh hahahahahah
 writer = SummaryWriter()  #tensorboard 
 #
-os.environ["CUDA_VISIBLE_DEVICES"] = '0, 1'
+os.environ["CUDA_VISIBLE_DEVICES"] = '0, 1, 2, 3'
 def my_kl_loss(p, q):
     res = p * (torch.log(p + 0.0001) - torch.log(q + 0.0001))
     return torch.mean(torch.sum(res, dim=-1), dim=1)
@@ -80,7 +80,7 @@ class Solver(object):
         self.build_model()
         
         #self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        self.devices = torch.device("cuda:0,1" if torch.cuda.is_available() else "cpu")
+        self.devices = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         if self.loss_fuc == 'MAE':
             self.criterion = nn.L1Loss()
         elif self.loss_fuc == 'MSE':
