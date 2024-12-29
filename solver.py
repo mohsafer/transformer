@@ -17,6 +17,7 @@ warnings.filterwarnings('ignore')
 #second commit fromssh hahahahahah
 writer = SummaryWriter()  #tensorboard 
 #
+os.environ["CUDA_VISIBLE_DEVICES"] = '0, 1, 2, 3'
 def my_kl_loss(p, q):
     res = p * (torch.log(p + 0.0001) - torch.log(q + 0.0001))
     return torch.mean(torch.sum(res, dim=-1), dim=1)
@@ -97,7 +98,7 @@ class Solver(object):
                 if num_gpus > 0:
                     device_ids = list(range(num_gpus))
                     print(f"Using GPUs: {device_ids}")
-                    self.model = torch.nn.DataParallel(self.model, device_ids=device_ids, output_device=0).to(self.device)
+                    #self.model = torch.nn.DataParallel(self.model, device_ids=device_ids, output_device=0).to(self.device)
                 else:
                     print("No valid CUDA device was detected.")
                     self.model = self.model.to(self.device)
