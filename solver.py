@@ -98,7 +98,7 @@ class Solver(object):
                 if num_gpus > 0:
                     device_ids = list(range(num_gpus))
                     print(f"Using GPUs: {device_ids}")
-                    #self.model = torch.nn.DataParallel(self.model, device_ids=device_ids, output_device=0).to(self.device)
+                    self.model = torch.nn.DataParallel(self.model, device_ids=device_ids, output_device=0).to(self.device)
                 else:
                     print("No valid CUDA device was detected.")
                     self.model = self.model.to(self.device)
