@@ -87,10 +87,26 @@ class Solver(object):
         
 
     def build_model(self):
+        
         self.model = DCdetector(win_size=self.win_size, enc_in=self.input_c, c_out=self.output_c, n_heads=self.n_heads, d_model=self.d_model, e_layers=self.e_layers, patch_size=self.patch_size, channel=self.input_c)
         
         if torch.cuda.is_available():
-            self.model.cuda()
+                num_gpus = torch.cuda.device_count()
+                print(f"Number of GPUs available: {num_gpus}")
+
+                if num_gpus > 0:
+                    device_ids = list(range(num_gpus))
+                    print(f"Using GPUs: {device_ids}")
+                    self.model = torch.nn.DataParallel(self.model, device_ids=device_ids, output_device=0).to(self.device)
+                else:
+                    print("No valid CUDA device was detected.")
+                    self.model = self.model.to(self.device)
+        else:
+             print("CUDA is not available on your machine, using CPU.")
+             self.model = self.model.to(self.device)
+        
+        # if torch.cuda.is_available():
+        #     self.model.cuda()
             
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.lr)
 
@@ -343,8 +359,8 @@ class Solver(object):
         for key, value in scores_simple.items():
             matrix.append(value)
             
-        #     print('{0:21} : {1:0.4f}'.format(key, value))
-        # 
+        print('{0:21} : {1:0.4f}'.format(key, value))
+        # س
         # 
 
         # anomaly_state = False

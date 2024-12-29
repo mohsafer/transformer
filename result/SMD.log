@@ -11819,3 +11819,250 @@ win_size: 105
 	speed: 0.1990s/iter; left time: 2672.1940s
 	speed: 0.1994s/iter; left time: 2657.5867s
 	speed: 0.1996s/iter; left time: 2640.4102s
+
+
+
+2024-12-29 05:40:13
+================ Hyperparameters ===============
+anormly_ratio: 0.5
+batch_size: 256
+d_model: 256
+data_path: SMD
+dataset: SMD
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 38
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 5
+output_c: 38
+patch_size: [5, 7]
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+	speed: 0.2279s/iter; left time: 3129.1308s
+	speed: 0.1977s/iter; left time: 2694.4582s
+	speed: 0.1982s/iter; left time: 2681.8730s
+	speed: 0.1991s/iter; left time: 2673.5509s
+	speed: 0.1994s/iter; left time: 2657.7936s
+	speed: 0.1996s/iter; left time: 2640.8370s
+	speed: 0.1998s/iter; left time: 2623.1206s
+	speed: 0.2001s/iter; left time: 2608.1181s
+	speed: 0.2000s/iter; left time: 2585.7560s
+	speed: 0.2005s/iter; left time: 2573.1331s
+	speed: 0.2004s/iter; left time: 2551.0410s
+	speed: 0.2005s/iter; left time: 2533.0369s
+	speed: 0.2007s/iter; left time: 2515.3423s
+	speed: 0.2005s/iter; left time: 2491.8047s
+	speed: 0.2003s/iter; left time: 2469.5252s
+	speed: 0.2005s/iter; left time: 2452.0179s
+	speed: 0.2004s/iter; left time: 2431.2595s
+	speed: 0.2003s/iter; left time: 2410.2769s
+	speed: 0.2005s/iter; left time: 2391.8659s
+	speed: 0.2004s/iter; left time: 2371.2936s
+	speed: 0.2005s/iter; left time: 2351.5570s
+	speed: 0.2005s/iter; left time: 2332.0647s
+	speed: 0.2006s/iter; left time: 2313.0943s
+	speed: 0.2004s/iter; left time: 2290.6635s
+	speed: 0.2002s/iter; left time: 2268.1758s
+	speed: 0.2006s/iter; left time: 2252.6163s
+	speed: 0.2005s/iter; left time: 2231.9980s
+Epoch: 1, Cost time: 780.192s 
+	speed: 2.5770s/iter; left time: 28257.1682s
+	speed: 0.2001s/iter; left time: 2174.3034s
+	speed: 0.1999s/iter; left time: 2151.5022s
+	speed: 0.2001s/iter; left time: 2133.8894s
+	speed: 0.1999s/iter; left time: 2111.8688s
+	speed: 0.1999s/iter; left time: 2091.8039s
+	speed: 0.1998s/iter; left time: 2071.3984s
+	speed: 0.2001s/iter; left time: 2054.1038s
+	speed: 0.2001s/iter; left time: 2034.1508s
+	speed: 0.1998s/iter; left time: 2011.3290s
+	speed: 0.2003s/iter; left time: 1995.5832s
+	speed: 0.2000s/iter; left time: 1973.2961s
+	speed: 0.1999s/iter; left time: 1951.7520s
+	speed: 0.1999s/iter; left time: 1932.2693s
+	speed: 0.1999s/iter; left time: 1912.5007s
+	speed: 0.1999s/iter; left time: 1891.7607s
+	speed: 0.1999s/iter; left time: 1871.6193s
+	speed: 0.2000s/iter; left time: 1852.6135s
+	speed: 0.1998s/iter; left time: 1831.3648s
+	speed: 0.1997s/iter; left time: 1810.3800s
+	speed: 0.1998s/iter; left time: 1790.8831s
+	speed: 0.1998s/iter; left time: 1771.5558s
+	speed: 0.1998s/iter; left time: 1751.0832s
+	speed: 0.1998s/iter; left time: 1731.4530s
+	speed: 0.1999s/iter; left time: 1711.7979s
+	speed: 0.1997s/iter; left time: 1690.8229s
+	speed: 0.1998s/iter; left time: 1671.6332s
+Epoch: 2, Cost time: 777.226s 
+	speed: 2.5750s/iter; left time: 21112.5090s
+	speed: 0.1994s/iter; left time: 1615.0983s
+	speed: 0.1997s/iter; left time: 1597.2472s
+	speed: 0.1997s/iter; left time: 1577.1288s
+	speed: 0.1998s/iter; left time: 1558.4009s
+	speed: 0.1998s/iter; left time: 1538.2309s
+	speed: 0.1997s/iter; left time: 1517.4460s
+	speed: 0.1995s/iter; left time: 1495.8615s
+	speed: 0.1997s/iter; left time: 1477.4118s
+	speed: 0.1995s/iter; left time: 1456.3787s
+	speed: 0.1997s/iter; left time: 1437.4053s
+	speed: 0.1997s/iter; left time: 1417.8460s
+	speed: 0.1996s/iter; left time: 1397.2432s
+	speed: 0.1997s/iter; left time: 1377.4390s
+	speed: 0.1997s/iter; left time: 1357.5226s
+	speed: 0.1998s/iter; left time: 1338.3708s
+	speed: 0.1996s/iter; left time: 1317.1790s
+	speed: 0.1996s/iter; left time: 1296.8820s
+	speed: 0.1997s/iter; left time: 1277.9194s
+	speed: 0.1996s/iter; left time: 1257.3961s
+	speed: 0.1997s/iter; left time: 1237.9676s
+	speed: 0.1995s/iter; left time: 1216.6364s
+	speed: 0.1997s/iter; left time: 1197.7961s
+	speed: 0.1996s/iter; left time: 1177.2435s
+	speed: 0.1997s/iter; left time: 1158.2971s
+	speed: 0.1997s/iter; left time: 1137.9253s
+	speed: 0.1997s/iter; left time: 1118.0495s
+Epoch: 3, Cost time: 776.626s 
+	speed: 2.5761s/iter; left time: 13995.6928s
+	speed: 0.1997s/iter; left time: 1064.9866s
+	speed: 0.1995s/iter; left time: 1043.8805s
+	speed: 0.1996s/iter; left time: 1024.3832s
+	speed: 0.1995s/iter; left time: 1003.8850s
+	speed: 0.1997s/iter; left time: 985.0634s
+	speed: 0.1997s/iter; left time: 965.0427s
+	speed: 0.1996s/iter; left time: 944.9110s
+	speed: 0.1997s/iter; left time: 925.0313s
+	speed: 0.1995s/iter; left time: 904.1737s
+	speed: 0.1998s/iter; left time: 885.6049s
+	speed: 0.1996s/iter; left time: 864.8466s
+	speed: 0.1997s/iter; left time: 845.3891s
+	speed: 0.1996s/iter; left time: 825.0265s
+	speed: 0.1995s/iter; left time: 804.6263s
+	speed: 0.1997s/iter; left time: 785.4091s
+	speed: 0.1996s/iter; left time: 764.9447s
+	speed: 0.1997s/iter; left time: 745.5977s
+	speed: 0.1998s/iter; left time: 725.7396s
+	speed: 0.1996s/iter; left time: 705.1262s
+	speed: 0.1997s/iter; left time: 685.7267s
+	speed: 0.1996s/iter; left time: 665.4275s
+	speed: 0.1996s/iter; left time: 645.4294s
+	speed: 0.1997s/iter; left time: 625.5150s
+	speed: 0.1995s/iter; left time: 605.1185s
+	speed: 0.1996s/iter; left time: 585.5476s
+	speed: 0.1996s/iter; left time: 565.5123s
+Epoch: 4, Cost time: 776.745s 
+	speed: 2.5781s/iter; left time: 6875.7058s
+	speed: 0.1995s/iter; left time: 512.1773s
+	speed: 0.1995s/iter; left time: 492.1201s
+	speed: 0.1996s/iter; left time: 472.5651s
+	speed: 0.1995s/iter; left time: 452.2958s
+	speed: 0.1997s/iter; left time: 432.7467s
+	speed: 0.1995s/iter; left time: 412.3244s
+	speed: 0.1995s/iter; left time: 392.3612s
+	speed: 0.1996s/iter; left time: 372.7391s
+	speed: 0.1996s/iter; left time: 352.6162s
+	speed: 0.1996s/iter; left time: 332.7777s
+	speed: 0.1996s/iter; left time: 312.8133s
+	speed: 0.1997s/iter; left time: 292.9133s
+	speed: 0.1996s/iter; left time: 272.8461s
+	speed: 0.1996s/iter; left time: 252.8721s
+	speed: 0.1993s/iter; left time: 232.5740s
+	speed: 0.1995s/iter; left time: 212.8812s
+	speed: 0.1996s/iter; left time: 193.0293s
+	speed: 0.1996s/iter; left time: 173.0765s
+	speed: 0.1998s/iter; left time: 153.2266s
+	speed: 0.1997s/iter; left time: 133.1887s
+	speed: 0.1995s/iter; left time: 113.1126s
+	speed: 0.1996s/iter; left time: 93.2184s
+	speed: 0.1996s/iter; left time: 73.2496s
+	speed: 0.1995s/iter; left time: 53.2624s
+	speed: 0.1996s/iter; left time: 33.3412s
+	speed: 0.1995s/iter; left time: 13.3660s
+Epoch: 5, Cost time: 776.447s 
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+Threshold : 0.9999796152114868
+==================== EVALUATION Metrics ===================
+
+====================  MODEL DETECTION  ===================
+Anomaly detected starting at index:
+ 11785, 35805, 42345, 75285, 79225, 88045, 91789, 121078, 127673, 133644, 146504, 147424, 154338, 167873, 170833, 192948, 202369, 238952, 240412, 241863, 244346, 246421, 264082, 264652, 267215, 283877, 285384, 292514, 309553, 310020, 311151, 312336, 313579, 315037, 318897, 326103, 330243, 336943, 358332, 368042, 380193, 394146, 407145, 414305, 438865, 446402, 466537, 494668, 514871, 515985, 517093, 518389, 519808, 533376, 543041, 549765, 567331, 569190, 571215, 574102, 592469, 608065, 616557, 617996, 627642, 632943, 667782, 669048, 670270, 671675, 685119
+Total number of anomalies detected: 71
+Total number of indices: 698880
+====================  FINAL METRICS  ===================
+Accuracy : 0.9952, Precision : 0.8972, Recall : 1.0000, F-score : 0.9458 
+start_idx: 312336
+Extracting random segment from index 312336 to 312536
+Extracting random segment from index 312336 to 312536
+test_energy shape (200,)
+test energy values
+ [7.80897409e-08 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 6.39705116e-16 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.32588305e-26 8.30594170e-33 2.73284873e-35
+ 0.00000000e+00 0.00000000e+00 1.55358920e-11 0.00000000e+00
+ 1.40129846e-45 0.00000000e+00 7.16988552e-37 0.00000000e+00
+ 0.00000000e+00 6.63052400e-31 0.00000000e+00 0.00000000e+00
+ 1.65407531e-36 3.24380410e-12 0.00000000e+00 0.00000000e+00
+ 1.73958059e-32 0.00000000e+00 6.75617019e-23 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 7.95521942e-08
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 1.29073602e-41 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 9.99586284e-01 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 5.86366831e-35 0.00000000e+00 0.00000000e+00
+ 3.85012358e-40 1.61995763e-17 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 4.13665490e-04
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 6.52854924e-22
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.40129846e-45 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 8.47900014e-11 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 1.40129846e-45 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 3.60922209e-28 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 1.57743892e-12 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 2.56432517e-28 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 1.45604600e-12 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 1.40129846e-45
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 2.78626837e-28
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.58981107e-12 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 2.61745676e-28 0.00000000e+00 0.00000000e+00
+ 1.04244494e-29 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 9.64824022e-25
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 7.59503768e-43
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 3.70071092e-07 0.00000000e+00
+ 0.00000000e+00 5.21663249e-36 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 3.84592933e-37 0.00000000e+00 0.00000000e+00
+ 9.99999642e-01 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 5.87668398e-36 0.00000000e+00 0.00000000e+00 3.23420850e-33
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 7.00918776e-33 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 2.77881679e-16 0.00000000e+00 0.00000000e+00]
+gt shap (200,)
+gt values
+ [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+Plot saved to anomaly_scores_idx_312336.png
