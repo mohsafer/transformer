@@ -17,7 +17,7 @@ warnings.filterwarnings('ignore')
 #second commit fromssh hahahahahah
 writer = SummaryWriter()  #tensorboard 
 #
-os.environ["CUDA_VISIBLE_DEVICES"] = '0, 1, 2, 3'
+#os.environ["CUDA_VISIBLE_DEVICES"] = '0, 1, 2, 3'
 def my_kl_loss(p, q):
     res = p * (torch.log(p + 0.0001) - torch.log(q + 0.0001))
     return torch.mean(torch.sum(res, dim=-1), dim=1)
@@ -79,8 +79,7 @@ class Solver(object):
 
         self.build_model()
         
-        #self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        self.devices = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         if self.loss_fuc == 'MAE':
             self.criterion = nn.L1Loss()
         elif self.loss_fuc == 'MSE':
@@ -91,23 +90,9 @@ class Solver(object):
         
         self.model = DCdetector(win_size=self.win_size, enc_in=self.input_c, c_out=self.output_c, n_heads=self.n_heads, d_model=self.d_model, e_layers=self.e_layers, patch_size=self.patch_size, channel=self.input_c)
         
-        if torch.cuda.is_available():
-                num_gpus = torch.cuda.device_count()
-                print(f"Number of GPUs available: {num_gpus}")
-
-                if num_gpus > 0:
-                    device_ids = list(range(num_gpus))
-                    print(f"Using GPUs: {device_ids}")
-                    self.model = torch.nn.DataParallel(self.model, device_ids=device_ids, output_device=0).to(self.devices)
-                else:
-                    print("No valid CUDA device was detected.")
-                    self.model = self.model.to(self.devices)
-        else:
-             print("CUDA is not available on your machine, using CPU.")
-             self.model = self.model.to(self.device)
         
-        # if torch.cuda.is_available():
-        #     self.model.cuda()
+        if torch.cuda.is_available():
+            self.model.cuda()
             
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.lr)
 
