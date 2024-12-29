@@ -345,8 +345,7 @@ class Solver(object):
         for key, value in scores_simple.items():
             matrix.append(value)
             print('{0:21} : {1:0.4f}'.format(key, value))
-        # س
-        # 
+
 
         # anomaly_state = False
         # for i in range(len(gt)):
