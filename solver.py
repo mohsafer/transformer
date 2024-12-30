@@ -435,7 +435,7 @@ class Solver(object):
         #print("Sec column:", TS[:100])
         # Initialize the loader
         #data_path = "your/data/path"  # Replace with your actual data path
-        loader = SMDSegLoader(self.data_path, win_size=100, step=10)
+        loader = SMDSegLoader('dataset/'+self.data_path, win_size=100, step=10)
 
         # Access the TS variable
         TS = loader.TS
