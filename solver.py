@@ -1,4 +1,5 @@
 import torch
+import pandas as pd
 from torch.utils.tensorboard import SummaryWriter
 import torch.nn as nn
 import torch.nn.functional as F
@@ -490,9 +491,13 @@ class Solver(object):
         # Plot the random segment
         
         #######################################################PLOT################################################################
+
+        span = 10  # Adjust the span as needed
+        smoothed_TS_segment = pd.Series(TS_segment).ewm(span=span, adjust=False).mean()
+
         plt.figure(figsize=(10, 12))
         plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
-        plt.plot(TS_segment, label="Time Series Data")
+        plt.plot(smoothed_TS_segment, label="Time Series Data")
         plt.title("Time Series Plot")
         plt.xlabel("Time")
         plt.ylabel("Value")
