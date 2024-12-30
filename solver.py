@@ -310,8 +310,8 @@ class Solver(object):
         combined_energy = np.concatenate([train_energy, test_energy], axis=0)
         thresh = np.percentile(combined_energy, 100 - self.anormly_ratio)
         print('====================  Threshhold  ===================\n')
-        print(f"Threshold : {thresh}\n")
-
+        #print(f"Threshold : {thresh}\n")
+        print(f"\033[94mThreshold : {thresh}\033[0m\n")
         # (3) evaluation on the test set
         test_labels = []
         attens_energy = []
