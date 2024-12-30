@@ -504,14 +504,15 @@ class Solver(object):
         span = 10  # Adjust the span as needed
         smoothed_TS_segment = pd.Series(TS_segment).ewm(span=span, adjust=False).mean()
 
-        plt.figure(figsize=(10, 10))
+        plt.figure(figsize=(10, 6)
         plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
         plt.plot(TS_segment, label="Time Series Data", color='black')
         plt.title("Time Series Plot")
         plt.xlabel("Time")
         plt.ylabel("Value")
         plt.legend()
-
+        ax1 = plt.gca()  # Get the current axes (first subplot)
+        ax1.tick_params(axis='both', direction='in')  # Set tick direction for both x and y axes
         ymin, ymax = plt.ylim()
         #plt.figure(figsize=(12, 6))
         plt.subplot(2, 1, 2)  # 2 rows, 1 column, second plot
@@ -522,6 +523,9 @@ class Solver(object):
         plt.ylabel('Anomaly Score')
         plt.title(f'Anomaly Scores Over Time (Area{start_idx})')
         plt.legend()
+        # Adjust tick direction for the second subplot
+        ax2 = plt.gca()  # Get the current axes (second subplot)
+        ax2.tick_params(axis='both', direction='in')  # Set tick direction for both x and y axes
         #plt.ylim([ymin, ymax])
         # Save the plot to a file
 # Adjust layout to prevent overlap
