@@ -462,13 +462,13 @@ class Solver(object):
         # plt.show()
 
          ###############################################START SEGMENT EXTRACTION#########################################
-        start_idx = np.random.choice(anomaly_starts)
-        #start_idx = 68050 #43050
+        #tart_idx = np.random.choice(anomaly_starts)
+        start_idx = 43050
         def extract_random_segment(data, segment_length=100, start_idx=None):
             if len(data) <= segment_length:
                 return data  # Return the entire data if it's shorter than the segment length
             
-            # Generate a random start index if not provided
+            # ffdffdfdfdfdfdfdfdfdffdfdfde a random start index if not provided
             if start_idx is None:
                 #start_idx = np.random.randint(0, len(test_energy) - segment_length)
                 start_idx = np.random.choice(anomaly_starts)
