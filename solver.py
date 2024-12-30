@@ -485,7 +485,8 @@ class Solver(object):
         #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
         gt_segment = extract_random_segment(gt, segment_length, start_idx)
         TS_segment = extract_random_segment(TS, segment_length, start_idx)
-                        #pred_segment = (test_energy_segment > thresh).astype(int)
+        pred_segment = extract_random_segment(pred, segment_length, start_idx)
+        #pred_segment = (test_energy_segment > thresh).astype(int)
         #pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
 
         #test_attens_energy=np.array(test_attens_energy)
@@ -503,7 +504,7 @@ class Solver(object):
         span = 10  # Adjust the span as needed
         smoothed_TS_segment = pd.Series(TS_segment).ewm(span=span, adjust=False).mean()
 
-        plt.figure(figsize=(12, 6))
+        plt.figure(figsize=(6, 8))
 
         plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
 
@@ -517,9 +518,9 @@ class Solver(object):
         ymin, ymax = plt.ylim()
         #plt.figure(figsize=(12, 6))
         plt.subplot(2, 1, 2)  # 2 rows, 1 column, second plot
-        plt.plot(test_energy_segment, label='Anomaly Scores', color='black')
+        plt.plot(pred_segment, label='Anomaly Scores', color='black')
         plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
-        plt.fill_between(range(len(test_energy_segment)), ymin,  plt.ylim()[1], where=(gt_segment == 1), color='yellow', alpha=0.3, label='Ground Truth')
+        plt.fill_between(range(len(pred_segment)), ymin,  plt.ylim()[1], where=(gt_segment == 1), color='yellow', alpha=0.3, label='Ground Truth')
         plt.xlabel('Time')
         plt.ylabel('Anomaly Score')
         plt.title(f'Anomaly Scores Over Time (Area{start_idx})')
