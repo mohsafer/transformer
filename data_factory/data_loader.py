@@ -217,9 +217,9 @@ class SMDSegLoader(object):
         print("Shape of TS:", TS.shape)
         np.save(data_path + "/TS.npy", TS)
         # Print the shape and first few values to verify
-
+        print("================Time Series================")
         print("Sec column:", TS[:100])
-        # print("================Time Series================")d
+
 
         # TS = np.array(sec)
         # print('Shape of TS:', TS.shape)
