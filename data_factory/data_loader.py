@@ -194,21 +194,21 @@ class SMDSegLoader(object):
         self.win_size = win_size
         self.scaler = StandardScaler()
         data = np.load(data_path + "/SMD_train.npy")[:,:]
-        print("================DEBUG ROW================")
-        # Extract the first row
+        # print("================DEBUG ROW================")
+        # # Extract the first row
         
-        for row in data[:3]:
-            formatted_output = ", ".join(map(str, row))
-            print(formatted_output)
-        #first_row = data[0]  # Shape: (38,)
+        # for row in data[:3]:
+        #     formatted_output = ", ".join(map(str, row))
+        #     print(formatted_output)
+        # #first_row = data[0]  # Shape: (38,)
 
-        # Convert each entry to a string and join them with a comma
-        #formatted_output = ", ".join(map(str, first_row))
+        # # Convert each entry to a string and join them with a comma
+        # #formatted_output = ", ".join(map(str, first_row))
  
-        #print(data[:1])
-        print('data shape', data.shape)
+        # #print(data[:1])
+        # print('data shape', data.shape)
 
-        print("======77==========DEBUG Column================")
+        # print("======77==========DEBUG Column================")
 
         # # Extract the first column (dimension)
         sec = np.array(data[:, 1])  # Shape: (708405,)
