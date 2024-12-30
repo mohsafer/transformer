@@ -518,9 +518,9 @@ class Solver(object):
         ymin, ymax = plt.ylim()
         #plt.figure(figsize=(12, 6))
         plt.subplot(2, 1, 2)  # 2 rows, 1 column, second plot
-        plt.plot(pred_segment, label='Anomaly Scores', color='black')
+        plt.plot(test_energy_segment, label='Anomaly Scores', color='black')
         plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
-        plt.fill_between(range(len(pred_segment)), ymin,  plt.ylim()[1], where=(gt_segment == 1), color='yellow', alpha=0.3, label='Ground Truth')
+        plt.fill_between(range(len(test_energy_segment)), ymin,  plt.ylim()[1], where=(gt_segment == 1), color='green', alpha=0.3, label='Ground Truth')
         plt.xlabel('Time')
         plt.ylabel('Anomaly Score')
         plt.title(f'Anomaly Scores Over Time (Area{start_idx})')
