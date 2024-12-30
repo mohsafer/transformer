@@ -215,7 +215,7 @@ class SMDSegLoader(object):
 
         # Print the shape and first few values to verify
         print("Shape of first column:", first_column_as_int.shape)
-        print("First few values of first column:", first_column_as_int[:1000])
+        print("First few values of first column:", first_column_as_int[:5999])
         sys.exit()
         # Save it if needed
         np.save(data_path + "/SMD_train_first_column.npy", first_column_as_int)
