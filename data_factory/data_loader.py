@@ -212,21 +212,21 @@ class SMDSegLoader(object):
         print("================DEBUG Column================")
 
         # Extract the first column (dimension)
-        sec = data[:, 1]  # Shape: (708405,)
+        sec = np.array(data[:, 1])  # Shape: (708405,)
 
         # Convert to integer type (if needed, similar to gt labels)
         #first_column_as_int = first_column.astype(int)  # Shape: (708405,)
-
+        np.save(data_path + "/SEC.npy", sec)
         # Print the shape and first few values to verify
         print("Shape of second column:", sec.shape)
         print("Sec column:", sec[:100])
-        print("================Time Series================")
+        # print("================Time Series================")d
 
-        TS = np.array(sec)
-        print('Shape of TS:', TS.shape)
-        print(TS[:100])
-        # Save it if needed
-        np.save(data_path + "/TS.npy", TS)
+        # TS = np.array(sec)
+        # print('Shape of TS:', TS.shape)
+        # print(TS[:100])
+        # # Save it if needed
+        # np.save(data_path + "/TS.npy", TS)
         sys.exit()
         # Save it if needed
         
