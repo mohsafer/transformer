@@ -462,13 +462,12 @@ class Solver(object):
         # plt.show()
 
          ###############################################START SEGMENT EXTRACTION#########################################
-        #tart_idx = np.random.choice(anomaly_starts)
-        start_idx = 43050
+        start_idx = np.random.choice(anomaly_starts)
+       # start_idx = 43050
         def extract_random_segment(data, segment_length=100, start_idx=None):
             if len(data) <= segment_length:
                 return data  # Return the entire data if it's shorter than the segment length
             
-            # ffdffdfdfdfdfdfdfdfdffdfdfde a random start index if not provided
             if start_idx is None:
                 #start_idx = np.random.randint(0, len(test_energy) - segment_length)
                 start_idx = np.random.choice(anomaly_starts)
@@ -481,7 +480,7 @@ class Solver(object):
         #start_idx = np.random.randint(0, len(anomaly_starts) - segment_length)
         
         print(f"start_idx: {start_idx}")
-        test_energy_segment = extract_random_segment(test_energy, segment_length, start_idx)
+        test_energy_segment = extract_random_segment(attens_energy, segment_length, start_idx)
         
         #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
         gt_segment = extract_random_segment(gt, segment_length, start_idx)
@@ -504,8 +503,10 @@ class Solver(object):
         span = 10  # Adjust the span as needed
         smoothed_TS_segment = pd.Series(TS_segment).ewm(span=span, adjust=False).mean()
 
-        plt.figure(figsize=(10, 6))
-        plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
+        plt.figure(figsize=(6, 6))
+
+        ax = plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
+        ax.set_aspect('equal')
         plt.plot(TS_segment, label="Time Series Data", color='black')
         plt.title("Time Series Plot")
         plt.xlabel("Time")
