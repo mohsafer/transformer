@@ -185,6 +185,7 @@ class SMAPSegLoader(object):
                               index // self.step * self.win_size:index // self.step * self.win_size + self.win_size]), np.float32(
                 self.test_labels[index // self.step * self.win_size:index // self.step * self.win_size + self.win_size])
 
+#SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 
 class SMDSegLoader(object):
     def __init__(self, data_path, win_size, step, mode="train"):
@@ -203,9 +204,7 @@ class SMDSegLoader(object):
 
         # Convert each entry to a string and join them with a comma
         #formatted_output = ", ".join(map(str, first_row))
-
-        # Print the formatted output
-        print(formatted_output)
+ 
         #print(data[:1])
         print('data shape', data.shape)
 
