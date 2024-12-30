@@ -464,7 +464,7 @@ class Solver(object):
          ###############################################START SEGMENT EXTRACTION#########################################
         start_idx = np.random.choice(anomaly_starts)
         #start_idx = 68050 #43050
-        def extract_random_segment(data, segment_length=200, start_idx=None):
+        def extract_random_segment(data, segment_length=100, start_idx=None):
             if len(data) <= segment_length:
                 return data  # Return the entire data if it's shorter than the segment length
             
@@ -477,7 +477,7 @@ class Solver(object):
             return data[start_idx:start_idx + segment_length]
 
         # Extract random segments of lengthfgdfg 150
-        segment_length = 200
+        segment_length = 100
         #start_idx = np.random.randint(0, len(anomaly_starts) - segment_length)
         
         print(f"start_idx: {start_idx}")
@@ -506,7 +506,7 @@ class Solver(object):
 
         plt.figure(figsize=(10, 12))
         plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
-        plt.plot(smoothed_TS_segment, label="Time Series Data")
+        plt.plot(smoothed_TS_segment, label="Time Series Data", color='black')
         plt.title("Time Series Plot")
         plt.xlabel("Time")
         plt.ylabel("Value")
@@ -515,7 +515,7 @@ class Solver(object):
         ymin, ymax = plt.ylim()
         #plt.figure(figsize=(12, 6))
         plt.subplot(2, 1, 2)  # 2 rows, 1 column, second plot
-        plt.plot(test_energy_segment, label='Anomaly Scores', color='blue')
+        plt.plot(test_energy_segment, label='Anomaly Scores', color='black')
         plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
         plt.fill_between(range(len(test_energy_segment)), ymin,  plt.ylim()[1], where=(gt_segment == 1), color='yellow', alpha=0.3, label='Ground Truth')
         plt.xlabel('Time')
