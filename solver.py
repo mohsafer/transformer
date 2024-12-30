@@ -10,6 +10,7 @@ import time
 from utils.utils import *
 from model.DCdetector import DCdetector
 from data_factory.data_loader import get_loader_segment
+from data_factory.data_loader import SMDSegLoader
 from einops import rearrange
 from metrics.metrics import *
 import warnings
@@ -428,9 +429,26 @@ class Solver(object):
         ###########################################################TIME SERIE PLOT################################################################
         #data = np.load(data_path + "/SMD_train.npy")[:,:]
 
+        #print("Sec column:", TS[:100])
+        # Initialize the loader
+        #data_path = "your/data/path"  # Replace with your actual data path
+        loader = SMDSegLoader( win_size=100, step=10)
+
+        # Access the TS variable
+        TS = loader.TS
         print("Sec column:", TS[:100])
-        
-        ###############################################START SEGMENT EXTRACTION#########################################
+
+
+        # # Plot the data
+        # plt.figure(figsize=(10, 6))
+        # plt.plot(TS, label="Time Series Data")
+        # plt.title("Time Series Plot")
+        # plt.xlabel("Time")
+        # plt.ylabel("Value")
+        # plt.legend()
+        # plt.show()
+
+         ###############################################START SEGMENT EXTRACTION#########################################
         start_idx = np.random.choice(anomaly_starts)
         #start_idx = 68050 #43050
         def extract_random_segment(data, segment_length=200, start_idx=None):

@@ -211,8 +211,8 @@ class SMDSegLoader(object):
         print("======77==========DEBUG Column================")
 
         # # Extract the first column (dimension)
-        # sec = np.array(data[:, 1])  # Shape: (708405,)
-        # TS = sec[:698000]  # Shape: (698000,)
+        sec = np.array(data[:, 1])  # Shape: (708405,)
+        self.TS = sec[:698000]  # Shape: (698000,)
         # print("shape of sec:", sec.shape)
         # print("Shape of TS:", TS.shape)
         # np.save(data_path + "/TS.npy", TS)
