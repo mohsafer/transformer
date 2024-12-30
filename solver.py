@@ -135,7 +135,9 @@ class Solver(object):
 
         return np.average(loss_1), np.average(loss_2)
 
-
+        ####################################################################################################
+        #                                       T R A I N                                                  #
+        ####################################################################################################   
     def train(self):
 
         time_now = time.time()
@@ -230,7 +232,10 @@ class Solver(object):
             adjust_learning_rate(self.optimizer, epoch + 1, self.lr)
             
         #writer.close()    #writer.flush()
-            
+ 
+        ####################################################################################################
+        #                                          T E S T                                                 #
+        ####################################################################################################           
     def test(self):
         self.model.load_state_dict(
             torch.load(
@@ -305,7 +310,7 @@ class Solver(object):
         combined_energy = np.concatenate([train_energy, test_energy], axis=0)
         thresh = np.percentile(combined_energy, 100 - self.anormly_ratio)
         print('====================  Threshhold  ===================\n')
-        print("Threshold :", thresh)
+        print(f"Threshold : {thresh}\n")
 
         # (3) evaluation on the test set
         test_labels = []
@@ -426,23 +431,19 @@ class Solver(object):
 
         print('====================  FINAL METRICS  ===================')
         print("Accuracy : {:0.4f}, Precision : {:0.4f}, Recall : {:0.4f}, F-score : {:0.4f} ".format(accuracy, precision, recall, f_score))
-        
-        # print('====================  GT values equal 1   ===================')
-        # indices = np.where(gt == 1)[0]
-        # print("Indices where gt is equal to 1:", ", ".join(map(str, indices)))
-
+        print('====================  CONFUSION MATRIX  ===================')
         if self.data_path == 'UCR' or 'UCR_AUG':
             import csv
             with open('result/'+self.data_path+'.csv', 'a+') as f:
                 writer = csv.writer(f)
                 writer.writerow(matrix)
 
-
-
-        ###########################################################TIME SERIE PLOT################################################################
-        #data = np.load(data_path + "/SMD_train.npy")[:,:]
-
-        #print("Sec column:", TS[:100])
+        # print('====================  GT values equal 1   ===================')
+        # indices = np.where(gt == 1)[0]
+        # print("Indices where gt is equal to 1:", ", ".join(map(str, indices)))
+        ####################################################################################################
+        #                                          Data Segment Extraction                                            #
+        ####################################################################################################
         # Initialize the loader
         #data_path = "your/data/path"  # Replace with your actual data path
         loader = SMDSegLoader('dataset/'+self.data_path, win_size=100, step=10)
@@ -451,17 +452,6 @@ class Solver(object):
         TS = loader.TS
        # print("Content of  TS:", TS[:100])
 
-
-        # # Plot the data
-        # plt.figure(figsize=(10, 6))
-        # plt.plot(TS, label="Time Series Data")
-        # plt.title("Time Series Plot")
-        # plt.xlabel("Time")
-        # plt.ylabel("Value")
-        # plt.legend()
-        # plt.show()
-
-         ###############################################START SEGMENT EXTRACTION#########################################
         start_idx = np.random.choice(anomaly_starts)
        # start_idx = 43050
         def extract_random_segment(data, segment_length=150, start_idx=None):
@@ -499,14 +489,56 @@ class Solver(object):
         #max_value_rounded = math.ceil(max(test_energy_segment))
         # Plot the random segment
         
-        #######################################################PLOT################################################################
+ 
 
 
+        ####################################################################################################
+        #                                          Mat PLOT                                                 #
+        ####################################################################################################
+ 
+        plt.figure(figsize=(6, 8))
+
+        plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
+
+        plt.plot(TS_segment, label="Time Series Data", color='black')
+        plt.title("Time Series Plot")
+        plt.xlabel("Time")
+        plt.ylabel("Value")
+        plt.legend()
+        ax1 = plt.gca()  # Get the current axes (first subplot)
+        ax1.tick_params(axis='both', direction='in')  # Set tick direction for both x and y axes
+        ymin, ymax = plt.ylim()
+        #plt.figure(figsize=(12, 6))
+        plt.subplot(2, 1, 2)  # 2 rows, 1 column, second plot
+        plt.plot(test_energy_segment, label='Anomaly Scores', color='black')
+        plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
+        plt.fill_between(range(len(test_energy_segment)), ymin,  plt.ylim()[1], where=(gt_segment == 1), color='green', alpha=0.2, label='Ground Truth')
+        plt.xlabel('Time')
+        plt.ylabel('Anomaly Score')
+        plt.title(f'Anomaly Scores Over Time (Area{start_idx})')
+        plt.legend()
+        # Adjust tick direction for the second subplot
+        ax2 = plt.gca()  # Get the current axes (second subplot)
+        ax2.tick_params(axis='both', direction='in')  # Set tick direction for both x and y axes
+        #plt.ylim([ymin, ymax])
+        # Save the plot to a file
+        # Adjust layout to prevent overlap
+        plt.tight_layout()
+
+        # Save the combined plot to a file
+        plot_filename = f'combined_plot_idx_{start_idx}.png'
+        plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
+        print(f"Combined plot saved to {plot_filename}")
 
 
+        plot_filename = f'anomaly_scores_idx_{start_idx}.png'
+        plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
+        print(f"Plot saved to {plot_filename}")
+        #plt.show()
 
-############################################################################SeaBorn
-
+        ####################################################################################################
+        #                                          SEABORNE PLOT                                           #
+        ####################################################################################################
 
         span = 10  # Adjust the span as needed
         smoothed_TS_segment = pd.Series(TS_segment).ewm(span=span, adjust=False).mean()
@@ -595,50 +627,8 @@ class Solver(object):
             # Close the figure if running in a script or notebook to manage resources
             plt.close(fig)
 
-##############################################################################################
-##############################################################################################
-        plt.figure(figsize=(6, 8))
-
-        plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
-
-        plt.plot(TS_segment, label="Time Series Data", color='black')
-        plt.title("Time Series Plot")
-        plt.xlabel("Time")
-        plt.ylabel("Value")
-        plt.legend()
-        ax1 = plt.gca()  # Get the current axes (first subplot)
-        ax1.tick_params(axis='both', direction='in')  # Set tick direction for both x and y axes
-        ymin, ymax = plt.ylim()
-        #plt.figure(figsize=(12, 6))
-        plt.subplot(2, 1, 2)  # 2 rows, 1 column, second plot
-        plt.plot(test_energy_segment, label='Anomaly Scores', color='black')
-        plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
-        plt.fill_between(range(len(test_energy_segment)), ymin,  plt.ylim()[1], where=(gt_segment == 1), color='green', alpha=0.2, label='Ground Truth')
-        plt.xlabel('Time')
-        plt.ylabel('Anomaly Score')
-        plt.title(f'Anomaly Scores Over Time (Area{start_idx})')
-        plt.legend()
-        # Adjust tick direction for the second subplot
-        ax2 = plt.gca()  # Get the current axes (second subplot)
-        ax2.tick_params(axis='both', direction='in')  # Set tick direction for both x and y axes
-        #plt.ylim([ymin, ymax])
-        # Save the plot to a file
-# Adjust layout to prevent overlap
-        plt.tight_layout()
-
-        # Save the combined plot to a file
-        plot_filename = f'combined_plot_idx_{start_idx}.png'
-        plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
-        print(f"Combined plot saved to {plot_filename}")
 
 
-        plot_filename = f'anomaly_scores_idx_{start_idx}.png'
-        plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
-        print(f"Plot saved to {plot_filename}")
-        #plt.show()
-
-####################################################################################################
-####################################################################################################
         plot_with_seaborn(TS_segment, 
                         test_energy_segment, 
                         gt_segment, 
@@ -650,7 +640,7 @@ class Solver(object):
         TS_segment = extract_random_segment(TS, segment_length, start_idx)
         return accuracy, precision, recall, f_score
 
-        # # Function to extract a randffom segment of length 150
+        # # OLD Plot for the random segment
         # def extract_random_segment(data, segment_length=200):
         #     if len(data) <= segment_length:
         #         return data  # Return the entire data if it's shorter than the segment length
