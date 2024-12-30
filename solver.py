@@ -155,7 +155,8 @@ class Solver(object):
                 iter_count += 1
                 input = input_data.float().to(self.device)
                 series, prior = self.model(input)
-
+                print('input data shape', input_data.shape)
+                print('input shape', input.shape)
               
                 series_loss = 0.0
                 prior_loss = 0.0
@@ -215,6 +216,7 @@ class Solver(object):
             # print(f'Epoch [{epoch+1}/{self.num_epochs}], Loss: {avg_epoch_loss:.4f}, Accuracy: {epoch_accuracy:.2f}%')            
             vali_loss1, vali_loss2 = self.vali(self.test_loader)
             ######################################################################################
+            
             print(
                 "Epoch: {0}, Cost time: {1:.3f}s ".format(
                     epoch + 1, time.time() - epoch_time))
