@@ -1,4 +1,5 @@
 import torch
+from tqdm import tqdm
 import pandas as pd
 from torch.utils.tensorboard import SummaryWriter
 import torch.nn as nn
@@ -345,8 +346,16 @@ class Solver(object):
         gt = test_labels.astype(int)
         
         matrix = [self.index]
-        scores_simple = combine_all_evaluation_scores(pred, gt, test_energy)
         print('==================== EVALUATION Metrics ===================\n')
+        with tqdm(total=1, desc="Processing") as pbar:
+            # Run the heavy process
+            scores_simple = combine_all_evaluation_scores(pred, gt, test_energy)
+            
+            # Manually update the progress bar to 100% when done
+            pbar.update(1)
+
+        #scores_simple = combine_all_evaluation_scores(pred, gt, test_energy)
+        
         for key, value in scores_simple.items():
             matrix.append(value)
             print('{0:21} : {1:0.4f}'.format(key, value))
