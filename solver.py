@@ -439,7 +439,7 @@ class Solver(object):
 
         # Access the TS variable
         TS = loader.TS
-        print("Content of  TS:", TS[:100])
+       # print("Content of  TS:", TS[:100])
 
 
         # # Plot the data
@@ -475,7 +475,8 @@ class Solver(object):
         
         #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
         gt_segment = extract_random_segment(gt, segment_length, start_idx)
-        #pred_segment = (test_energy_segment > thresh).astype(int)
+        TS_segment = extract_random_segment(TS, segment_length, start_idx)
+                        #pred_segment = (test_energy_segment > thresh).astype(int)
         #pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
 
         #test_attens_energy=np.array(test_attens_energy)
@@ -485,11 +486,21 @@ class Solver(object):
         #gt_segment=np.array(gt_segment) 
         print('gt shap', gt_segment.shape)
         print(f"gt values\n {gt_segment}")
-
         #max_value_rounded = math.ceil(max(test_energy_segment))
         # Plot the random segment
+        
+        #######################################################PLOT################################################################
+        plt.figure(figsize=(10, 12))
+        plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
+        plt.plot(TS_segment, label="Time Series Data")
+        plt.title("Time Series Plot")
+        plt.xlabel("Time")
+        plt.ylabel("Value")
+        plt.legend()
+
         ymin, ymax = plt.ylim()
-        plt.figure(figsize=(12, 6))
+        #plt.figure(figsize=(12, 6))
+        plt.subplot(2, 1, 2)  # 2 rows, 1 column, second plot
         plt.plot(test_energy_segment, label='Anomaly Scores', color='blue')
         plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
         plt.fill_between(range(len(test_energy_segment)), ymin,  plt.ylim()[1], where=(gt_segment == 1), color='yellow', alpha=0.3, label='Ground Truth')
@@ -499,10 +510,19 @@ class Solver(object):
         plt.legend()
         #plt.ylim([ymin, ymax])
         # Save the plot to a file
+# Adjust layout to prevent overlap
+        plt.tight_layout()
+
+        # Save the combined plot to a file
+        plot_filename = f'combined_plot_idx_{start_idx}.png'
+        plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
+        print(f"Combined plot saved to {plot_filename}")
+
+
         plot_filename = f'anomaly_scores_idx_{start_idx}.png'
         plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
         print(f"Plot saved to {plot_filename}")
-        plt.show()
+        #plt.show()
         return accuracy, precision, recall, f_score
 
         # # Function to extract a randffom segment of length 150
