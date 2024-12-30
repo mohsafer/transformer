@@ -503,10 +503,10 @@ class Solver(object):
         span = 10  # Adjust the span as needed
         smoothed_TS_segment = pd.Series(TS_segment).ewm(span=span, adjust=False).mean()
 
-        plt.figure(figsize=(6, 6))
+        plt.figure(figsize=(12, 6))
 
-        ax = plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
-        ax.set_aspect('equal')
+        plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
+
         plt.plot(TS_segment, label="Time Series Data", color='black')
         plt.title("Time Series Plot")
         plt.xlabel("Time")
