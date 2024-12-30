@@ -423,8 +423,8 @@ class Solver(object):
             with open('result/'+self.data_path+'.csv', 'a+') as f:
                 writer = csv.writer(f)
                 writer.writerow(matrix)
-
-
+        ###########################################################TIME SERIE PLOT################################################################
+        print("Sec column:", TS[:100])
         
         ###############################################START SEGMENT EXTRACTION#########################################
         start_idx = np.random.choice(anomaly_starts)
