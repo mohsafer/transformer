@@ -2,6 +2,8 @@ import torch
 from torch.utils.tensorboard import SummaryWriter
 import torch.nn as nn
 import torch.nn.functional as F
+from torch.utils.data import Dataset
+from torch.utils.data import DataLoader
 import numpy as np
 import os
 import time
@@ -424,6 +426,8 @@ class Solver(object):
                 writer = csv.writer(f)
                 writer.writerow(matrix)
         ###########################################################TIME SERIE PLOT################################################################
+        #data = np.load(data_path + "/SMD_train.npy")[:,:]
+
         print("Sec column:", TS[:100])
         
         ###############################################START SEGMENT EXTRACTION#########################################

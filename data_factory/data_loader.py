@@ -225,7 +225,7 @@ class SMDSegLoader(object):
         # print(TS[:100])
         # # Save it if needed
         # np.save(data_path + "/TS.npy", TS)
-        sys.exit()
+        #sys.exit()
         # Save it if needed
         
 
