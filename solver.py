@@ -426,17 +426,20 @@ class Solver(object):
             with open('result/'+self.data_path+'.csv', 'a+') as f:
                 writer = csv.writer(f)
                 writer.writerow(matrix)
+
+
+
         ###########################################################TIME SERIE PLOT################################################################
         #data = np.load(data_path + "/SMD_train.npy")[:,:]
 
         #print("Sec column:", TS[:100])
         # Initialize the loader
         #data_path = "your/data/path"  # Replace with your actual data path
-        loader = SMDSegLoader( win_size=100, step=10)
+        loader = SMDSegLoader(self.data_path, win_size=100, step=10)
 
         # Access the TS variable
         TS = loader.TS
-        print("Sec column:", TS[:100])
+        print("Content of  TS:", TS[:100])
 
 
         # # Plot the data
