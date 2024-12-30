@@ -212,17 +212,25 @@ class SMDSegLoader(object):
         print("================DEBUG Column================")
 
         # Extract the first column (dimension)
-        first_column = data[:, 1]  # Shape: (708405,)
+        sec = data[:, 1]  # Shape: (708405,)
 
         # Convert to integer type (if needed, similar to gt labels)
         #first_column_as_int = first_column.astype(int)  # Shape: (708405,)
 
         # Print the shape and first few values to verify
-        print("Shape of first column:", first_column.shape)
-        print("First few values of first column:", first_column[:1000])
+        print("Shape of second column:", sec.shape)
+        print("Sec column:", sec[:100])
+        print("================Time Series================")
+
+        TS = np.array(sec)
+        print('Shape of TS:', TS.shape)
+        print(TS[:100])
+        # Save it if needed
+        np.save(data_path + "/TS.npy", TS)
         sys.exit()
         # Save it if needed
-        np.save(data_path + "/SMD_train_first_column.npy", first_column_as_int)
+        
+
         self.scaler.fit(data)
         data = self.scaler.transform(data)
         test_data = np.load(data_path + "/SMD_test.npy")[:,:]
