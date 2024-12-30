@@ -501,9 +501,102 @@ class Solver(object):
         
         #######################################################PLOT################################################################
 
+
+
+
+
+############################################################################SeaBorn
+
+
         span = 10  # Adjust the span as needed
         smoothed_TS_segment = pd.Series(TS_segment).ewm(span=span, adjust=False).mean()
+        import seaborn as sns
+        import matplotlib.pyplot as plt
 
+        def plot_with_seaborn(TS_segment, 
+                            test_energy_segment, 
+                            gt_segment, 
+                            thresh, 
+                            start_idx):
+            # Optional: Set a Seaborn theme/style
+            sns.set_theme(style="whitegrid")
+            
+            # Create figure and subplots
+            fig, axes = plt.subplots(nrows=2, 
+                                    ncols=1, 
+                                    figsize=(6, 8), 
+                                    sharex=False)
+            
+            # -------------------------
+            # First subplot: Time Series
+            # -------------------------
+            sns.lineplot(
+                x=range(len(TS_segment)), 
+                y=TS_segment,
+                ax=axes[0],
+                color='black',
+                label='Time Series Data'
+            )
+            axes[0].set_title("Time Series Plot")
+            axes[0].set_xlabel("Time")
+            axes[0].set_ylabel("Value")
+            axes[0].legend()
+            
+            # Adjust tick direction
+            axes[0].tick_params(axis='both', direction='in')
+            
+            # Store y-limits from the first subplot
+            ymin, ymax = axes[0].get_ylim()
+            
+            # --------------------------
+            # Second subplot: Anomaly Scores
+            # --------------------------
+            sns.lineplot(
+                x=range(len(test_energy_segment)),
+                y=test_energy_segment,
+                ax=axes[1],
+                color='black',
+                label='Anomaly Scores'
+            )
+            
+            # Threshold line
+            axes[1].axhline(y=thresh, color='red', linestyle='--', label='Threshold')
+            
+            # Fill region where ground truth is 1
+            axes[1].fill_between(
+                x=range(len(test_energy_segment)), 
+                y1=ymin, 
+                y2=axes[1].get_ylim()[1],
+                where=(gt_segment == 1),
+                color='green', 
+                alpha=0.2, 
+                label='Ground Truth'
+            )
+            
+            axes[1].set_xlabel("Time")
+            axes[1].set_ylabel("Anomaly Score")
+            axes[1].set_title(f"Anomaly Scores Over Time (Area {start_idx})")
+            axes[1].legend()
+            axes[1].tick_params(axis='both', direction='in')
+            
+            # Tight layout to prevent overlap
+            fig.tight_layout()
+
+            # Save the combined plot to a file
+            plot_filename = f'SEABORNcombined_plot_idx_{start_idx}.png'
+            plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
+            print(f"Combined plot saved to {plot_filename}")
+
+            # If you really want two separate saves for some reason
+            plot_filename = f'SEABORNanomaly_scores_idx_{start_idx}.png'
+            plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
+            print(f"Plot saved to {plot_filename}")
+
+            # Close the figure if running in a script or notebook to manage resources
+            plt.close(fig)
+
+##############################################################################################
+##############################################################################################
         plt.figure(figsize=(6, 8))
 
         plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
@@ -543,6 +636,18 @@ class Solver(object):
         plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
         print(f"Plot saved to {plot_filename}")
         #plt.show()
+
+####################################################################################################
+####################################################################################################
+        plot_with_seaborn(TS_segment, 
+                        test_energy_segment, 
+                        gt_segment, 
+                        thresh, 
+                        start_idx)
+        start_idx = np.random.choice(anomaly_starts)
+        test_energy_segment = extract_random_segment(attens_energy, segment_length, start_idx)
+        gt_segment = extract_random_segment(gt, segment_length, start_idx)
+        TS_segment = extract_random_segment(TS, segment_length, start_idx)
         return accuracy, precision, recall, f_score
 
         # # Function to extract a randffom segment of length 150
