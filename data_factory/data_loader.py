@@ -209,7 +209,7 @@ class SMDSegLoader(object):
         #print(data[:1])
         print('data shape', data.shape)
 
-        print("================DEBUG Column================")
+        print("======77==========DEBUG Column================")
 
         # Extract the first column (dimension)
         sec = np.array(data[:, 1])  # Shape: (708405,)
