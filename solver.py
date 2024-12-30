@@ -16,6 +16,7 @@ from data_factory.data_loader import SMDSegLoader
 from einops import rearrange
 from metrics.metrics import *
 import warnings
+import seaborn as sns
 import matplotlib.pyplot as plt
 warnings.filterwarnings('ignore')
 #comment from vscode Ssh
@@ -472,13 +473,13 @@ class Solver(object):
         print(f"start_idx: {start_idx}")
         test_energy_segment = extract_random_segment(attens_energy, segment_length, start_idx)
         
-        #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
+
         gt_segment = extract_random_segment(gt, segment_length, start_idx)
         TS_segment = extract_random_segment(TS, segment_length, start_idx)
         pred_segment = extract_random_segment(pred, segment_length, start_idx)
         #pred_segment = (test_energy_segment > thresh).astype(int)
         #pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
-
+        #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
         #test_attens_energy=np.array(test_attens_energy)
         print('input shape', input_data.shape)
         print('test_energy shape', test_energy_segment.shape)
@@ -536,8 +537,7 @@ class Solver(object):
 
         span = 10  # Adjust the span as needed
         smoothed_TS_segment = pd.Series(TS_segment).ewm(span=span, adjust=False).mean()
-        import seaborn as sns
-        import matplotlib.pyplot as plt
+
 
         def plot_with_seaborn(TS_segment, 
                             test_energy_segment, 
