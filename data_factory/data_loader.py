@@ -192,9 +192,32 @@ class SMDSegLoader(object):
         self.win_size = win_size
         self.scaler = StandardScaler()
         data = np.load(data_path + "/SMD_train.npy")[:,:]
-        print("================DEBUG================")
-        print(data[:1])
+        print("================DEBUG ROW================")
+        # Extract the first row
+        first_row = data[0]  # Shape: (38,)
+
+        # Convert each entry to a string and join them with a comma
+        formatted_output = ", ".join(map(str, first_row))
+
+        # Print the formatted output
+        print(formatted_output)
+        #print(data[:1])
         print('data shape', data.shape)
+
+        print("================DEBUG Column================")
+
+        # Extract the first column (dimension)
+        first_column = data[:, 0]  # Shape: (708405,)
+
+        # Convert to integer type (if needed, similar to gt labels)
+        first_column_as_int = first_column.astype(int)  # Shape: (708405,)
+
+        # Print the shape and first few values to verify
+        print("Shape of first column:", first_column_as_int.shape)
+        print("First few values of first column:", first_column_as_int[:5])
+
+        # Save it if needed
+        np.save(data_path + "/SMD_train_first_column.npy", first_column_as_int)
         self.scaler.fit(data)
         data = self.scaler.transform(data)
         test_data = np.load(data_path + "/SMD_test.npy")[:,:]
