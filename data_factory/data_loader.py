@@ -215,11 +215,11 @@ class SMDSegLoader(object):
         first_column = data[:, 1]  # Shape: (708405,)
 
         # Convert to integer type (if needed, similar to gt labels)
-        first_column_as_int = first_column.astype(int)  # Shape: (708405,)
+        #first_column_as_int = first_column.astype(int)  # Shape: (708405,)
 
         # Print the shape and first few values to verify
-        print("Shape of first column:", first_column_as_int.shape)
-        print("First few values of first column:", first_column_as_int[:2000])
+        print("Shape of first column:", first_column)
+        print("First few values of first column:", first_column[:100])
         sys.exit()
         # Save it if needed
         np.save(data_path + "/SMD_train_first_column.npy", first_column_as_int)
