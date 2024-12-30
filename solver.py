@@ -19,8 +19,7 @@ import warnings
 import seaborn as sns
 import matplotlib.pyplot as plt
 warnings.filterwarnings('ignore')
-#comment from vscode Ssh
-#second commit fromssh hahahahahah
+ 
 writer = SummaryWriter()  #tensorboard 
 #
 #os.environ["CUDA_VISIBLE_DEVICES"] = '0, 1, 2, 3'
@@ -493,6 +492,8 @@ class Solver(object):
         ####################################################################################################
         #                                          Mat PLOT                                                 #
         ####################################################################################################
+        import seaborn as sns
+        import matplotlib.pyplot as plt
         plt.figure(figsize=(6, 8))
         plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
         plt.plot(TS_segment, label="Time Series Data", color='black')
