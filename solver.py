@@ -155,8 +155,7 @@ class Solver(object):
                 iter_count += 1
                 input = input_data.float().to(self.device)
                 series, prior = self.model(input)
-                print('input data shape', input_data.shape)
-                print('input shape', input.shape)
+
               
                 series_loss = 0.0
                 prior_loss = 0.0
