@@ -453,6 +453,7 @@ class Solver(object):
         #pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
 
         #test_attens_energy=np.array(test_attens_energy)
+        print('input shape', input_data.shape)
         print('test_energy shape', test_energy_segment.shape)
         print(f"test energy values\n {test_energy_segment}")
         #gt_segment=np.array(gt_segment) 
