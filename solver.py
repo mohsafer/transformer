@@ -488,18 +488,12 @@ class Solver(object):
         print(f"gt values\n {gt_segment}")
         #max_value_rounded = math.ceil(max(test_energy_segment))
         # Plot the random segment
-        
- 
-
 
         ####################################################################################################
         #                                          Mat PLOT                                                 #
         ####################################################################################################
- 
         plt.figure(figsize=(6, 8))
-
         plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
-
         plt.plot(TS_segment, label="Time Series Data", color='black')
         plt.title("Time Series Plot")
         plt.xlabel("Time")
