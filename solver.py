@@ -417,7 +417,7 @@ class Solver(object):
               elif pred[j] == 0:
                   pred[j] = 1
 
-        pred[gt == 1] = 1
+        #pred[gt == 1] = 1
 
         pred = np.array(pred)
         gt = np.array(gt)
