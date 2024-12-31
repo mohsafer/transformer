@@ -509,19 +509,19 @@ class Solver(object):
         
         plt.figure(figsize=(12, 8))
         plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
-        plt.plot(smooth(as_segment), label="Time Series Data", color='black')
+        plt.plot(smooth(TS_segment), label="Time Series Data", color='black')
         plt.title("Time Series Plot")
         plt.xlabel("Time")
         plt.ylabel("Value")
         plt.legend()
-        ax1 = plt.gca()  # Get the current axes (first subplot)
+        #ax1 = plt.gca()  # Get the current axes (first subplot)
         ax1.tick_params(axis='both', direction='in')  # Set tick direction for both x and y axes
         ymin, ymax = plt.ylim()
         #plt.figure(figsize=(12, 6))
         plt.subplot(2, 1, 2)  # 2 rows, 1 column, second plot
-        plt.plot(as_segment, label='Anomaly Scores', color='black')
+        plt.plot(as_segment, label='Anomaly Scores', color='green')
         plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
-        #plt.fill_between(range(len(as_segment)), ymin, ymax, where=(gt_segment == 1), color='green', alpha=0.2, label='Ground Truth') # plt.ylim()[1]
+        plt.fill_between(range(len(as_segment)), ymin, plt.ylim()[1], where=(gt_segment == 1), color='green', alpha=0.2, label='Ground Truth') # plt.ylim()[1]
         plt.xlabel('Time')
         plt.ylabel('Anomaly Score')
         plt.title(f'Anomaly Scores Over Time (Area{start_idx})')
@@ -532,7 +532,7 @@ class Solver(object):
         #plt.ylim([ymin, ymax])
         # Save the plot to a file
         # Adjust layout to prevent overlap
-        plt.tight_layout()
+        #plt.tight_layout()
 
         # Save the combined plot to a file
         plot_filename = f'combined_plot_idx_{start_idx}.png'
