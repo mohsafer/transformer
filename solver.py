@@ -470,19 +470,19 @@ class Solver(object):
         #start_idx = np.random.randint(0, len(anomaly_starts) - segment_length)
         
         print(f"start_idx: {start_idx}")
-        test_energy_segment = extract_random_segment(test_energy, segment_length, start_idx) #attens_energy to test energy
+        as_segment = extract_random_segment(pred, segment_length, start_idx) #Anomaly Score
         
 
-        gt_segment = extract_random_segment(gt, segment_length, start_idx)
-        TS_segment = extract_random_segment(TS, segment_length, start_idx)
+        gt_segment = extract_random_segment(gt, segment_length, start_idx) #ground truth
+        TS_segment = extract_random_segment(TS, segment_length, start_idx) #Time Series Data
         pred_segment = extract_random_segment(pred, segment_length, start_idx)
         #pred_segment = (test_energy_segment > thresh).astype(int)
         #pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
         #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
         #test_attens_energy=np.array(test_attens_energy)
         print('input shape', input_data.shape)
-        print('test_energy shape', test_energy_segment.shape)
-        print(f"test energy values\n {test_energy_segment}")
+        print('as segment shape', as_segment.shape)
+        print(f"test energy values\n {as_segment}")
         #gt_segment=np.array(gt_segment) 
         print('gt segment shap', gt_segment.shape)
         #print(f"gt values\n {gt_segment}")
@@ -519,9 +519,9 @@ class Solver(object):
         ymin, ymax = plt.ylim()
         #plt.figure(figsize=(12, 6))
         plt.subplot(2, 1, 2)  # 2 rows, 1 column, second plot
-        plt.plot(smooth(test_energy_segment), label='Anomaly Scores', color='black')
+        plt.plot(smooth(as_segment), label='Anomaly Scores', color='black')
         plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
-        plt.fill_between(range(len(gt_segment)), ymin,  plt.ylim()[1], where=(gt_segment == 1), color='green', alpha=0.2, label='Ground Truth')
+        plt.fill_between(range(len(as_segment)), ymin,  plt.ylim()[1], where=(gt_segment == 1), color='green', alpha=0.2, label='Ground Truth')
         plt.xlabel('Time')
         plt.ylabel('Anomaly Score')
         plt.title(f'Anomaly Scores Over Time (Area{start_idx})')
@@ -540,15 +540,17 @@ class Solver(object):
         print(f"Combined plot saved to {plot_filename}")
 
 
-        plot_filename = f'anomaly_scores_idx_{start_idx}.png'
-        plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
-        print(f"Plot saved to {plot_filename}")
+        # plot_filename = f'anomaly_scores_idx_{start_idx}.png'
+        # plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
+        # print(f"Plot saved to {plot_filename}")
         #plt.show()
+        return accuracy, precision, recall, f_score
 
+        '''
         ####################################################################################################
         #                                          SEABORNE PLOT                                           #
         ####################################################################################################
-
+        
         span = 10  # Adjust the span as needed
         smoothed_TS_segment = pd.Series(TS_segment).ewm(span=span, adjust=False).mean()
 
@@ -646,7 +648,9 @@ class Solver(object):
         test_energy_segment = extract_random_segment(attens_energy, segment_length, start_idx)
         gt_segment = extract_random_segment(gt, segment_length, start_idx)
         TS_segment = extract_random_segment(TS, segment_length, start_idx)
-        return accuracy, precision, recall, f_score
+
+        '''
+
 
         # # OLD Plot for the random segment
         # def extract_random_segment(data, segment_length=200):
