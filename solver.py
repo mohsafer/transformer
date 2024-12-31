@@ -452,8 +452,8 @@ class Solver(object):
         TS = loader.TS
        # print("Content of  TS:", TS[:100])
 
-        start_idx = np.random.choice(anomaly_starts)
-       # start_idx = 43050
+        #start_idx = np.random.choice(anomaly_starts)
+        start_idx = 43050
         def extract_random_segment(data, segment_length=1000, start_idx=None):
             if len(data) <= segment_length:
                 return data  # Return the entire data if it's shorter than the segment length
@@ -470,7 +470,7 @@ class Solver(object):
         #start_idx = np.random.randint(0, len(anomaly_starts) - segment_length)
         
         print(f"start_idx: {start_idx}")
-        as_segment = extract_random_segment(pred, segment_length, start_idx) #Anomaly Score
+        as_segment = extract_random_segment(test_energy, segment_length, start_idx) #Anomaly Score
         
 
         gt_segment = extract_random_segment(gt, segment_length, start_idx) #ground truth
