@@ -513,9 +513,9 @@ class Solver(object):
             y_smooth = np.convolve(y, box, mode='same')
             return y_smooth
         
-        plt.style.use(['science', 'ieee'])
-        plt.rcParams["text.usetex"] = False
-        plt.rcParams['figure.figsize'] = 6, 
+        # plt.style.use(['science', 'ieee'])
+        # plt.rcParams["text.usetex"] = False
+        # plt.rcParams['figure.figsize'] = 6, 
         
         
         plt.figure(figsize=(12, 8))
