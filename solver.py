@@ -453,7 +453,7 @@ class Solver(object):
        # print("Content of  TS:", TS[:100])
 
         start_idx = np.random.choice(anomaly_starts)
-        #start_idx = 43050
+        #start_idx = 61790 # 43050
         def extract_random_segment(data, segment_length=1000, start_idx=None):
             if len(data) <= segment_length:
                 return data  # Return the entire data if it's shorter than the segment length
@@ -520,7 +520,7 @@ class Solver(object):
         ymin, ymax = plt.ylim()
         #plt.figure(figsize=(12, 6))
         plt.subplot(2, 1, 2)  # 2 rows, 1 column, second plot
-        plt.plot(smooth(as_segment), label='Anomaly Scores', color='black')
+        plt.plot(as_segment, label='Anomaly Scores', color='black')
         plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
         plt.fill_between(range(len(as_segment)), ymin, ymax, where=(gt_segment == 1), color='green', alpha=0.2, label='Ground Truth') # plt.ylim()[1]
         plt.xlabel('Time')
