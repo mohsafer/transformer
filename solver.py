@@ -489,10 +489,20 @@ class Solver(object):
         print(f"gt values\n\033[94m{gt_segment}\033[0m")
         #max_value_rounded = math.ceil(max(test_energy_segment))
         # Plot the random segment
-
+        
+        import matplotlib.pyplot as plt 
+        plt.figure(figsize=(10, 6))
+        plt.plot(as_segment, label='AS Data')
+        plt.title('Simple Plot of AS Array')
+        plt.xlabel('Index')
+        plt.ylabel('Value')
+        plt.legend()
+        plt.grid(True)
+        plt.savefig('TETSgt_plot.png')
         ####################################################################################################
         #                                          Mat PLOT                                                 #
         ####################################################################################################
+        
         import seaborn as sns
         import matplotlib.pyplot as plt
         import statistics
@@ -546,7 +556,7 @@ class Solver(object):
         #plt.show()
         return accuracy, precision, recall, f_score
 
-        '''
+        
         ####################################################################################################
         #                                          SEABORNE PLOT                                           #
         ####################################################################################################
@@ -649,7 +659,7 @@ class Solver(object):
         gt_segment = extract_random_segment(gt, segment_length, start_idx)
         TS_segment = extract_random_segment(TS, segment_length, start_idx)
 
-        '''
+        
 
 
         # # OLD Plot for the random segment
@@ -692,4 +702,4 @@ class Solver(object):
         # plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
         # print(f"Plot saved to {plot_filename}")
         # plt.show()
-        
+    
