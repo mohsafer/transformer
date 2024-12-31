@@ -480,10 +480,9 @@ class Solver(object):
         #pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
         #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
         
-        #test_attens_energy=np.array(test_attens_energy)
-        print('input shape', input_data.shape)
+
         print('as segment shape', as_segment.shape)
-        print(f"test energy values\n {as_segment}")
+        print(f"Anomaly Score values\n {as_segment}")
         #gt_segment=np.array(gt_segment) 
         print('gt segment shap', gt_segment.shape)
         #print(f"gt values\n {gt_segment}")
@@ -510,7 +509,7 @@ class Solver(object):
         
         plt.figure(figsize=(12, 8))
         plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
-        plt.plot(smooth(TS_segment), label="Time Series Data", color='black')
+        plt.plot(smooth(as_segment), label="Time Series Data", color='black')
         plt.title("Time Series Plot")
         plt.xlabel("Time")
         plt.ylabel("Value")
