@@ -495,9 +495,21 @@ class Solver(object):
         ####################################################################################################
         import seaborn as sns
         import matplotlib.pyplot as plt
+        import statistics
+        
+        def smooth(y, box_pts=1):
+            box = np.ones(box_pts)/box_pts
+            y_smooth = np.convolve(y, box, mode='same')
+            return y_smooth
+        
+        plt.style.use(['science', 'ieee'])
+        plt.rcParams["text.usetex"] = False
+        plt.rcParams['figure.figsize'] = 6, 
+        
+        
         plt.figure(figsize=(6, 8))
         plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
-        plt.plot(TS_segment, label="Time Series Data", color='black')
+        plt.plot(smooth(TS_segment), label="Time Series Data", color='black')
         plt.title("Time Series Plot")
         plt.xlabel("Time")
         plt.ylabel("Value")
@@ -507,14 +519,14 @@ class Solver(object):
         ymin, ymax = plt.ylim()
         #plt.figure(figsize=(12, 6))
         plt.subplot(2, 1, 2)  # 2 rows, 1 column, second plot
-        plt.plot(test_energy_segment, label='Anomaly Scores', color='black')
+        plt.plot(smooth(test_energy_segment), label='Anomaly Scores', color='black')
         plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
-        plt.fill_between(range(len(test_energy_segment)), ymin,  plt.ylim()[1], where=(gt_segment == 1), color='green', alpha=0.2, label='Ground Truth')
+        plt.fill_between(range(len(gt_segment)), ymin,  plt.ylim()[1], where=(gt_segment == 1), color='green', alpha=0.2, label='Ground Truth')
         plt.xlabel('Time')
         plt.ylabel('Anomaly Score')
         plt.title(f'Anomaly Scores Over Time (Area{start_idx})')
         plt.legend()
-        # Adjust tick direction for the second subplot
+        # Adjust tick direction for the secgtond subplot
         ax2 = plt.gca()  # Get the current axes (second subplot)
         ax2.tick_params(axis='both', direction='in')  # Set tick direction for both x and y axes
         #plt.ylim([ymin, ymax])
