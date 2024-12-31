@@ -521,7 +521,7 @@ class Solver(object):
         plt.subplot(2, 1, 2)  # 2 rows, 1 column, second plot
         plt.plot(smooth(as_segment), label='Anomaly Scores', color='black')
         plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
-        plt.fill_between(range(len(as_segment)), ymin,  plt.ylim()[1], where=(gt_segment == 1), color='green', alpha=0.2, label='Ground Truth')
+        plt.fill_between(range(len(as_segment)), ymin, ymax, where=(gt_segment == 1), color='green', alpha=0.2, label='Ground Truth') # plt.ylim()[1]
         plt.xlabel('Time')
         plt.ylabel('Anomaly Score')
         plt.title(f'Anomaly Scores Over Time (Area{start_idx})')
