@@ -471,7 +471,7 @@ class Solver(object):
         
         print(f"start_idx: {start_idx}")
         as_segment = extract_random_segment(test_energy, segment_length, start_idx) #Anomaly Score
-        as_segment = np.array(as_segment)
+        #as_segment = np.array(as_segment)
 
         gt_segment = extract_random_segment(gt, segment_length, start_idx) #ground truth
         TS_segment = extract_random_segment(TS, segment_length, start_idx) #Time Series Data
