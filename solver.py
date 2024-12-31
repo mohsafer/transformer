@@ -454,7 +454,7 @@ class Solver(object):
 
         start_idx = np.random.choice(anomaly_starts)
         #start_idx = 61790 # 43050
-        def extract_random_segment(data, segment_length=1000, start_idx=None):
+        def extract_random_segment(data, segment_length=400, start_idx=None):
             if len(data) <= segment_length:
                 return data  # Return the entire data if it's shorter than the segment length
             
@@ -462,11 +462,11 @@ class Solver(object):
                 #start_idx = np.random.randint(0, len(test_energy) - segment_length)
                 start_idx = np.random.choice(anomaly_starts)
             
-            print(f"Extracting random segment from index {start_idx} to {start_idx + segment_length}")
+            #print(f"Extracting random segment from index {start_idx} to {start_idx + segment_length}")
             return data[start_idx:start_idx + segment_length]
 
         # Extract random segments of lengthfgdfg 150
-        segment_length = 1000
+        segment_length = 400
         #start_idx = np.random.randint(0, len(anomaly_starts) - segment_length)
         
         print(f"start_idx: {start_idx}")
@@ -493,12 +493,13 @@ class Solver(object):
         import matplotlib.pyplot as plt 
         plt.figure(figsize=(10, 6))
         plt.plot(as_segment, label='AS Data')
+        plt.yscale('log')
         plt.title('Simple Plot of AS Array')
         plt.xlabel('Index')
         plt.ylabel('Value')
         plt.legend()
         plt.grid(True)
-        plt.savefig('TETSgt_plot.png')
+        plt.savefig('AAA_plot.png')
         ####################################################################################################
         #                                          Mat PLOT                                                 #
         ####################################################################################################
@@ -512,9 +513,9 @@ class Solver(object):
             y_smooth = np.convolve(y, box, mode='same')
             return y_smooth
         
-        # plt.style.use(['science', 'ieee'])
-        # plt.rcParams["text.usetex"] = False
-        # plt.rcParams['figure.figsize'] = 6, 
+        plt.style.use(['science', 'ieee'])
+        plt.rcParams["text.usetex"] = False
+        plt.rcParams['figure.figsize'] = 6, 
         
         
         plt.figure(figsize=(12, 8))
@@ -530,6 +531,7 @@ class Solver(object):
         #plt.figure(figsize=(12, 6))
         plt.subplot(2, 1, 2)  # 2 rows, 1 column, second plot
         plt.plot(as_segment, label='Anomaly Scores', color='green')
+        plt.yscale('log')
         plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
         plt.fill_between(range(len(as_segment)), ymin, plt.ylim()[1], where=(gt_segment == 1), color='green', alpha=0.2, label='Ground Truth') # plt.ylim()[1]
         plt.xlabel('Time')
