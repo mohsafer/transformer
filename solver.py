@@ -454,40 +454,40 @@ class Solver(object):
 
         start_idx = np.random.choice(anomaly_starts)
         #start_idx = 61790 # 43050
-        def extract_random_segment(data, segment_length=200, start_idx=None):
-            if len(data) <= segment_length:
-                return data  # Return the entire data if it's shorter than the segment length
+        # def extract_random_segment(data, segment_length=200, start_idx=None):
+        #     if len(data) <= segment_length:
+        #         return data  # Return the entire data if it's shorter than the segment length
             
-            if start_idx is None:
-                #start_idx = np.random.randint(0, len(test_energy) - segment_length)
-                start_idx = np.random.choice(anomaly_starts)
+        #     if start_idx is None:
+        #         #start_idx = np.random.randint(0, len(test_energy) - segment_length)
+        #         start_idx = np.random.choice(anomaly_starts)
             
-            #print(f"Extracting random segment from index {start_idx} to {start_idx + segment_length}")
-            return data[start_idx:start_idx + segment_length]
+        #     #print(f"Extracting random segment from index {start_idx} to {start_idx + segment_length}")
+        #     return data[start_idx:start_idx + segment_length]
 
-        # Extract random segments of lengthfgdfg 150
-        segment_length = 200
-        #start_idx = np.random.randint(0, len(anomaly_starts) - segment_length)
+        # # Extract random segments of lengthfgdfg 150
+        # segment_length = 200
+        # #start_idx = np.random.randint(0, len(anomaly_starts) - segment_length)
         
-        print(f"start_idx: {start_idx}")
-        as_segment = extract_random_segment(test_energy, segment_length, start_idx) #Anomaly Score
-        as_segment = np.array(as_segment)
-        test_energy_segment = extract_random_segment(test_energy, segment_length, start_idx)
-        gt_segment = extract_random_segment(gt, segment_length, start_idx) #ground truth
-        TS_segment = extract_random_segment(TS, segment_length, start_idx) #Time Series Data
-        pred_segment = extract_random_segment(pred, segment_length, start_idx)
-        #pred_segment = (test_energy_segment > thresh).astype(int)
-        #pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
-        #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
+        # print(f"start_idx: {start_idx}")
+        # as_segment = extract_random_segment(test_energy, segment_length, start_idx) #Anomaly Score
+        # as_segment = np.array(as_segment)
+        # test_energy_segment = extract_random_segment(test_energy, segment_length, start_idx)
+        # gt_segment = extract_random_segment(gt, segment_length, start_idx) #ground truth
+        # TS_segment = extract_random_segment(TS, segment_length, start_idx) #Time Series Data
+        # pred_segment = extract_random_segment(pred, segment_length, start_idx)
+        # #pred_segment = (test_energy_segment > thresh).astype(int)
+        # #pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
+        # #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
         
 
-        print('as segment shape', as_segment.shape)
-        print(f"Anomaly Score values\n {as_segment}")
-        #gt_segment=np.array(gt_segment) 
-        print('gt segment shap', gt_segment.shape)########
-        #print(f"gt values\n {gt_segment}")
-        print(f"gt values\n\033[94m{gt_segment}\033[0m")
-        #max_value_rounded = math.ceil(max(test_energy_segment))
+        # print('as segment shape', as_segment.shape)
+        # print(f"Anomaly Score values\n {as_segment}")
+        # #gt_segment=np.array(gt_segment) 
+        # print('gt segment shap', gt_segment.shape)########
+        # #print(f"gt values\n {gt_segment}")
+        # print(f"gt values\n\033[94m{gt_segment}\033[0m")
+        # #max_value_rounded = math.ceil(max(test_energy_segment))
         # Plot the random segment
         
         # import matplotlib.pyplot as plt 
