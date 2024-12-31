@@ -496,15 +496,15 @@ class Solver(object):
         import seaborn as sns
         import matplotlib.pyplot as plt
         import statistics
-        
+
         def smooth(y, box_pts=1):
             box = np.ones(box_pts)/box_pts
             y_smooth = np.convolve(y, box, mode='same')
             return y_smooth
         
-        plt.style.use(['science', 'ieee'])
-        plt.rcParams["text.usetex"] = False
-        plt.rcParams['figure.figsize'] = 6, 
+        # plt.style.use(['science', 'ieee'])
+        # plt.rcParams["text.usetex"] = False
+        # plt.rcParams['figure.figsize'] = 6, 
         
         
         plt.figure(figsize=(6, 8))
