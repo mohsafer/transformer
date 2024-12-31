@@ -452,15 +452,15 @@ class Solver(object):
         TS = loader.TS
        # print("Content of  TS:", TS[:100])
 
-        #start_idx = np.random.choice(anomaly_starts)
-        start_idx = 43050
+        start_idx = np.random.choice(anomaly_starts)
+        #start_idx = 43050
         def extract_random_segment(data, segment_length=1000, start_idx=None):
             if len(data) <= segment_length:
                 return data  # Return the entire data if it's shorter than the segment length
             
             if start_idx is None:
-                start_idx = np.random.randint(0, len(test_energy) - segment_length)
-                #start_idx = np.random.choice(anomaly_starts)
+                #start_idx = np.random.randint(0, len(test_energy) - segment_length)
+                start_idx = np.random.choice(anomaly_starts)
             
             print(f"Extracting random segment from index {start_idx} to {start_idx + segment_length}")
             return data[start_idx:start_idx + segment_length]
@@ -471,7 +471,7 @@ class Solver(object):
         
         print(f"start_idx: {start_idx}")
         as_segment = extract_random_segment(test_energy, segment_length, start_idx) #Anomaly Score
-        
+        as_segment = np.array(as_segment)
 
         gt_segment = extract_random_segment(gt, segment_length, start_idx) #ground truth
         TS_segment = extract_random_segment(TS, segment_length, start_idx) #Time Series Data
@@ -479,6 +479,7 @@ class Solver(object):
         #pred_segment = (test_energy_segment > thresh).astype(int)
         #pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
         #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
+        
         #test_attens_energy=np.array(test_attens_energy)
         print('input shape', input_data.shape)
         print('as segment shape', as_segment.shape)
