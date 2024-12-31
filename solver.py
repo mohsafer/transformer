@@ -453,43 +453,42 @@ class Solver(object):
        # print("Content of  TS:", TS[:100])
 
         start_idx = np.random.choice(anomaly_starts)
-        #start_idx = 61790 # 43050
-        # def extract_random_segment(data, segment_length=200, start_idx=None):
-        #     if len(data) <= segment_length:
-        #         return data  # Return the entire data if it's shorter than the segment length
+        start_idx = 61790 # 43050
+        def extract_random_segment(data, segment_length=200, start_idx=None):
+            if len(data) <= segment_length:
+                return data  # Return the entire data if it's shorter than the segment length
             
-        #     if start_idx is None:
-        #         #start_idx = np.random.randint(0, len(test_energy) - segment_length)
-        #         start_idx = np.random.choice(anomaly_starts)
+            if start_idx is None:
+                #start_idx = np.random.randint(0, len(test_energy) - segment_length)
+                start_idx = np.random.choice(anomaly_starts)
             
-        #     #print(f"Extracting random segment from index {start_idx} to {start_idx + segment_length}")
-        #     return data[start_idx:start_idx + segment_length]
+            #print(f"Extracting random segment from index {start_idx} to {start_idx + segment_length}")
+            return data[start_idx:start_idx + segment_length]
 
-        # # Extract random segments of lengthfgdfg 150
-        # segment_length = 200
-        # #start_idx = np.random.randint(0, len(anomaly_starts) - segment_length)
+        # Extract random segments of lengthfgdfg 150
+        segment_length = 200
+        #start_idx = np.random.randint(0, len(anomaly_starts) - segment_length)
         
-        # print(f"start_idx: {start_idx}")
-        # as_segment = extract_random_segment(test_energy, segment_length, start_idx) #Anomaly Score
-        # as_segment = np.array(as_segment)
-        # test_energy_segment = extract_random_segment(test_energy, segment_length, start_idx)
-        # gt_segment = extract_random_segment(gt, segment_length, start_idx) #ground truth
-        # TS_segment = extract_random_segment(TS, segment_length, start_idx) #Time Series Data
-        # pred_segment = extract_random_segment(pred, segment_length, start_idx)
-        # #pred_segment = (test_energy_segment > thresh).astype(int)
-        # #pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
-        # #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
+        print(f"start_idx: {start_idx}")
+        as_segment = extract_random_segment(test_energy, segment_length, start_idx) #Anomaly Score
+        as_segment = np.array(as_segment)
+        test_energy_segment = extract_random_segment(test_energy, segment_length, start_idx)
+        gt_segment = extract_random_segment(gt, segment_length, start_idx) #ground truth
+        TS_segment = extract_random_segment(TS, segment_length, start_idx) #Time Series Data
+        pred_segment = extract_random_segment(pred, segment_length, start_idx)
+        #pred_segment = (test_energy_segment > thresh).astype(int)
+        #pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
+        #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
         
 
-        # print('as segment shape', as_segment.shape)
-        # print(f"Anomaly Score values\n {as_segment}")
-        # #gt_segment=np.array(gt_segment) 
-        # print('gt segment shap', gt_segment.shape)########
-        # #print(f"gt values\n {gt_segment}")
-        # print(f"gt values\n\033[94m{gt_segment}\033[0m")
-        # #max_value_rounded = math.ceil(max(test_energy_segment))
-        # Plot the random segment
-        
+        print('as segment shape', as_segment.shape)
+        print(f"Anomaly Score values\n {as_segment}")
+        #gt_segment=np.array(gt_segment) 
+        print('gt segment shap', gt_segment.shape)########
+        #print(f"gt values\n {gt_segment}")
+        print(f"gt values\n\033[94m{gt_segment}\033[0m")
+        #max_value_rounded = math.ceil(max(test_energy_segment))
+                
         # import matplotlib.pyplot as plt 
         # plt.figure(figsize=(10, 6))
         # plt.plot(as_segment, label='AS Data')
@@ -504,53 +503,53 @@ class Solver(object):
         #                                          Mat PLOT                                                 #
         ####################################################################################################
         
-        # import seaborn as sns
-        # import matplotlib.pyplot as plt
-        # import statistics
+        import seaborn as sns
+        import matplotlib.pyplot as plt
+        import statistics
 
-        # def smooth(y, box_pts=1):
-        #     box = np.ones(box_pts)/box_pts
-        #     y_smooth = np.convolve(y, box, mode='same')
-        #     return y_smooth
+        def smooth(y, box_pts=1):
+            box = np.ones(box_pts)/box_pts
+            y_smooth = np.convolve(y, box, mode='same')
+            return y_smooth
         
-        # # plt.style.use(['science', 'ieee'])
-        # # plt.rcParams["text.usetex"] = False
-        # # plt.rcParams['figure.figsize'] = 6, 
+        # plt.style.use(['science', 'ieee'])
+        # plt.rcParams["text.usetex"] = False
+        # plt.rcParams['figure.figsize'] = 6, 
         
         
-        # plt.figure(figsize=(12, 8))
-        # plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
-        # plt.plot(smooth(TS_segment), label="Time Series Data", color='black')
-        # plt.title("Time Series Plot")
-        # plt.xlabel("Time")
-        # plt.ylabel("Value")
-        # plt.legend()
-        # #ax1 = plt.gca()  # Get the current axes (first subplot)
-        # #ax1.tick_params(axis='both', direction='in')  # Set tick direction for both x and y axes
-        # ymin, ymax = plt.ylim()
-        # #plt.figure(figsize=(12, 6))
-        # plt.subplot(2, 1, 2)  # 2 rows, 1 column, second plot
-        # plt.plot(as_segment, label='Anomaly Scores', color='green')
-        # plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
-        # plt.fill_between(range(len(as_segment)), 0, 1, where=(gt_segment == 1), color='green', alpha=0.2, label='Ground Truth') # plt.ylim()[1]
-        # plt.xlabel('Time')
-        # plt.ylabel('Anomaly Score')
-        # plt.title(f'Anomaly Scores Over Time (Area{start_idx})')
-        # plt.legend()
-        # # Adjust tick direction for the secgtond subplot
-        # #ax2 = plt.gca()  # Get the current axes (second subplot)
-        # #ax2.tick_params(axis='both', direction='in')  # Set tick direction for both x and y axes
-        # #plt.ylim([ymin, ymax])
-        # # Save the plot to a file
-        # # Adjust layout to prevent overlap
-        # plt.tight_layout()
+        plt.figure(figsize=(12, 8))
+        plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
+        plt.plot(smooth(TS_segment), label="Time Series Data", color='black')
+        plt.title("Time Series Plot")
+        plt.xlabel("Time")
+        plt.ylabel("Value")
+        plt.legend()
+        #ax1 = plt.gca()  # Get the current axes (first subplot)
+        #ax1.tick_params(axis='both', direction='in')  # Set tick direction for both x and y axes
+        ymin, ymax = plt.ylim()
+        #plt.figure(figsize=(12, 6))
+        plt.subplot(2, 1, 2)  # 2 rows, 1 column, second plot
+        plt.plot(as_segment, label='Anomaly Scores', color='green')
+        plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
+        plt.fill_between(range(len(as_segment)), 0, 1, where=(gt_segment == 1), color='green', alpha=0.2, label='Ground Truth') # plt.ylim()[1]
+        plt.xlabel('Time')
+        plt.ylabel('Anomaly Score')
+        plt.title(f'Anomaly Scores Over Time (Area{start_idx})')
+        plt.legend()
+        # Adjust tick direction for the secgtond subplot
+        #ax2 = plt.gca()  # Get the current axes (second subplot)
+        #ax2.tick_params(axis='both', direction='in')  # Set tick direction for both x and y axes
+        #plt.ylim([ymin, ymax])
+        # Save the plot to a file
+        # Adjust layout to prevent overlap
+        plt.tight_layout()
 
-        # # Save the combined plot to a file
-        # plot_filename = f'combined_plot_idx_{start_idx}.png'
-        # plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
-        # print(f"Combined plot saved to {plot_filename}")
-        # #plt.show()
-        # return accuracy, precision, recall, f_score
+        # Save the combined plot to a file
+        plot_filename = f'combined_plot_idx_{start_idx}.png'
+        plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
+        print(f"Combined plot saved to {plot_filename}")
+        #plt.show()
+        return accuracy, precision, recall, f_score
 
         
         ####################################################################################################
@@ -658,44 +657,44 @@ class Solver(object):
         
 
 
-        # OLD Plot for the random segment
-        def extract_random_segment(data, segment_length=200):
-            if len(data) <= segment_length:
-                return data  # Return the entire data if it's shorter than the segment length
-            start_idx = np.random.randint(0, len(data) - segment_length)
-            start_idx = 618200
-            print(f"Extracting random segment from index {start_idx} to {start_idx + segment_length}")
-            return data[start_idx:start_idx + segment_length]
+        # # OLD Plot for the random segment
+        # def extract_random_segment(data, segment_length=200):
+        #     if len(data) <= segment_length:
+        #         return data  # Return the entire data if it's shorter than the segment length
+        #     start_idx = np.random.randint(0, len(data) - segment_length)
+        #     start_idx = 618200
+        #     print(f"Extracting random segment from index {start_idx} to {start_idx + segment_length}")
+        #     return data[start_idx:start_idx + segment_length]
 
-        # Extract random segments of lengthfgdfg 150
-        segment_length = 200
-        start_idx = 618200
-        #start_idx = np.random.randint(0, len(test_energy) - segment_length)
+        # # Extract random segments of lengthfgdfg 150
+        # segment_length = 200
+        # start_idx = 618200
+        # #start_idx = np.random.randint(0, len(test_energy) - segment_length)
 
-        test_energy_segment = extract_random_segment(test_energy, segment_length, start_idx)
+        # test_energy_segment = extract_random_segment(test_energy, segment_length, start_idx)
         
-        #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
-        gt_segment = extract_random_segment(gt, segment_length, start_idx)
-        #pred_segment = (test_energy_segment > thresh).astype(int)
-        #pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
+        # #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
+        # gt_segment = extract_random_segment(gt, segment_length, start_idx)
+        # #pred_segment = (test_energy_segment > thresh).astype(int)
+        # #pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
 
-        #pred_segment=np.array(pred_segment)
-        #gt_segment=np.array(gt_segment)
+        # #pred_segment=np.array(pred_segment)
+        # #gt_segment=np.array(gt_segment)
 
 
-        # Plot the random segment
-        plt.figure(figsize=(12, 6))
-        plt.plot(test_energy_segment, label='Anomaly Scores', color='blue')
-        plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
-        plt.fill_between(range(len(test_energy_segment)), 0, 1, where=(gt_segment == 1), color='yellow', alpha=0.3, label='Ground Truth Anomalies')
-        plt.xlabel('Time')
-        plt.ylabel('Anomaly Score')
-        plt.title(f'Anomaly Scores Over Time (Random Segment of Length {segment_length})')
-        plt.legend()
+        # # Plot the random segment
+        # plt.figure(figsize=(12, 6))
+        # plt.plot(test_energy_segment, label='Anomaly Scores', color='blue')
+        # plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
+        # plt.fill_between(range(len(test_energy_segment)), 0, 1, where=(gt_segment == 1), color='yellow', alpha=0.3, label='Ground Truth Anomalies')
+        # plt.xlabel('Time')
+        # plt.ylabel('Anomaly Score')
+        # plt.title(f'Anomaly Scores Over Time (Random Segment of Length {segment_length})')
+        # plt.legend()
 
-        # Save the plot to a file
-        plot_filename = f'AAAAAAAAAAAAAanomaly_idx{start_idx}.png'
-        plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
-        print(f"Plot saved to {plot_filename}")
-        plt.show()
-        return accuracy, precision, recall, f_score
+        # # Save the plot to a file
+        # plot_filename = f'AAAAAAAAAAAAAanomaly_idx{start_idx}.png'
+        # # plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
+        # # print(f"Plot saved to {plot_filename}")
+        # # plt.show()
+        # return accuracy, precision, recall, f_score
