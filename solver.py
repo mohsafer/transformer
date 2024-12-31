@@ -484,7 +484,7 @@ class Solver(object):
         print('as segment shape', as_segment.shape)
         print(f"Anomaly Score values\n {as_segment}")
         #gt_segment=np.array(gt_segment) 
-        print('gt segment shap', gt_segment.shape)
+        print('gt segment shap', gt_segment.shape)########
         #print(f"gt values\n {gt_segment}")
         print(f"gt values\n\033[94m{gt_segment}\033[0m")
         #max_value_rounded = math.ceil(max(test_energy_segment))
