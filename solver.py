@@ -1,4 +1,5 @@
 import torch
+import sys
 from tqdm import tqdm
 import pandas as pd
 from torch.utils.tensorboard import SummaryWriter
@@ -349,7 +350,19 @@ class Solver(object):
 
         pred = (test_energy > thresh).astype(int)
         gt = test_labels.astype(int)
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        for i, val in enumerate(test_energy):
+            if val > thresh:
+                print(f"Index: {i}, Value: {val}")
         
+        sys.exit()
+
+
+
+
+
         matrix = [self.index]
         print('==================== EVALUATION Metrics ===================\n')
         with tqdm(total=1, desc="Processing") as pbar:
@@ -489,15 +502,15 @@ class Solver(object):
         print(f"gt values\n\033[94m{gt_segment}\033[0m")
         #max_value_rounded = math.ceil(max(test_energy_segment))
                 
-        # import matplotlib.pyplot as plt 
-        # plt.figure(figsize=(10, 6))
-        # plt.plot(as_segment, label='AS Data')
-        # plt.title('Simple Plot of AS Array')
-        # plt.xlabel('Index')
-        # plt.ylabel('Value')
-        # plt.legend()
-        # plt.grid(True)
-        # plt.savefig('AAA_plot.png')
+        import matplotlib.pyplot as plt 
+        plt.figure(figsize=(10, 6))
+        plt.plot(as_segment, label='AS Data')
+        plt.title('Simple Plot of AS Array')
+        plt.xlabel('Index')
+        plt.ylabel('Value')
+        plt.legend()
+        plt.grid(True)
+        plt.savefig('AAA_plot.png')
 
         ####################################################################################################
         #                                          Mat PLOT                                                 #
@@ -529,7 +542,7 @@ class Solver(object):
         ymin, ymax = plt.ylim()
         #plt.figure(figsize=(12, 6))
         plt.subplot(2, 1, 2)  # 2 rows, 1 column, second plot
-        plt.plot(as_segment, label='Anomaly Scores', color='green')
+        plt.plot(smooth(as_segment), label='Anomaly Scores', color='green')
         plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
         plt.fill_between(range(len(as_segment)), 0, 1, where=(gt_segment == 1), color='green', alpha=0.2, label='Ground Truth') # plt.ylim()[1]
         plt.xlabel('Time')
