@@ -454,7 +454,7 @@ class Solver(object):
 
         start_idx = np.random.choice(anomaly_starts)
         #start_idx = 61790 # 43050
-        def extract_random_segment(data, segment_length=400, start_idx=None):
+        def extract_random_segment(data, segment_length=200, start_idx=None):
             if len(data) <= segment_length:
                 return data  # Return the entire data if it's shorter than the segment length
             
@@ -466,12 +466,12 @@ class Solver(object):
             return data[start_idx:start_idx + segment_length]
 
         # Extract random segments of lengthfgdfg 150
-        segment_length = 400
+        segment_length = 200
         #start_idx = np.random.randint(0, len(anomaly_starts) - segment_length)
         
         print(f"start_idx: {start_idx}")
         as_segment = extract_random_segment(test_energy, segment_length, start_idx) #Anomaly Score
-        #as_segment = np.array(as_segment)
+        as_segment = np.array(as_segment)
 
         gt_segment = extract_random_segment(gt, segment_length, start_idx) #ground truth
         TS_segment = extract_random_segment(TS, segment_length, start_idx) #Time Series Data
@@ -493,7 +493,6 @@ class Solver(object):
         import matplotlib.pyplot as plt 
         plt.figure(figsize=(10, 6))
         plt.plot(as_segment, label='AS Data')
-        plt.yscale('log')
         plt.title('Simple Plot of AS Array')
         plt.xlabel('Index')
         plt.ylabel('Value')
@@ -531,9 +530,8 @@ class Solver(object):
         #plt.figure(figsize=(12, 6))
         plt.subplot(2, 1, 2)  # 2 rows, 1 column, second plot
         plt.plot(as_segment, label='Anomaly Scores', color='green')
-        plt.yscale('log')
         plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
-        plt.fill_between(range(len(as_segment)), ymin, plt.ylim()[1], where=(gt_segment == 1), color='green', alpha=0.2, label='Ground Truth') # plt.ylim()[1]
+        plt.fill_between(range(len(as_segment)), 0, 1, where=(gt_segment == 1), color='green', alpha=0.2, label='Ground Truth') # plt.ylim()[1]
         plt.xlabel('Time')
         plt.ylabel('Anomaly Score')
         plt.title(f'Anomaly Scores Over Time (Area{start_idx})')
@@ -544,7 +542,7 @@ class Solver(object):
         #plt.ylim([ymin, ymax])
         # Save the plot to a file
         # Adjust layout to prevent overlap
-        #plt.tight_layout()
+        plt.tight_layout()
 
         # Save the combined plot to a file
         plot_filename = f'combined_plot_idx_{start_idx}.png'
