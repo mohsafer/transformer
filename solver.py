@@ -515,7 +515,7 @@ class Solver(object):
         plt.ylabel("Value")
         plt.legend()
         #ax1 = plt.gca()  # Get the current axes (first subplot)
-        ax1.tick_params(axis='both', direction='in')  # Set tick direction for both x and y axes
+        #ax1.tick_params(axis='both', direction='in')  # Set tick direction for both x and y axes
         ymin, ymax = plt.ylim()
         #plt.figure(figsize=(12, 6))
         plt.subplot(2, 1, 2)  # 2 rows, 1 column, second plot
