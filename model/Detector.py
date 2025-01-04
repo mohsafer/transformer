@@ -25,9 +25,9 @@ class Encoder(nn.Module):
 
 
 
-class DCdetector(nn.Module):
+class Detector(nn.Module):
     def __init__(self, win_size, enc_in, c_out, n_heads=1, d_model=256, e_layers=3, patch_size=[3,5,7], channel=55, d_ff=512, dropout=0.0, activation='gelu', output_attention=True):
-        super(DCdetector, self).__init__()
+        super(Detector, self).__init__()
         self.output_attention = output_attention
         self.patch_size = patch_size
         self.channel = channel

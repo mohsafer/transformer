@@ -11,7 +11,7 @@ import numpy as np
 import os
 import time
 from utils.utils import *
-from model.DCdetector import DCdetector
+from model.Detector import Detector
 from data_factory.data_loader import get_loader_segment
 from data_factory.data_loader import SMDSegLoader
 from einops import rearrange
