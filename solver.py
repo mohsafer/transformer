@@ -357,7 +357,7 @@ class Solver(object):
             if val > thresh:
                 print(f"Index: {i}, Value: {val}")
         
-        sys.exit()
+        #sys.exit()
 
 
 
