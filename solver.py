@@ -353,11 +353,11 @@ class Solver(object):
 
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        for i, val in enumerate(test_energy):
-            if val > thresh:
-                print(f"Index: {i}, Value: {val}")
+        # for i, val in enumerate(test_energy):
+        #     if val > thresh:
+        #         print(f"Index: {i}, Value: {val}")
         
-        #sys.exit()
+        # #sys.exit()
 
 
 
