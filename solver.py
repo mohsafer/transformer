@@ -461,7 +461,7 @@ class Solver(object):
         #data_path = "your/data/path"  # Replace with your actual data path
         loader = SMDSegLoader('dataset/'+self.data_path, win_size=100, step=10)
 
-        # Access the TS variable
+        # Access the TS variablefffff
         TS = loader.TS
        # print("Content of  TS:", TS[:100])
 
