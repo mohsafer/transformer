@@ -466,7 +466,7 @@ class Solver(object):
        # print("Content of  TS:", TS[:100])
 
         start_idx = np.random.choice(anomaly_starts)
-        start_idx = 61790 # 43050
+        #start_idx = 61790 # 43050
         def extract_random_segment(data, segment_length=200, start_idx=None):
             if len(data) <= segment_length:
                 return data  # Return the entire data if it's shorter than the segment length
