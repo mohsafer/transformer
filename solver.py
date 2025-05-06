@@ -278,7 +278,7 @@ class Solver(object):
         attens_energy = np.concatenate(attens_energy, axis=0).reshape(-1)
         train_energy = np.array(attens_energy)
 
-        # (2) find the threshold
+        # (2) find the threshol
         attens_energy = []
         for i, (input_data, labels) in enumerate(self.thre_loader):
             input = input_data.float().to(self.device)
@@ -567,7 +567,7 @@ class Solver(object):
         #plt.show()
         return accuracy, precision, recall, f_score
 
-     #########################################   3333333322222222222222
+        #########################################   3333333322222222222222
         ####################################################################################################
         #                                          SEABORNE PLOT                                           #
         ####################################################################################################
