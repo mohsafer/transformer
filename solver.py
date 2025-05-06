@@ -436,7 +436,9 @@ class Solver(object):
         pred = np.array(pred)
         gt = np.array(gt)
 
-
+        ####################################################################################################
+        #                                          FINAL METRICS                                           #
+        ####################################################################################################
         from sklearn.metrics import precision_recall_fscore_support
         from sklearn.metrics import accuracy_score
 
