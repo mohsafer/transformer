@@ -582,7 +582,7 @@ class SWATSegLoader(Dataset):
                 self.test_labels[index // self.step * self.win_size:index // self.step * self.win_size + self.win_size])
 
         
-def get_loader_segment(index, data_path, batch_size, win_size=100, step=100, mode='train', dataset='KDD'):
+def get_loader_segment(index, data_path, batch_size, win_size=100, step=100, mode='train', dataset='KDD', shuffle=False):
     if (dataset == 'SMD'):
         dataset = SMDSegLoader(data_path, win_size, 1, mode)
     elif (dataset == 'MSL'):

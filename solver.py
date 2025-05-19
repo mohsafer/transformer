@@ -20,14 +20,48 @@ from metrics.metrics import *
 import warnings
 import seaborn as sns
 import matplotlib.pyplot as plt
+from torchviz import make_dot
 warnings.filterwarnings('ignore')
  
 writer = SummaryWriter()  #tensorboard 
 #
 #os.environ["CUDA_VISIBLE_DEVICES"] = '0, 1, 2, 3'
-def my_kl_loss(p, q):
-    res = p * (torch.log(p + 0.0001) - torch.log(q + 0.0001))
-    return torch.mean(torch.sum(res, dim=-1), dim=1)
+  
+
+def tsallis_divergence(p, q, q_param=1.5, eps=1e-6):
+    """Tsallis Divergence: D_q(P||Q) = 1/(q-1) * (sum_x[P(x)^q * Q(x)^(1-q)] - 1)"""
+    p_safe = torch.clamp(p, min=eps)
+    q_safe = torch.clamp(q, min=eps)
+    inner = p_safe.pow(q_param) * q_safe.pow(1 - q_param)
+    summed = torch.sum(inner, dim=-1) - 1
+    return torch.mean(summed / (q_param - 1), dim=1)
+
+def renyi_divergence(p, q, q_param=1.5, eps=1e-6):
+    """Renyi Divergence: D_q(P||Q) = 1/(q-1) * log(sum_x[P(x)^q * Q(x)^(1-q)])"""
+    p_safe = torch.clamp(p, min=eps)
+    q_safe = torch.clamp(q, min=eps)
+    inner = p_safe.pow(q_param) * q_safe.pow(1 - q_param)
+    summed = torch.sum(inner, dim=-1)
+    return torch.mean(torch.log(summed) / (q_param - 1), dim=1)
+
+def kl_divergence(p, q, eps=1e-6):
+    """Standard KL divergence: D_KL(P||Q) = sum_x[P(x) * log(P(x)/Q(x))]"""
+    p_safe = torch.clamp(p, min=eps)
+    q_safe = torch.clamp(q, min=eps)
+    kl = p_safe * (torch.log(p_safe) - torch.log(q_safe))
+    return torch.mean(torch.sum(kl, dim=-1), dim=1)
+
+def get_divergence_fn(divergence_type, q_param=1.5):
+    """Factory function to select the right divergence measure"""
+    if divergence_type == 'tsallis':
+        return lambda p, q: tsallis_divergence(p, q, q_param)
+    elif divergence_type == 'renyi':
+        return lambda p, q: renyi_divergence(p, q, q_param)
+    elif divergence_type == 'kl':
+        return lambda p, q: kl_divergence(p, q)
+    else:
+        raise ValueError(f"Unknown divergence type: {divergence_type}")
+
 
 def adjust_learning_rate(optimizer, epoch, lr_):
     lr_adjust = {epoch: lr_ * (0.5 ** ((epoch - 1) // 1))}
@@ -78,8 +112,14 @@ class Solver(object):
     def __init__(self, config):
 
         self.__dict__.update(Solver.DEFAULTS, **config)
+    
+        # Initialize divergence function based on command line arguments
+        self.divergence_fn = get_divergence_fn(
+            self.divergence, 
+            q_param=self.q_param
+        )
         
-        self.train_loader = get_loader_segment(self.index, 'dataset/'+self.data_path, batch_size=self.batch_size, win_size=self.win_size, mode='train', dataset=self.dataset, )
+        self.train_loader = get_loader_segment(self.index, 'dataset/'+self.data_path, batch_size=self.batch_size, win_size=self.win_size, mode='train', dataset=self.dataset )
         self.vali_loader = get_loader_segment(self.index, 'dataset/'+self.data_path, batch_size=self.batch_size, win_size=self.win_size, mode='val', dataset=self.dataset)
         self.test_loader = get_loader_segment(self.index, 'dataset/'+self.data_path, batch_size=self.batch_size, win_size=self.win_size, mode='test', dataset=self.dataset)
         self.thre_loader = get_loader_segment(self.index, 'dataset/'+self.data_path, batch_size=self.batch_size, win_size=self.win_size, mode='thre', dataset=self.dataset)
@@ -94,16 +134,46 @@ class Solver(object):
         
 
     def build_model(self):
-        
+    
         self.model = Detector(win_size=self.win_size, enc_in=self.input_c, c_out=self.output_c, n_heads=self.n_heads, d_model=self.d_model, e_layers=self.e_layers, patch_size=self.patch_size, channel=self.input_c)
         
-        
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.model.to(self.device)
+
         if torch.cuda.is_available():
             self.model.cuda()
+
             
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.lr)
 
+        # Add model to TensorBoard
+        from torch import randn
+        dummy = randn(1, self.win_size, self.input_c, device=self.device)
+        writer.add_graph(self.model, dummy)
+        writer.flush()
+        
+        # Visualize with torchviz - fixed to handle list outputs
+        try:
+            dummy_input = torch.randn(1, self.win_size, self.input_c).to(self.device)
+            y = self.model(dummy_input)
+            
+            # Either pick first tensor from the list
+            if isinstance(y[0], list) and len(y[0]) > 0:
+                # Create a scalar output from all tensors for visualization
+                series, prior = y
+                dummy_output = sum(tensor.sum() for tensor in series + prior)
+                dot = make_dot(dummy_output, params=dict(self.model.named_parameters()))
 
+
+            # Add random number to filename
+            random_id = np.random.randint(1, 9999)
+            filename = f'model_visualization_{random_id}'
+            
+            dot.format = 'png'
+            dot.render(filename)
+            print(f"Model visualization saved to {filename}.png")
+        except Exception as e:
+            print(f"Warning: Could not create torchviz visualization: {e}")
         
     def vali(self, vali_loader):
         self.model.eval()
@@ -115,18 +185,18 @@ class Solver(object):
             series_loss = 0.0
             prior_loss = 0.0
             for u in range(len(prior)):
-                series_loss += (torch.mean(my_kl_loss(series[u], (
+                series_loss += (torch.mean(self.divergence_fn(series[u], (
                         prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                self.win_size)).detach())) + torch.mean(
-                    my_kl_loss(
+                    self.divergence_fn(
                         (prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                 self.win_size)).detach(),
                         series[u])))
                 prior_loss += (torch.mean(
-                    my_kl_loss((prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
+                    self.divergence_fn((prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                        self.win_size)),
                                series[u].detach())) + torch.mean(
-                    my_kl_loss(series[u].detach(),
+                    self.divergence_fn(series[u].detach(),
                                (prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                        self.win_size)))))
                 
@@ -141,99 +211,110 @@ class Solver(object):
         #                                       T R A I N                                                  #
         ####################################################################################################   
     def train(self):
-
         time_now = time.time()
         path = self.model_save_path
         if not os.path.exists(path):
             os.makedirs(path)
         early_stopping = EarlyStopping(patience=5, verbose=True, dataset_name=self.data_path)
-        train_steps = len(self.train_loader)
-        running_loss = 0.0
         
-        from tqdm import tqdm
-        for epoch in tqdm(range(self.num_epochs)):
+        # Create epoch progress bar
+        epoch_pbar = tqdm(range(self.num_epochs), desc="Epochs")
+        
+        for epoch in epoch_pbar:
+            # re-shuffle train set every epoch
+            self.train_loader = get_loader_segment(
+                self.index,
+                'dataset/' + self.data_path,
+                batch_size=self.batch_size,
+                win_size=self.win_size,
+                mode='train',
+                dataset=self.dataset,
+                shuffle=True
+            )
+            train_steps = len(self.train_loader)
+            running_loss = 0.0
             iter_count = 0
-
             epoch_time = time.time()
             self.model.train()
 
+            # Create iteration progress bar
+            iter_pbar = tqdm(enumerate(self.train_loader), 
+                            total=train_steps, 
+                            desc=f"Epoch {epoch+1}/{self.num_epochs}",
+                            leave=False)  # leave=False prevents multiple progress bars
 
-            for i, (input_data, labels) in enumerate(self.train_loader):
-
+            for i, (input_data, labels) in iter_pbar:
                 self.optimizer.zero_grad()
                 iter_count += 1
                 input = input_data.float().to(self.device)
                 series, prior = self.model(input)
-
               
                 series_loss = 0.0
                 prior_loss = 0.0
 
                 for u in range(len(prior)):
-                    series_loss += (torch.mean(my_kl_loss(series[u], (
+                    series_loss += (torch.mean(self.divergence_fn(series[u], (
                             prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                    self.win_size)).detach())) + torch.mean(
-                        my_kl_loss((prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
+                        self.divergence_fn((prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                            self.win_size)).detach(),
                                    series[u])))
-                    prior_loss += (torch.mean(my_kl_loss(
+                    prior_loss += (torch.mean(self.divergence_fn(
                         (prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                 self.win_size)),
                         series[u].detach())) + torch.mean(
-                        my_kl_loss(series[u].detach(), (
+                        self.divergence_fn(series[u].detach(), (
                                 prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                        self.win_size)))))
                 series_loss = series_loss / len(prior)
                 prior_loss = prior_loss / len(prior)
-                series_avg = torch.mean(torch.stack(series), dim=0)  # Average all tensors in the list
-                loss = prior_loss - series_loss 
-                running_loss += prior_loss.item()
-
-                #rec_loss = self.criterion(output, input)
-
-             
+                loss = prior_loss - series_loss
+                running_loss += loss.item()
+                
+                # Update iteration progress bar with current loss
+                iter_pbar.set_postfix({"loss": f"{loss.item():.4f}"})
+                
                 if (i + 1) % 100 == 0:
                     speed = (time.time() - time_now) / iter_count
                     left_time = speed * ((self.num_epochs - epoch) * train_steps - i)
-                    print('\tspeed: {:.4f}s/iter; left time: {:.4f}s'.format(speed, left_time))
+                    
+                    # Update progress bar with speed and ETA
+                    iter_pbar.set_postfix({
+                        "loss": f"{loss.item():.4f}",
+                        "speed": f"{speed:.4f}s/iter", 
+                        "ETA": f"{left_time:.1f}s"
+                    })
+                    
                     iter_count = 0
                     time_now = time.time()
- 
+
                 loss.backward()
                 self.optimizer.step()
-
-                #writer.add_scalar('training loss', rec_loss.item() , epoch * len(self.train_loader) + i)
-                #print('epoch {},  rec_loss_ {}'.format(epoch * len(self.train_loader) + i  , rec_loss.item()))                
-
-                #writer.add_scalar("Loss/train", loss, epoch)##################################################################################
-                #running_loss += loss.item()
-                #writer.add_scalar("Loss/train", loss.item(), epoch * len(self.train_loader) + i)
-                #writer.add_scalar('training loss', loss.item() , epoch * len(self.train_loader) + i)
-                #print('epoch {}, loss_perior {}, loss_series {}'.format(epoch * len(self.train_loader) + i, prior_loss.item(), series_loss.item()))
-                # writer.add_scalar('Train/Accuracy', epoch_accuracy, epoch)
-                # writer.add_scalar('Train/Loss', avg_epoch_loss, epoch)
-                # print(f'Epoch [{epoch+1}/{self.num_epochs}], Loss: {avg_epoch_loss:.4f}, Accuracy: {epoch_accuracy:.2f}%')            
-                # vali_loss1, vali_loss2 = self.vali(self.test_loader)
-            # NEW CODE : Calculate training accuracy for the epoch
-            # epoch_accuracy = 100 * correct / total
-            # avg_epoch_loss = running_loss / len(self.train_loader)
-
-            # NEW CODE : Log accuracy and loss to TensorBoard
-            # writer.add_scalar('Train/Accuracy', epoch_accuracy, epoch)
-            # writer.add_scalar('Train/Loss', avg_epoch_loss, epoch)
-            # print(f'Epoch [{epoch+1}/{self.num_epochs}], Loss: {avg_epoch_loss:.4f}, Accuracy: {epoch_accuracy:.2f}%')            
+                
+            # Calculate epoch metrics
+            avg_epoch_loss = running_loss / train_steps
+            
+            # Update the epoch progress bar with epoch loss
+            epoch_pbar.set_postfix({"loss": f"{avg_epoch_loss:.4f}"})
+            
+            # Log to tensorboard
+            writer.add_scalar('Train/Loss', avg_epoch_loss, epoch)
+            
+            # Validation and early stopping
             vali_loss1, vali_loss2 = self.vali(self.test_loader)
-            ######################################################################################
+            writer.add_scalar('Validation/Loss1', vali_loss1, epoch)
+            writer.add_scalar('Validation/Loss2', vali_loss2, epoch)
             
             print(
-                "Epoch: {0}, Cost time: {1:.3f}s ".format(
-                    epoch + 1, time.time() - epoch_time))
+                "Epoch: {0}, Cost time: {1:.3f}s, Loss: {2:.6f}".format(
+                    epoch + 1, time.time() - epoch_time, avg_epoch_loss))
+            
             early_stopping(vali_loss1, vali_loss2, self.model, path)
             if early_stopping.early_stop:
+                print("Early stopping triggered!")
                 break
-            adjust_learning_rate(self.optimizer, epoch + 1, self.lr)
             
-        #writer.close()    #writer.flush()
+            adjust_learning_rate(self.optimizer, epoch + 1, self.lr)
  
         ####################################################################################################
         #                                          T E S T                                                 #
@@ -254,18 +335,18 @@ class Solver(object):
             prior_loss = 0.0
             for u in range(len(prior)):
                 if u == 0:
-                    series_loss = my_kl_loss(series[u], (
+                    series_loss = self.divergence_fn(series[u], (
                             prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                    self.win_size)).detach()) * temperature
-                    prior_loss = my_kl_loss(
+                    prior_loss = self.divergence_fn(
                         (prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                 self.win_size)),
                         series[u].detach()) * temperature
                 else:
-                    series_loss += my_kl_loss(series[u], (
+                    series_loss += self.divergence_fn(series[u], (
                             prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                    self.win_size)).detach()) * temperature
-                    prior_loss += my_kl_loss(
+                    prior_loss += self.divergence_fn(
                         (prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                 self.win_size)),
                         series[u].detach()) * temperature
@@ -287,18 +368,18 @@ class Solver(object):
             prior_loss = 0.0
             for u in range(len(prior)):
                 if u == 0:
-                    series_loss = my_kl_loss(series[u], (
+                    series_loss = self.divergence_fn(series[u], (
                             prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                    self.win_size)).detach()) * temperature
-                    prior_loss = my_kl_loss(
+                    prior_loss = self.divergence_fn(
                         (prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                 self.win_size)),
                         series[u].detach()) * temperature
                 else:
-                    series_loss += my_kl_loss(series[u], (
+                    series_loss += self.divergence_fn(series[u], (
                             prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                    self.win_size)).detach()) * temperature
-                    prior_loss += my_kl_loss(
+                    prior_loss += self.divergence_fn(
                         (prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                 self.win_size)),
                         series[u].detach()) * temperature
@@ -324,18 +405,18 @@ class Solver(object):
             prior_loss = 0.0
             for u in range(len(prior)):
                 if u == 0:
-                    series_loss = my_kl_loss(series[u], (
+                    series_loss = self.divergence_fn(series[u], (
                             prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                    self.win_size)).detach()) * temperature
-                    prior_loss = my_kl_loss(
+                    prior_loss = self.divergence_fn(
                         (prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                 self.win_size)),
                         series[u].detach()) * temperature
                 else:
-                    series_loss += my_kl_loss(series[u], (
+                    series_loss += self.divergence_fn(series[u], (
                             prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                    self.win_size)).detach()) * temperature
-                    prior_loss += my_kl_loss(
+                    prior_loss += self.divergence_fn(
                         (prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
                                                                                                 self.win_size)),
                         series[u].detach()) * temperature

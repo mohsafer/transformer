@@ -87,6 +87,11 @@ if __name__ == '__main__':
     parser.add_argument('--model_save_path', type=str, default='checkpoints')
 
     parser.add_argument('--anormly_ratio', type=float, default=4.00)
+    parser.add_argument('--divergence', type=str, default='tsallis', 
+                    choices=['tsallis', 'renyi', 'kl'], 
+                    help='Divergence type for anomaly detection')
+    parser.add_argument('--q_param', type=float, default=0.5,
+                    help='q parameter for Tsallis/Renyi divergence')
 
     config = parser.parse_args()
     args = vars(config)
@@ -118,7 +123,7 @@ if __name__ == '__main__':
     sys.stdout = Logger("result/"+ config.data_path +".log", sys.stdout)
     if config.mode == 'train':
         print("\n\n")
-        print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+        print(f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())} | Divergence: {config.divergence}(q={config.q_param}) | Epochs: {config.num_epochs} ")
         print('================ Hyperparameters ===============')
         for k, v in sorted(args.items()):
             print('%s: %s' % (str(k), str(v)))
@@ -132,4 +137,4 @@ if __name__ == '__main__':
         #     time.sleep(0.1)
     main(config)
 
-    
+
