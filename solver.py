@@ -21,6 +21,8 @@ import warnings
 import seaborn as sns
 import matplotlib.pyplot as plt
 from torchviz import make_dot
+from datetime import datetime
+#from main import config
 warnings.filterwarnings('ignore')
  
 writer = SummaryWriter()  #tensorboard 
@@ -119,7 +121,7 @@ class Solver(object):
             q_param=self.q_param
         )
         
-        self.train_loader = get_loader_segment(self.index, 'dataset/'+self.data_path, batch_size=self.batch_size, win_size=self.win_size, mode='train', dataset=self.dataset )
+        self.train_loader = get_loader_segment(self.index, 'dataset/'+self.data_path, batch_size=self.batch_size, win_size=self.win_size, mode='train', dataset=self.dataset, shuffle=True) 
         self.vali_loader = get_loader_segment(self.index, 'dataset/'+self.data_path, batch_size=self.batch_size, win_size=self.win_size, mode='val', dataset=self.dataset)
         self.test_loader = get_loader_segment(self.index, 'dataset/'+self.data_path, batch_size=self.batch_size, win_size=self.win_size, mode='test', dataset=self.dataset)
         self.thre_loader = get_loader_segment(self.index, 'dataset/'+self.data_path, batch_size=self.batch_size, win_size=self.win_size, mode='thre', dataset=self.dataset)
@@ -146,34 +148,34 @@ class Solver(object):
             
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.lr)
 
-        # Add model to TensorBoard
-        from torch import randn
-        dummy = randn(1, self.win_size, self.input_c, device=self.device)
-        writer.add_graph(self.model, dummy)
-        writer.flush()
+        # # Add model to TensorBoard
+        # from torch import randn
+        # dummy = randn(1, self.win_size, self.input_c, device=self.device)
+        # writer.add_graph(self.model, dummy)
+        # writer.flush()
         
         # Visualize with torchviz - fixed to handle list outputs
-        try:
-            dummy_input = torch.randn(1, self.win_size, self.input_c).to(self.device)
-            y = self.model(dummy_input)
+        # try:
+        #     dummy_input = torch.randn(1, self.win_size, self.input_c).to(self.device)
+        #     y = self.model(dummy_input)
             
-            # Either pick first tensor from the list
-            if isinstance(y[0], list) and len(y[0]) > 0:
-                # Create a scalar output from all tensors for visualization
-                series, prior = y
-                dummy_output = sum(tensor.sum() for tensor in series + prior)
-                dot = make_dot(dummy_output, params=dict(self.model.named_parameters()))
+        #     # Either pick first tensor from the list
+        #     if isinstance(y[0], list) and len(y[0]) > 0:
+        #         # Create a scalar output from all tensors for visualization
+        #         series, prior = y
+        #         dummy_output = sum(tensor.sum() for tensor in series + prior)
+        #         dot = make_dot(dummy_output, params=dict(self.model.named_parameters()))
 
 
-            # Add random number to filename
-            random_id = np.random.randint(1, 9999)
-            filename = f'model_visualization_{random_id}'
+        #     # Add random number to filename
+        #     random_id = np.random.randint(1, 9999)
+        #     filename = f'model_visualization_{random_id}'
             
-            dot.format = 'png'
-            dot.render(filename)
-            print(f"Model visualization saved to {filename}.png")
-        except Exception as e:
-            print(f"Warning: Could not create torchviz visualization: {e}")
+        #     dot.format = 'png'
+        #     dot.render(filename)
+        #     print(f"Model visualization saved to {filename}.png")
+        # except Exception as e:
+        #     print(f"Warning: Could not create torchviz visualization: {e}")
         
     def vali(self, vali_loader):
         self.model.eval()
@@ -487,33 +489,42 @@ class Solver(object):
         gt = np.array(gt)
         pred = np.array(pred)
         print('====================  MODEL DETECTION  ===================')
-        anomaly_starts = np.where((gt[:-1] == 0) & (gt[1:] == 1) & (pred[:-1] == 0) & (pred[1:] == 1))[0] + 1
 
-        if anomaly_starts.size == 0:
-	        
-            print('No anomalies detected in the dataset.')
-            return pred
+        # Find all ground truth anomaly starts (regardless of predictions)
+        gt_anomaly_starts = np.where((gt[:-1] == 0) & (gt[1:] == 1))[0] + 1
 
+        if gt_anomaly_starts.size == 0:
+            print('No ground truth anomalies found in the dataset.')
+            return accuracy, precision, recall, f_score
+
+        # Find detected anomaly starts (where both gt and pred transition)
+        detected_anomaly_starts = np.where((gt[:-1] == 0) & (gt[1:] == 1) & (pred[:-1] == 0) & (pred[1:] == 1))[0] + 1
+
+        print(f"Ground truth anomaly starts: {len(gt_anomaly_starts)}")
+        print(f"Detected anomaly starts: {len(detected_anomaly_starts)}")
+
+        if detected_anomaly_starts.size == 0:
+            print('No anomalies were correctly detected by the model.')
         else:
+            print("Detected anomaly starts at indices:", ", ".join(map(str, detected_anomaly_starts)))
+            
+            # Point adjustment: for each detected anomaly, fill the entire anomaly segment
+            for start in detected_anomaly_starts:
+                # Fill backwards to the beginning of the anomaly
+                for j in range(start - 1, -1, -1):  # Fixed: now goes to index 0
+                    if gt[j] == 0:
+                        break
+                    elif pred[j] == 0:
+                        pred[j] = 1
+                
+                # Fill forwards to the end of the anomaly  
+                for j in range(start, len(gt)):
+                    if gt[j] == 0:
+                        break
+                    elif pred[j] == 0:
+                        pred[j] = 1
 
-            print("Anomaly detected starting at index:\n", ", ".join(map(str, anomaly_starts)))
-
-        print (f"Total number of anomalies detected: {len(anomaly_starts)}")
         print(f"Total number of indices: {len(gt)}")
-        for start in anomaly_starts:
-           for j in range(start, 0, -1):
-                if gt[j] == 0:
-                     break
-                elif pred[j] == 0:
-                    pred[j] = 1
-           for j in range(start, len(gt)):
-              if gt[j] == 0:
-                 break
-              elif pred[j] == 0:
-                  pred[j] = 1
-
-        #pred[gt == 1] = 1
-
         pred = np.array(pred)
         gt = np.array(gt)
 
@@ -526,8 +537,10 @@ class Solver(object):
         accuracy = accuracy_score(gt, pred)
         precision, recall, f_score, support = precision_recall_fscore_support(gt, pred, average='binary')
 
+        #print(f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())} | Divergence: {config.divergence}(q={config.q_param}) | Epochs: {config.num_epochs} ")
         print('====================  FINAL METRICS  ===================')
         print("Accuracy : {:0.4f}, Precision : {:0.4f}, Recall : {:0.4f}, F-score : {:0.4f} ".format(accuracy, precision, recall, f_score))
+        print("\n\n")
         print('====================  CONFUSION MATRIX  ===================')
         if self.data_path == 'UCR' or 'UCR_AUG':
             import csv
@@ -549,8 +562,8 @@ class Solver(object):
         TS = loader.TS
        # print("Content of  TS:", TS[:100])
 
-        start_idx = np.random.choice(anomaly_starts)
-        #start_idx = 61790 # 43050
+        #start_idx = np.random.choice(anomaly_starts)
+        start_idx = 10000 # 43050
         def extract_random_segment(data, segment_length=200, start_idx=None):
             if len(data) <= segment_length:
                 return data  # Return the entire data if it's shorter than the segment length
@@ -563,13 +576,13 @@ class Solver(object):
             return data[start_idx:start_idx + segment_length]
 
         # Extract random segments of lengthfgdfg 150
-        segment_length = 200
+        segment_length = 30000
         #start_idx = np.random.randint(0, len(anomaly_starts) - segment_length)
         
         print(f"start_idx: {start_idx}")
         as_segment = extract_random_segment(test_energy, segment_length, start_idx) #Anomaly Score
         as_segment = np.array(as_segment)
-        test_energy_segment = extract_random_segment(test_energy, segment_length, start_idx)
+        #test_energy_segment = extract_random_segment(test_energy, segment_length, start_idx)
         gt_segment = extract_random_segment(gt, segment_length, start_idx) #ground truth
         TS_segment = extract_random_segment(TS, segment_length, start_idx) #Time Series Data
         pred_segment = extract_random_segment(pred, segment_length, start_idx)
@@ -586,15 +599,15 @@ class Solver(object):
         print(f"gt values\n\033[94m{gt_segment}\033[0m")
         #max_value_rounded = math.ceil(max(test_energy_segment))
                 
-        import matplotlib.pyplot as plt 
-        plt.figure(figsize=(10, 6))
-        plt.plot(as_segment, label='AS Data')
-        plt.title('Simple Plot of AS Array')
-        plt.xlabel('Index')
-        plt.ylabel('Value')
-        plt.legend()
-        plt.grid(True)
-        plt.savefig('AAA_plot.png')
+        # import matplotlib.pyplot as plt 
+        # plt.figure(figsize=(10, 6))
+        # plt.plot(as_segment, label='AS Data')
+        # plt.title('Simple Plot of AS Array')
+        # plt.xlabel('Index')
+        # plt.ylabel('Value')
+        # plt.legend()
+        # plt.grid(True)
+        # plt.savefig('AAA_plot.png')
 
         ####################################################################################################
         #                                          Mat PLOT                                                 #
@@ -604,45 +617,46 @@ class Solver(object):
         import matplotlib.pyplot as plt
         import statistics
 
-        def smooth(y, box_pts=1):
+        def smooth(y, box_pts=5):
             box = np.ones(box_pts)/box_pts
             y_smooth = np.convolve(y, box, mode='same')
             return y_smooth
         
         # plt.style.use(['science', 'ieee'])
         # plt.rcParams["text.usetex"] = False
-        # plt.rcParams['figure.figsize'] = 6, 
+        # plt.rcParams['figure.figsize'] = 6, 2
         
         
-        plt.figure(figsize=(12, 8))
+        plt.figure(figsize=(10, 5))
         plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
-        plt.plot(smooth(TS_segment), label="Time Series Data", color='black')
+        plt.plot(smooth(TS_segment), label="Time Series Data", color='black', linewidth=0.2)
         plt.title("Time Series Plot")
         plt.xlabel("Time")
         plt.ylabel("Value")
-        plt.legend()
-        #ax1 = plt.gca()  # Get the current axes (first subplot)
-        #ax1.tick_params(axis='both', direction='in')  # Set tick direction for both x and y axes
+        plt.legend(loc='upper left', frameon=True, fancybox=True, shadow=True)
+        ax1 = plt.gca()  # Get the current axes (first subplot)
+        ax1.tick_params(axis='both', direction='in')  # Set tick direction for both x and y axes
         ymin, ymax = plt.ylim()
         #plt.figure(figsize=(12, 6))
         plt.subplot(2, 1, 2)  # 2 rows, 1 column, second plot
-        plt.plot(smooth(as_segment), label='Anomaly Scores', color='green')
-        plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
-        plt.fill_between(range(len(as_segment)), 0, 1, where=(gt_segment == 1), color='green', alpha=0.2, label='Ground Truth') # plt.ylim()[1]
+        plt.plot(smooth(as_segment), label='Anomaly Scores', color='blue', linewidth=0.2)
+        plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold', linewidth=0.2)
+        plt.fill_between(range(len(as_segment)), 0, 1, where=(gt_segment == 1), color='blue', alpha=0.3, label='Ground Truth') # plt.ylim()[1]
         plt.xlabel('Time')
         plt.ylabel('Anomaly Score')
         plt.title(f'Anomaly Scores Over Time (Area{start_idx})')
         plt.legend()
         # Adjust tick direction for the secgtond subplot
-        #ax2 = plt.gca()  # Get the current axes (second subplot)
-        #ax2.tick_params(axis='both', direction='in')  # Set tick direction for both x and y axes
+        ax2 = plt.gca()  # Get the current axes (second subplot)
+        ax2.tick_params(axis='both', direction='in')  # Set tick direction for both x and y axes
         #plt.ylim([ymin, ymax])
         # Save the plot to a file
         # Adjust layout to prevent overlap
         plt.tight_layout()
 
         # Save the combined plot to a file
-        plot_filename = f'combined_plot_idx_{start_idx}.png'
+        timestamp = datetime.now().strftime('%d%m%y%H%M')
+        plot_filename = f'NEWcombined_plot_idx_{timestamp}.png'
         plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
         print(f"Combined plot saved to {plot_filename}")
         #plt.show()

@@ -5,7 +5,7 @@ from torch.backends import cudnn
 from utils.utils import *
 from solver import Solver
 import time
-#import warnings
+ #import warnings
 #warnings.filterwarnings('ignore')
 
 import sys
@@ -50,10 +50,14 @@ def main(config):
         solver.train()
     elif config.mode == 'test':
         solver.test()
-    
-    
-
     return solver
+    # # # In your main script or after training
+    # # bifurcation_results = solver.generate_bifurcation_analysis('q_param')
+    # # print("Bifurcation analysis results:", bifurcation_results)
+    #     enhanced_solver = add_plotter_to_solver(solver)
+    #     plot_results, summary_results = create_plots_from_solver(enhanced_solver)
+    #     accuracy, precision, recall, f_score, plot_results, summary_results = enhanced_solver.enhanced_test_with_plots()
+ 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -136,5 +140,3 @@ if __name__ == '__main__':
         #     sys.stdout.flush()
         #     time.sleep(0.1)
     main(config)
-
-
