@@ -206,7 +206,7 @@ class Solver(object):
             prior_loss = prior_loss / len(prior)
 
             loss_1.append((prior_loss - series_loss).item())
-
+            loss_2.append((prior_loss + series_loss).item())
         return np.average(loss_1), np.average(loss_2)
 
         ####################################################################################################

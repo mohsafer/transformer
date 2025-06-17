@@ -3,7 +3,7 @@ import argparse
 import numpy as np
 from torch.backends import cudnn
 from utils.utils import *
-from solver import Solver
+from solver2 import Solver
 import time
  #import warnings
 #warnings.filterwarnings('ignore')

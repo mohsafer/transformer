@@ -1,0 +1,1375 @@
+
+
+
+2025-06-12 13:46:31 | Divergence: tsallis(q=0.1) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 0.6
+batch_size: 128
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 0.1
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+Epoch: 1, Cost time: 582.473s, Loss: 0.000000
+Epoch: 2, Cost time: 581.233s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.02615713927522302[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9847
+pa_precision          : 0.9831
+pa_recall             : 0.9556
+pa_f_score            : 0.9692
+MCC_score             : 0.9592
+Affiliation precision : 0.5274
+Affiliation recall    : 0.7146
+R_AUC_ROC             : 0.8029
+R_AUC_PR              : 0.8522
+VUS_ROC               : 0.7849
+VUS_PR                : 0.8382
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 71
+Detected anomaly starts: 19
+Detected anomaly starts at indices: 4875, 7062, 7799, 15630, 17237, 17991, 29681, 32519, 33884, 36405, 44757, 48124, 53307, 55525, 60023, 65812, 78365, 80599, 82581
+Total number of indices: 84480
+====================  FINAL METRICS  ===================
+Accuracy : 0.9847, Precision : 0.9831, Recall : 0.9556, F-score : 0.9692 
+
+
+
+
+
+
+2025-06-12 14:11:12 | Divergence: tsallis(q=0.2) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 0.6
+batch_size: 128
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 0.2
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+Epoch: 1, Cost time: 578.930s, Loss: 0.000000
+Epoch: 2, Cost time: 580.946s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.4385061322450697[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9859
+pa_precision          : 0.9870
+pa_recall             : 0.9564
+pa_f_score            : 0.9715
+MCC_score             : 0.9623
+Affiliation precision : 0.5514
+Affiliation recall    : 0.6902
+R_AUC_ROC             : 0.8218
+R_AUC_PR              : 0.8670
+VUS_ROC               : 0.7801
+VUS_PR                : 0.8358
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 71
+Detected anomaly starts: 19
+Detected anomaly starts at indices: 3000, 4875, 7062, 7799, 15630, 17237, 17991, 32519, 33884, 44757, 48124, 53307, 55525, 60023, 65812, 68805, 78365, 80599, 82581
+Total number of indices: 84480
+====================  FINAL METRICS  ===================
+Accuracy : 0.9859, Precision : 0.9870, Recall : 0.9564, F-score : 0.9715 
+
+
+
+
+
+
+2025-06-12 14:35:42 | Divergence: tsallis(q=0.8) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 0.6
+batch_size: 128
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 0.8
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+Epoch: 1, Cost time: 581.294s, Loss: 0.000000
+Epoch: 2, Cost time: 579.831s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.9999998807907104[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9878
+pa_precision          : 0.9842
+pa_recall             : 0.9672
+pa_f_score            : 0.9756
+MCC_score             : 0.9675
+Affiliation precision : 0.5454
+Affiliation recall    : 0.6921
+R_AUC_ROC             : 0.8342
+R_AUC_PR              : 0.8748
+VUS_ROC               : 0.7950
+VUS_PR                : 0.8454
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 71
+Detected anomaly starts: 17
+Detected anomaly starts at indices: 3248, 4875, 7062, 7799, 15630, 17237, 17991, 44757, 48124, 53307, 55525, 60023, 65812, 72423, 78365, 80599, 82581
+Total number of indices: 84480
+====================  FINAL METRICS  ===================
+Accuracy : 0.9878, Precision : 0.9842, Recall : 0.9672, F-score : 0.9756 
+
+
+
+
+
+
+2025-06-12 15:05:39 | Divergence: tsallis(q=1.0) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 0.6
+batch_size: 128
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 1.0
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+Epoch: 1, Cost time: 582.822s, Loss: 0.000000
+Epoch: 2, Cost time: 581.492s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 1.0[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.7483
+pa_precision          : 0.0000
+pa_recall             : 0.0000
+pa_f_score            : 0.0000
+MCC_score             : nan
+Affiliation precision : nan
+Affiliation recall    : 0.0000
+R_AUC_ROC             : 0.5187
+R_AUC_PR              : 0.6528
+VUS_ROC               : 0.5185
+VUS_PR                : 0.6522
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 71
+Detected anomaly starts: 0
+No anomalies were correctly detected by the model.
+Total number of indices: 84480
+====================  FINAL METRICS  ===================
+Accuracy : 0.7483, Precision : 0.0000, Recall : 0.0000, F-score : 0.0000 
+
+
+
+
+
+
+2025-06-12 17:51:52 | Divergence: tsallis(q=1.2) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 0.6
+batch_size: 128
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 1.2
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+Epoch: 1, Cost time: 581.539s, Loss: 0.000000
+Epoch: 2, Cost time: 580.611s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 1.0[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.7483
+pa_precision          : 0.0000
+pa_recall             : 0.0000
+pa_f_score            : 0.0000
+MCC_score             : nan
+Affiliation precision : nan
+Affiliation recall    : 0.0000
+R_AUC_ROC             : 0.5187
+R_AUC_PR              : 0.6528
+VUS_ROC               : 0.5185
+VUS_PR                : 0.6522
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 71
+Detected anomaly starts: 0
+No anomalies were correctly detected by the model.
+Total number of indices: 84480
+====================  FINAL METRICS  ===================
+Accuracy : 0.7483, Precision : 0.0000, Recall : 0.0000, F-score : 0.0000 
+
+
+
+
+
+
+2025-06-12 18:17:43 | Divergence: tsallis(q=1.1) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 0.6
+batch_size: 128
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 1.1
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+Epoch: 1, Cost time: 581.921s, Loss: 0.000000
+Epoch: 2, Cost time: 581.598s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 1.0[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.7483
+pa_precision          : 0.0000
+pa_recall             : 0.0000
+pa_f_score            : 0.0000
+MCC_score             : nan
+Affiliation precision : nan
+Affiliation recall    : 0.0000
+R_AUC_ROC             : 0.5187
+R_AUC_PR              : 0.6528
+VUS_ROC               : 0.5185
+VUS_PR                : 0.6522
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 71
+Detected anomaly starts: 0
+No anomalies were correctly detected by the model.
+Total number of indices: 84480
+====================  FINAL METRICS  ===================
+Accuracy : 0.7483, Precision : 0.0000, Recall : 0.0000, F-score : 0.0000 
+
+
+
+
+
+
+2025-06-12 18:42:22 | Divergence: tsallis(q=1.0) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 1.0
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+
+
+
+2025-06-12 18:43:54 | Divergence: tsallis(q=1.0) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 1.0
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+Epoch: 1, Cost time: 582.227s, Loss: 0.000000
+Epoch: 2, Cost time: 582.027s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.9997677206993103[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9885
+pa_precision          : 0.9730
+pa_recall             : 0.9813
+pa_f_score            : 0.9772
+MCC_score             : 0.9695
+Affiliation precision : 0.5335
+Affiliation recall    : 0.8009
+R_AUC_ROC             : 0.9039
+R_AUC_PR              : 0.9215
+VUS_ROC               : 0.8543
+VUS_PR                : 0.8845
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 71
+Detected anomaly starts: 21
+Detected anomaly starts at indices: 3248, 4875, 7062, 7799, 10440, 15630, 17237, 17991, 35623, 44757, 48124, 53307, 55525, 60023, 65894, 68860, 72423, 76909, 78365, 80599, 82581
+Total number of indices: 84480
+====================  FINAL METRICS  ===================
+Accuracy : 0.9885, Precision : 0.9730, Recall : 0.9813, F-score : 0.9772 
+
+
+
+
+
+
+2025-06-12 20:37:24 | Divergence: tsallis(q=1.2) | Epochs: 3 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 256
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 3
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 1.2
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+Epoch: 1, Cost time: 567.902s, Loss: 0.000000
+Epoch: 2, Cost time: 565.177s, Loss: 0.000000
+Epoch: 3, Cost time: 565.724s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 1.0[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.7499
+pa_precision          : 0.0000
+pa_recall             : 0.0000
+pa_f_score            : 0.0000
+MCC_score             : nan
+Affiliation precision : nan
+Affiliation recall    : 0.0000
+R_AUC_ROC             : 0.5189
+R_AUC_PR              : 0.6524
+VUS_ROC               : 0.5187
+VUS_PR                : 0.6517
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 66
+Detected anomaly starts: 0
+No anomalies were correctly detected by the model.
+Total number of indices: 76800
+====================  FINAL METRICS  ===================
+Accuracy : 0.7499, Precision : 0.0000, Recall : 0.0000, F-score : 0.0000 
+
+
+
+
+
+
+2025-06-12 21:26:00 | Divergence: tsallis(q=1.3) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 1.3
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+
+
+
+2025-06-12 21:26:38 | Divergence: tsallis(q=1.3) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 1.3
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+Epoch: 1, Cost time: 580.816s, Loss: 0.000000
+Epoch: 2, Cost time: 579.470s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 1.0[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.7483
+pa_precision          : 0.0000
+pa_recall             : 0.0000
+pa_f_score            : 0.0000
+MCC_score             : nan
+Affiliation precision : nan
+Affiliation recall    : 0.0000
+R_AUC_ROC             : 0.5187
+R_AUC_PR              : 0.6528
+VUS_ROC               : 0.5185
+VUS_PR                : 0.6522
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 71
+Detected anomaly starts: 0
+No anomalies were correctly detected by the model.
+Total number of indices: 84480
+====================  FINAL METRICS  ===================
+Accuracy : 0.7483, Precision : 0.0000, Recall : 0.0000, F-score : 0.0000 
+
+
+
+
+
+
+2025-06-12 21:54:09 | Divergence: tsallis(q=1.2) | Epochs: 3 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 256
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 3
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 1.2
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+Epoch: 1, Cost time: 568.286s, Loss: 0.000000
+Epoch: 2, Cost time: 566.005s, Loss: 0.000000
+Epoch: 3, Cost time: 566.083s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 1.0[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.7499
+pa_precision          : 0.0000
+pa_recall             : 0.0000
+pa_f_score            : 0.0000
+MCC_score             : nan
+Affiliation precision : nan
+Affiliation recall    : 0.0000
+R_AUC_ROC             : 0.5189
+R_AUC_PR              : 0.6524
+VUS_ROC               : 0.5187
+VUS_PR                : 0.6517
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 66
+Detected anomaly starts: 0
+No anomalies were correctly detected by the model.
+Total number of indices: 76800
+====================  FINAL METRICS  ===================
+Accuracy : 0.7499, Precision : 0.0000, Recall : 0.0000, F-score : 0.0000 
+
+
+
+
+
+
+2025-06-12 22:44:37 | Divergence: tsallis(q=1.4) | Epochs: 3 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 256
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 3
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 1.4
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+Epoch: 1, Cost time: 567.647s, Loss: 0.000000
+Epoch: 2, Cost time: 566.000s, Loss: 0.000000
+Epoch: 3, Cost time: 566.092s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 1.0[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.7499
+pa_precision          : 0.0000
+pa_recall             : 0.0000
+pa_f_score            : 0.0000
+MCC_score             : nan
+Affiliation precision : nan
+Affiliation recall    : 0.0000
+R_AUC_ROC             : 0.5189
+R_AUC_PR              : 0.6524
+VUS_ROC               : 0.5187
+VUS_PR                : 0.6517
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 66
+Detected anomaly starts: 0
+No anomalies were correctly detected by the model.
+Total number of indices: 76800
+====================  FINAL METRICS  ===================
+Accuracy : 0.7499, Precision : 0.0000, Recall : 0.0000, F-score : 0.0000 
+
+
+
+
+
+
+2025-06-12 23:22:03 | Divergence: tsallis(q=1.2) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 256
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 1.2
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+Epoch: 1, Cost time: 567.843s, Loss: 0.000000
+Epoch: 2, Cost time: 566.253s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 1.0[0m
+
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 66
+Detected anomaly starts: 0
+No anomalies were correctly detected by the model.
+Total number of indices: 76800
+====================  FINAL METRICS  ===================
+Accuracy : 0.7499, Precision : 0.0000, Recall : 0.0000, F-score : 0.0000 
+
+
+
+
+
+
+2025-06-13 00:04:32 | Divergence: tsallis(q=1.2) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 256
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 1.2
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+
+
+
+2025-06-13 00:11:09 | Divergence: tsallis(q=1.2) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 256
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 1.2
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+Epoch: 1, Cost time: 385.350s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 1.0[0m
+
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 66
+Detected anomaly starts: 0
+No anomalies were correctly detected by the model.
+Total number of indices: 76800
+====================  FINAL METRICS  ===================
+Accuracy : 0.7499, Precision : 0.0000, Recall : 0.0000, F-score : 0.0000 
+
+
+
+
+
+
+2025-06-13 00:24:43 | Divergence: tsallis(q=1.2) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 256
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 1.2
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+Epoch: 1, Cost time: 385.295s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.9999998807907104[0m
+
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 66
+Detected anomaly starts: 3
+Detected anomaly starts at indices: 3000, 65765, 74477
+Total number of indices: 76800
+====================  FINAL METRICS  ===================
+Accuracy : 0.7454, Precision : 0.2703, Recall : 0.0107, F-score : 0.0206 
+
+
+
+
+
+
+2025-06-13 00:43:42 | Divergence: tsallis(q=1.2) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 256
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 1.2
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+
+
+
+2025-06-13 00:49:17 | Divergence: tsallis(q=1.2) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 256
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 1.2
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+Epoch: 1, Cost time: 568.119s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 1.0[0m
+
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 66
+Detected anomaly starts: 0
+No anomalies were correctly detected by the model.
+Total number of indices: 76800
+====================  FINAL METRICS  ===================
+Accuracy : 0.7499, Precision : 0.0000, Recall : 0.0000, F-score : 0.0000 
+
+
+
+
+
+
+2025-06-13 01:03:19 | Divergence: tsallis(q=1.2) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 256
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 1.2
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+
+
+
+2025-06-13 01:07:48 | Divergence: tsallis(q=1.2) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 256
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 1.2
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+====================  Test in progress  ===================
+
+
+
+2025-06-13 01:18:36 | Divergence: tsallis(q=1.2) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 1.2
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+Epoch: 1, Cost time: 581.576s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 1.0[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.7483
+pa_precision          : 0.0000
+pa_recall             : 0.0000
+pa_f_score            : 0.0000
+MCC_score             : nan
+Affiliation precision : nan
+Affiliation recall    : 0.0000
+R_AUC_ROC             : 0.5187
+R_AUC_PR              : 0.6528
+VUS_ROC               : 0.5185
+VUS_PR                : 0.6522
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 71
+Detected anomaly starts: 0
+No anomalies were correctly detected by the model.
+Total number of indices: 84480
+====================  FINAL METRICS  ===================
+Accuracy : 0.7483, Precision : 0.0000, Recall : 0.0000, F-score : 0.0000 
+
+
+
+
+
+
+2025-06-13 01:35:48 | Divergence: tsallis(q=1.2) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 1.2
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 1.0[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.7483
+pa_precision          : 0.0000
+pa_recall             : 0.0000
+pa_f_score            : 0.0000
+MCC_score             : nan
+Affiliation precision : nan
+Affiliation recall    : 0.0000
+R_AUC_ROC             : 0.5187
+R_AUC_PR              : 0.6528
+VUS_ROC               : 0.5185
+VUS_PR                : 0.6522
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 71
+Detected anomaly starts: 0
+No anomalies were correctly detected by the model.
+Total number of indices: 84480
+====================  FINAL METRICS  ===================
+Accuracy : 0.7483, Precision : 0.0000, Recall : 0.0000, F-score : 0.0000 
+
+
+
+
+
+
+2025-06-13 01:45:18 | Divergence: tsallis(q=0.8) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 0.8
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+Epoch: 1, Cost time: 581.031s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.9977251923084258[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9873
+pa_precision          : 0.9706
+pa_recall             : 0.9792
+pa_f_score            : 0.9749
+MCC_score             : 0.9664
+Affiliation precision : 0.5424
+Affiliation recall    : 0.8061
+R_AUC_ROC             : 0.9028
+R_AUC_PR              : 0.9198
+VUS_ROC               : 0.8531
+VUS_PR                : 0.8829
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 71
+Detected anomaly starts: 20
+Detected anomaly starts at indices: 3248, 4875, 7062, 7799, 15630, 17237, 17991, 44757, 47279, 48124, 53307, 55525, 60023, 65894, 68860, 72423, 76909, 78365, 80599, 82581
+Total number of indices: 84480
+====================  FINAL METRICS  ===================
+Accuracy : 0.9873, Precision : 0.9706, Recall : 0.9792, F-score : 0.9749 
+
+
+
+
+
+
+2025-06-13 02:00:31 | Divergence: tsallis(q=1.2) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 4.0
+batch_size: 128
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 1.2
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+Epoch: 1, Cost time: 582.622s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.0[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9688
+pa_precision          : 0.8966
+pa_recall             : 0.9905
+pa_f_score            : 0.9412
+MCC_score             : 0.9222
+Affiliation precision : 0.5327
+Affiliation recall    : 0.8950
+R_AUC_ROC             : 0.9343
+R_AUC_PR              : 0.9179
+VUS_ROC               : 0.8985
+VUS_PR                : 0.8914
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 71
+Detected anomaly starts: 29
+Detected anomaly starts at indices: 3248, 4875, 5167, 7062, 7799, 15248, 15630, 17237, 17991, 32519, 35623, 38424, 44757, 47225, 47279, 48124, 53307, 55525, 60023, 65812, 68805, 68860, 68904, 72423, 76909, 78365, 80599, 82581, 82861
+Total number of indices: 84480
+====================  FINAL METRICS  ===================
+Accuracy : 0.9688, Precision : 0.8966, Recall : 0.9905, F-score : 0.9412 
+
+
+
+
+
+
+2025-06-13 02:16:10 | Divergence: tsallis(q=1.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 4.0
+batch_size: 128
+d_model: 256
+data_path: PSM
+dataset: PSM
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 1.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+Epoch: 1, Cost time: 581.091s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.0[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9822
+pa_precision          : 0.9431
+pa_recall             : 0.9891
+pa_f_score            : 0.9655
+MCC_score             : 0.9541
+Affiliation precision : 0.5453
+Affiliation recall    : 0.8791
+R_AUC_ROC             : 0.9409
+R_AUC_PR              : 0.9379
+VUS_ROC               : 0.9021
+VUS_PR                : 0.9092
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 71
+Detected anomaly starts: 28
+Detected anomaly starts at indices: 3248, 4875, 7062, 7799, 10440, 15630, 17237, 17991, 32519, 35623, 44757, 47225, 47279, 48124, 53307, 55525, 60023, 65641, 65765, 65812, 68805, 68860, 68904, 72423, 76909, 78365, 80599, 82581
+Total number of indices: 84480
+====================  FINAL METRICS  ===================
+Accuracy : 0.9822, Precision : 0.9431, Recall : 0.9891, F-score : 0.9655 
+
+
+
