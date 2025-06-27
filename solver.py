@@ -326,10 +326,11 @@ class Solver(object):
             torch.load(
                 os.path.join(str(self.model_save_path), str(self.data_path) + '_checkpoint.pth')))
         self.model.eval()
-        temperature = 50
+        temperature = 75
 
-        # (1) stastic on the train set
+        # (1) statistic on the train set - collect prior_loss values
         attens_energy = []
+        prior_loss_values = []  # New list to store prior_loss values
         for i, (input_data, labels) in enumerate(self.train_loader):
             input = input_data.float().to(self.device)
             series, prior = self.model(input)
@@ -339,27 +340,33 @@ class Solver(object):
                 if u == 0:
                     series_loss = self.divergence_fn(series[u], (
                             prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
-                                                                                                   self.win_size)).detach()) * temperature
+                                                                                               self.win_size)).detach()) * temperature
                     prior_loss = self.divergence_fn(
                         (prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
-                                                                                                self.win_size)),
+                                                                                            self.win_size)),
                         series[u].detach()) * temperature
                 else:
                     series_loss += self.divergence_fn(series[u], (
                             prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
-                                                                                                   self.win_size)).detach()) * temperature
+                                                                                               self.win_size)).detach()) * temperature
                     prior_loss += self.divergence_fn(
                         (prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
-                                                                                                self.win_size)),
+                                                                                            self.win_size)),
                         series[u].detach()) * temperature
 
             metric = torch.softmax((-series_loss - prior_loss), dim=-1)
             cri = metric.detach().cpu().numpy()
             attens_energy.append(cri)
-            # NEW CODE : Log anomaly scores to TensorBoard
-            #writer.add_scalar('Anomaly Score', np.mean(cri), i)
+            
+            # Store prior_loss values
+            prior_loss_batch = prior_loss.detach().cpu().numpy()
+            prior_loss_values.append(prior_loss_batch)
+            
         attens_energy = np.concatenate(attens_energy, axis=0).reshape(-1)
         train_energy = np.array(attens_energy)
+        
+        # Convert prior_loss to numpy array
+        train_prior_loss = np.concatenate(prior_loss_values, axis=0).reshape(-1)
 
         # (2) find the threshol
         attens_energy = []
@@ -372,18 +379,18 @@ class Solver(object):
                 if u == 0:
                     series_loss = self.divergence_fn(series[u], (
                             prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
-                                                                                                   self.win_size)).detach()) * temperature
+                                                                                               self.win_size)).detach()) * temperature
                     prior_loss = self.divergence_fn(
                         (prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
-                                                                                                self.win_size)),
+                                                                                            self.win_size)),
                         series[u].detach()) * temperature
                 else:
                     series_loss += self.divergence_fn(series[u], (
                             prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
-                                                                                                   self.win_size)).detach()) * temperature
+                                                                                               self.win_size)).detach()) * temperature
                     prior_loss += self.divergence_fn(
                         (prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
-                                                                                                self.win_size)),
+                                                                                            self.win_size)),
                         series[u].detach()) * temperature
 
             metric = torch.softmax((-series_loss - prior_loss), dim=-1)
@@ -392,7 +399,7 @@ class Solver(object):
 
         attens_energy = np.concatenate(attens_energy, axis=0).reshape(-1)
         test_energy = np.array(attens_energy)
-        combined_energy = np.concatenate([train_energy, test_energy], axis=0)
+        combur = np.concatenate([train_energy, test_energy], axis=0)
         thresh = np.percentile(combined_energy, 100 - self.anormly_ratio)
         print('====================  Threshhold  ===================\n')
         #print(f"Threshold : {thresh}\n")
@@ -400,6 +407,7 @@ class Solver(object):
         # (3) evaluation on the test set
         test_labels = []
         attens_energy = []
+        metric_values = []  # New list to store metric values        
         for i, (input_data, labels) in enumerate(self.thre_loader):
             input = input_data.float().to(self.device)
             series, prior = self.model(input)
@@ -409,24 +417,28 @@ class Solver(object):
                 if u == 0:
                     series_loss = self.divergence_fn(series[u], (
                             prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
-                                                                                                   self.win_size)).detach()) * temperature
+                                                                                               self.win_size)).detach()) * temperature
                     prior_loss = self.divergence_fn(
                         (prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
-                                                                                                self.win_size)),
+                                                                                            self.win_size)),
                         series[u].detach()) * temperature
                 else:
                     series_loss += self.divergence_fn(series[u], (
                             prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
-                                                                                                   self.win_size)).detach()) * temperature
+                                                                                               self.win_size)).detach()) * temperature
                     prior_loss += self.divergence_fn(
                         (prior[u] / torch.unsqueeze(torch.sum(prior[u], dim=-1), dim=-1).repeat(1, 1, 1,
-                                                                                                self.win_size)),
+                                                                                            self.win_size)),
                         series[u].detach()) * temperature
             metric = torch.softmax((-series_loss - prior_loss), dim=-1)
             cri = metric.detach().cpu().numpy()
             attens_energy.append(cri)
             test_labels.append(labels)
-            
+            # Store metric values
+            metric_batch = metric.detach().cpu().numpy()
+            metric_values.append(metric_batch)
+                   
+        test_metric = np.concatenate(metric_values, axis=0).reshape(-1)
         attens_energy = np.concatenate(attens_energy, axis=0).reshape(-1)
         test_labels = np.concatenate(test_labels, axis=0).reshape(-1)
         test_energy = np.array(attens_energy)
@@ -491,16 +503,16 @@ class Solver(object):
         print('====================  MODEL DETECTION  ===================')
 
         # Find all ground truth anomaly starts (regardless of predictions)
-        gt_anomaly_starts = np.where((gt[:-1] == 0) & (gt[1:] == 1))[0] + 1
+        anomaly_starts = np.where((gt[:-1] == 0) & (gt[1:] == 1))[0] + 1
 
-        if gt_anomaly_starts.size == 0:
+        if anomaly_starts.size == 0:
             print('No ground truth anomalies found in the dataset.')
             return accuracy, precision, recall, f_score
 
         # Find detected anomaly starts (where both gt and pred transition)
         detected_anomaly_starts = np.where((gt[:-1] == 0) & (gt[1:] == 1) & (pred[:-1] == 0) & (pred[1:] == 1))[0] + 1
 
-        print(f"Ground truth anomaly starts: {len(gt_anomaly_starts)}")
+        print(f"Ground truth anomaly starts: {len(anomaly_starts)}")
         print(f"Detected anomaly starts: {len(detected_anomaly_starts)}")
 
         if detected_anomaly_starts.size == 0:
@@ -563,29 +575,38 @@ class Solver(object):
        # print("Content of  TS:", TS[:100])
 
         #start_idx = np.random.choice(anomaly_starts)
-        start_idx = 10000 # 43050
-        def extract_random_segment(data, segment_length=200, start_idx=None):
-            if len(data) <= segment_length:
-                return data  # Return the entire data if it's shorter than the segment length
-            
+        start_idx = 131000 # 43050
+        segment_length = 3000
+        def extract_random_segment(data, segment_length=3000, start_idx=131000, anomaly_starts=None):
+            n = len(data)
+            # (1) if data is too short, just return it all
+            if n <= segment_length:
+                return data
+
+            # (2) decide where to start
             if start_idx is None:
-                #start_idx = np.random.randint(0, len(test_energy) - segment_length)
-                start_idx = np.random.choice(anomaly_starts)
-            
-            #print(f"Extracting random segment from index {start_idx} to {start_idx + segment_length}")
-            return data[start_idx:start_idx + segment_length]
+                if anomaly_starts is not None and len(anomaly_starts) > 0:
+                    start_idx = np.random.choice(anomaly_starts)
+                else:
+                    start_idx = np.random.randint(0, n - segment_length + 1)
+
+            # (3) clamp to valid range
+            start_idx = max(0, min(start_idx, n - segment_length))
+
+            # (4) slice out the window
+            return data[start_idx : start_idx + segment_length]
 
         # Extract random segments of lengthfgdfg 150
-        segment_length = 30000
+        
         #start_idx = np.random.randint(0, len(anomaly_starts) - segment_length)
         
         print(f"start_idx: {start_idx}")
-        as_segment = extract_random_segment(test_energy, segment_length, start_idx) #Anomaly Score
-        as_segment = np.array(as_segment)
+        as_segment = extract_random_segment(test_metric, segment_length, start_idx, anomaly_starts)
+        #as_segment = np.array(as_segment)
         #test_energy_segment = extract_random_segment(test_energy, segment_length, start_idx)
-        gt_segment = extract_random_segment(gt, segment_length, start_idx) #ground truth
-        TS_segment = extract_random_segment(TS, segment_length, start_idx) #Time Series Data
-        pred_segment = extract_random_segment(pred, segment_length, start_idx)
+        gt_segment = extract_random_segment(gt, segment_length, start_idx, anomaly_starts) #ground truth
+        TS_segment = extract_random_segment(TS, segment_length, start_idx, anomaly_starts) #Time Series Data
+        pred_segment = extract_random_segment(pred, segment_length, start_idx, anomaly_starts)
         #pred_segment = (test_energy_segment > thresh).astype(int)
         #pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
         #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
@@ -617,7 +638,7 @@ class Solver(object):
         import matplotlib.pyplot as plt
         import statistics
 
-        def smooth(y, box_pts=5):
+        def smooth(y, box_pts=6):
             box = np.ones(box_pts)/box_pts
             y_smooth = np.convolve(y, box, mode='same')
             return y_smooth
@@ -629,23 +650,23 @@ class Solver(object):
         
         plt.figure(figsize=(10, 5))
         plt.subplot(2, 1, 1)  # 2 rows, 1 column, first plot
-        plt.plot(smooth(TS_segment), label="Time Series Data", color='black', linewidth=0.2)
-        plt.title("Time Series Plot")
+        plt.plot(smooth(TS_segment), label="Time Series Data", color='black', linewidth=0.4)
+        #plt.title("Time Series Plot")
         plt.xlabel("Time")
         plt.ylabel("Value")
-        plt.legend(loc='upper left', frameon=True, fancybox=True, shadow=True)
+        #plt.legend(loc='upper left', frameon=True, fancybox=True, shadow=True)
         ax1 = plt.gca()  # Get the current axes (first subplot)
         ax1.tick_params(axis='both', direction='in')  # Set tick direction for both x and y axes
         ymin, ymax = plt.ylim()
         #plt.figure(figsize=(12, 6))
         plt.subplot(2, 1, 2)  # 2 rows, 1 column, second plot
-        plt.plot(smooth(as_segment), label='Anomaly Scores', color='blue', linewidth=0.2)
-        plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold', linewidth=0.2)
+        plt.plot(smooth(as_segment), label='Anomaly Scores', color='blue', linewidth=0.3)
+        plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold', linewidth=0.3)
         plt.fill_between(range(len(as_segment)), 0, 1, where=(gt_segment == 1), color='blue', alpha=0.3, label='Ground Truth') # plt.ylim()[1]
         plt.xlabel('Time')
         plt.ylabel('Anomaly Score')
-        plt.title(f'Anomaly Scores Over Time (Area{start_idx})')
-        plt.legend()
+        #plt.title(f'Anomaly Scores Over Time (Area{start_idx})')
+        #plt.legend(loc='upper left', frameon=True, fancybox=True, shadow=True)  # <-- Legend on the left
         # Adjust tick direction for the secgtond subplot
         ax2 = plt.gca()  # Get the current axes (second subplot)
         ax2.tick_params(axis='both', direction='in')  # Set tick direction for both x and y axes
@@ -656,156 +677,9 @@ class Solver(object):
 
         # Save the combined plot to a file
         timestamp = datetime.now().strftime('%d%m%y%H%M')
-        plot_filename = f'NEWcombined_plot_idx_{timestamp}.png'
+        plot_filename = f'AAAAcombined_plot_idx_{timestamp}.png'
         plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
         print(f"Combined plot saved to {plot_filename}")
         #plt.show()
         return accuracy, precision, recall, f_score
 
-        #########################################   3333333322222222222222
-        ####################################################################################################
-        #                                          SEABORNE PLOT                                           #
-        ####################################################################################################
-        
-        # span = 10  # Adjust the span as needed
-        # smoothed_TS_segment = pd.Series(TS_segment).ewm(span=span, adjust=False).mean()
-
-
-        # def plot_with_seaborn(TS_segment, 
-        #                     test_energy_segment, 
-        #                     gt_segment, 
-        #                     thresh, 
-        #                     start_idx):
-        #     # Optional: Set a Seaborn theme/style
-        #     sns.set_theme(style="whitegrid")
-            
-        #     # Create figure and subplots
-        #     fig, axes = plt.subplots(nrows=2, 
-        #                             ncols=1, 
-        #                             figsize=(6, 8), 
-        #                             sharex=False)
-            
-        #     # -------------------------
-        #     # First subplot: Time Series
-        #     # -------------------------
-        #     sns.lineplot(
-        #         x=range(len(TS_segment)), 
-        #         y=TS_segment,
-        #         ax=axes[0],
-        #         color='black',
-        #         label='Time Series Data'
-        #     )
-        #     axes[0].set_title("Time Series Plot")
-        #     axes[0].set_xlabel("Time")
-        #     axes[0].set_ylabel("Value")
-        #     axes[0].legend()
-            
-        #     # Adjust tick direction
-        #     axes[0].tick_params(axis='both', direction='in')
-            
-        #     # Store y-limits from the first subplot
-        #     ymin, ymax = axes[0].get_ylim()
-            
-        #     # --------------------------
-        #     # Second subplot: Anomaly Scores
-        #     # --------------------------
-        #     sns.lineplot(
-        #         x=range(len(test_energy_segment)),
-        #         y=test_energy_segment,
-        #         ax=axes[1],
-        #         color='black',
-        #         label='Anomaly Scores'
-        #     )
-            
-        #     # Threshold line
-        #     axes[1].axhline(y=thresh, color='red', linestyle='--', label='Threshold')
-            
-        #     # Fill region where ground truth is 1
-        #     axes[1].fill_between(
-        #         x=range(len(test_energy_segment)), 
-        #         y1=ymin, 
-        #         y2=axes[1].get_ylim()[1],
-        #         where=(gt_segment == 1),
-        #         color='green', 
-        #         alpha=0.2, 
-        #         label='Ground Truth'
-        #     )
-            
-        #     axes[1].set_xlabel("Time")
-        #     axes[1].set_ylabel("Anomaly Score")
-        #     axes[1].set_title(f"Anomaly Scores Over Time (Area {start_idx})")
-        #     axes[1].legend()
-        #     axes[1].tick_params(axis='both', direction='in')
-            
-        #     # Tight layout to prevent overlap
-        #     fig.tight_layout()
-
-        #     # Save the combined plot to a file
-        #     plot_filename = f'SEABORNcombined_plot_idx_{start_idx}.png'
-        #     plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
-        #     print(f"Combined plot saved to {plot_filename}")
-
-        #     # If you really want two separate saves for some reason
-        #     plot_filename = f'SEABORNanomaly_scores_idx_{start_idx}.png'
-        #     plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
-        #     print(f"Plot saved to {plot_filename}")
-
-        #     # Close the figure if running in a script or notebook to manage resources
-        #     plt.close(fig)
-
-
-
-        # plot_with_seaborn(TS_segment, 
-        #                 test_energy_segment, 
-        #                 gt_segment, 
-        #                 thresh, 
-        #                 start_idx)
-        # start_idx = np.random.choice(anomaly_starts)
-        # test_energy_segment = extract_random_segment(attens_energy, segment_length, start_idx)
-        # gt_segment = extract_random_segment(gt, segment_length, start_idx)
-        # TS_segment = extract_random_segment(TS, segment_length, start_idx)
-
-        
-
-
-        # # OLD Plot for the random segment
-        # def extract_random_segment(data, segment_length=200):
-        #     if len(data) <= segment_length:
-        #         return data  # Return the entire data if it's shorter than the segment length
-        #     start_idx = np.random.randint(0, len(data) - segment_length)
-        #     start_idx = 618200
-        #     print(f"Extracting random segment from index {start_idx} to {start_idx + segment_length}")
-        #     return data[start_idx:start_idx + segment_length]
-
-        # # Extract random segments of lengthfgdfg 150
-        # segment_length = 200
-        # start_idx = 618200
-        # #start_idx = np.random.randint(0, len(test_energy) - segment_length)
-
-        # test_energy_segment = extract_random_segment(test_energy, segment_length, start_idx)
-        
-        # #thresh_segment = np.percentile(test_energy_segment, 100 - self.anormly_ratio)
-        # gt_segment = extract_random_segment(gt, segment_length, start_idx)
-        # #pred_segment = (test_energy_segment > thresh).astype(int)
-        # #pred_segment[gt_segment == 1] = 1  # Force predictions to match ground truth anomalies
-
-        # #pred_segment=np.array(pred_segment)
-        # #gt_segment=np.array(gt_segment)
-
-
-        # # Plot the random segment
-        # plt.figure(figsize=(12, 6))
-        # plt.plot(test_energy_segment, label='Anomaly Scores', color='blue')
-        # plt.axhline(y=thresh, color='red', linestyle='--', label='Threshold')
-        # plt.fill_between(range(len(test_energy_segment)), 0, 1, where=(gt_segment == 1), color='yellow', alpha=0.3, label='Ground Truth Anomalies')
-        # plt.xlabel('Time')
-        # plt.ylabel('Anomaly Score')
-        # plt.title(f'Anomaly Scores Over Time (Random Segment of Length {segment_length})')
-        # plt.legend()
-
-        # # Save the plot to a file
-        # plot_filename = f'AAAAAAAAAAAAAanomaly_idx{start_idx}.png'
-        # # plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
-        # # print(f"Plot saved to {plot_filename}")
-        # # plt.show()
-        # return accuracy, precision, recall, f_score

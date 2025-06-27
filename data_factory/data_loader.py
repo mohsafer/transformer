@@ -211,8 +211,7 @@ class SMDSegLoader(object):
         # print("======77==========DEBUG Column================")
 
         # # Extract the first column (dimension)
-        sec = np.array(data[:, 10])  # Shape: (708405,)
-        self.TS = sec[:698000] # Shape: (698000,)
+
         # print("shape of sec:", sec.shape)
         # print("Shape of TS:", TS.shape)
         # np.save(data_path + "/TS.npy", TS)
@@ -238,7 +237,8 @@ class SMDSegLoader(object):
         data_len = len(self.train)
         self.val = self.train[(int)(data_len * 0.8):]
         self.test_labels = np.load(data_path + "/SMD_test_label.npy")[:]
-
+        sec = np.array(test_data[:, 2])  # Shape: (708405,)
+        self.TS = sec[:698000] # Shape: (698000,)
     def __len__(self):
         if self.mode == "train":
             return (self.train.shape[0] - self.win_size) // self.step + 1

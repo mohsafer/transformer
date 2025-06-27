@@ -434,3 +434,3953 @@ Accuracy : 0.9901, Precision : 0.9351, Recall : 0.9908, F-score : 0.9622
 
 
 
+
+
+
+2025-06-18 04:08:10 | Divergence: tsallis(q=1.5) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [3, 5, 7]
+q_param: 1.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 30
+====================  Train  ===================
+====================  Test in progress  ===================
+
+
+
+2025-06-18 04:09:41 | Divergence: tsallis(q=0.5) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [3, 5, 7]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 30
+====================  Train  ===================
+====================  Test in progress  ===================
+
+
+
+2025-06-18 04:12:31 | Divergence: tsallis(q=0.5) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 30
+====================  Train  ===================
+Wed Jun 18 04:13:10 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   41C    P0             56W /  250W |    3730MiB /  32768MiB |     57%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          127129      C   python                                 3726MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 78.001s, Loss: 0.000000
+Wed Jun 18 04:14:28 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   48C    P0             59W /  250W |    3748MiB /  32768MiB |      5%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          127129      C   python                                 3744MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 2, Cost time: 77.074s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.8143951189517987[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9882
+pa_precision          : 0.9433
+pa_recall             : 0.9664
+pa_f_score            : 0.9547
+MCC_score             : nan
+Affiliation precision : 0.4593
+Affiliation recall    : 0.8615
+R_AUC_ROC             : 0.8604
+R_AUC_PR              : 0.8549
+VUS_ROC               : 0.8526
+VUS_PR                : 0.8482
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 67
+Detected anomaly starts: 45
+Detected anomaly starts at indices: 29309, 48185, 55185, 63560, 80719, 96587, 111309, 120810, 129450, 137498, 145196, 153150, 169976, 176742, 184648, 185249, 193153, 193767, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 261000, 269316, 277998, 286142, 295003, 303560, 311106, 318835, 326366, 343305, 356523, 357913, 358910, 368280, 372322, 384105, 399770, 404200, 417253, 421136
+Total number of indices: 426240
+====================  FINAL METRICS  ===================
+Accuracy : 0.9882, Precision : 0.9433, Recall : 0.9664, F-score : 0.9547 
+
+
+
+
+
+
+2025-06-18 04:18:06 | Divergence: tsallis(q=0.5) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 45
+====================  Train  ===================
+Wed Jun 18 04:18:55 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   44C    P0             55W /  250W |    9610MiB /  32768MiB |     23%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          134898      C   python                                 9606MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 100.739s, Loss: 0.000000
+Wed Jun 18 04:20:35 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   50C    P0             56W /  250W |    9642MiB /  32768MiB |     36%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          134898      C   python                                 9638MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 2, Cost time: 99.965s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.9998170733451843[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9880
+pa_precision          : 0.9320
+pa_recall             : 0.9780
+pa_f_score            : 0.9544
+MCC_score             : 8.0556
+Affiliation precision : 0.5054
+Affiliation recall    : 0.9656
+R_AUC_ROC             : 0.9328
+R_AUC_PR              : 0.9130
+VUS_ROC               : 0.9171
+VUS_PR                : 0.8993
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 67
+Detected anomaly starts: 51
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 48185, 55185, 63560, 72485, 80719, 88248, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176132, 176742, 185249, 193767, 202277, 210488, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 286142, 295003, 311106, 318835, 349995, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200, 417253, 424238
+Total number of indices: 426240
+====================  FINAL METRICS  ===================
+Accuracy : 0.9880, Precision : 0.9320, Recall : 0.9780, F-score : 0.9544 
+
+
+
+
+
+
+2025-06-18 04:24:12 | Divergence: tsallis(q=0.5) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 60
+====================  Train  ===================
+Wed Jun 18 04:25:12 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   45C    P0             53W /  250W |    9536MiB /  32768MiB |     33%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          142669      C   python                                 9532MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 127.157s, Loss: 0.000000
+Wed Jun 18 04:27:19 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   50C    P0             54W /  250W |    9542MiB /  32768MiB |      8%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          142669      C   python                                 9538MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 2, Cost time: 126.571s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.9985162651538848[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9898
+pa_precision          : 0.9430
+pa_recall             : 0.9806
+pa_f_score            : 0.9615
+MCC_score             : nan
+Affiliation precision : 0.4776
+Affiliation recall    : 0.8966
+R_AUC_ROC             : 0.8924
+R_AUC_PR              : 0.8827
+VUS_ROC               : 0.8870
+VUS_PR                : 0.8780
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 66
+Detected anomaly starts: 48
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 48185, 55185, 63560, 80719, 96587, 104397, 111309, 120810, 129450, 137498, 145196, 153150, 169976, 176742, 184648, 185249, 193767, 202277, 210488, 210779, 211628, 219417, 227445, 236108, 244612, 261000, 269316, 277998, 286142, 295003, 318835, 326366, 349995, 353905, 356523, 357913, 358910, 368280, 373522, 384105, 399770, 404200, 417253, 421136
+Total number of indices: 422400
+====================  FINAL METRICS  ===================
+Accuracy : 0.9898, Precision : 0.9430, Recall : 0.9806, F-score : 0.9615 
+
+
+
+
+
+
+2025-06-18 04:31:16 | Divergence: tsallis(q=0.5) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 75
+====================  Train  ===================
+Wed Jun 18 04:32:27 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   47C    P0             52W /  250W |   12654MiB /  32768MiB |     38%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          150548      C   python                                12650MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 154.186s, Loss: 0.000000
+Wed Jun 18 04:35:00 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   51C    P0             53W /  250W |   12660MiB /  32768MiB |     18%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          150548      C   python                                12656MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 2, Cost time: 153.213s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.9964680707454681[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9890
+pa_precision          : 0.9333
+pa_recall             : 0.9855
+pa_f_score            : 0.9587
+MCC_score             : nan
+Affiliation precision : 0.5190
+Affiliation recall    : 0.9865
+R_AUC_ROC             : 0.9571
+R_AUC_PR              : 0.9346
+VUS_ROC               : 0.9430
+VUS_PR                : 0.9224
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 66
+Detected anomaly starts: 53
+Detected anomaly starts at indices: 4690, 21129, 29309, 48185, 55185, 63560, 72485, 80719, 88248, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 169976, 176742, 184648, 185249, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 311106, 326366, 343305, 349995, 353905, 356523, 357913, 358910, 368280, 372322, 376142, 384105, 391736, 399770, 404200, 408351, 417253, 421136
+Total number of indices: 422400
+====================  FINAL METRICS  ===================
+Accuracy : 0.9890, Precision : 0.9333, Recall : 0.9855, F-score : 0.9587 
+
+
+
+
+
+
+2025-06-18 04:39:56 | Divergence: tsallis(q=0.5) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 90
+====================  Train  ===================
+Wed Jun 18 04:41:19 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   48C    P0             57W /  250W |   12682MiB /  32768MiB |     72%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          158332      C   python                                12678MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 185.943s, Loss: 0.000000
+Wed Jun 18 04:44:25 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   51C    P0             61W /  250W |   12684MiB /  32768MiB |     61%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          158332      C   python                                12680MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 2, Cost time: 185.556s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.7900128960609436[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9897
+pa_precision          : 0.9354
+pa_recall             : 0.9878
+pa_f_score            : 0.9609
+MCC_score             : 6.9170
+Affiliation precision : 0.5131
+Affiliation recall    : 0.9886
+R_AUC_ROC             : 0.9581
+R_AUC_PR              : 0.9363
+VUS_ROC               : 0.9487
+VUS_PR                : 0.9281
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 67
+Detected anomaly starts: 55
+Detected anomaly starts at indices: 13090, 21129, 29309, 39422, 48185, 55185, 63560, 72485, 80719, 88248, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 169976, 176132, 176742, 184648, 185249, 193767, 201667, 202277, 210779, 211628, 219417, 227445, 236108, 244612, 261000, 269316, 277998, 286142, 295003, 303560, 311106, 343305, 349995, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200, 417253, 421136, 424238
+Total number of indices: 426240
+====================  FINAL METRICS  ===================
+Accuracy : 0.9897, Precision : 0.9354, Recall : 0.9878, F-score : 0.9609 
+
+
+
+
+
+
+2025-06-18 04:50:03 | Divergence: tsallis(q=0.5) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Wed Jun 18 04:51:40 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   49C    P0             58W /  250W |    5692MiB /  32768MiB |     64%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          166128      C   python                                 5688MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 220.132s, Loss: 0.000000
+Wed Jun 18 04:55:19 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   51C    P0             56W /  250W |    7958MiB /  32768MiB |     87%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          166128      C   python                                 7954MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 2, Cost time: 218.597s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.38541570574043993[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9900
+pa_precision          : 0.9351
+pa_recall             : 0.9901
+pa_f_score            : 0.9618
+MCC_score             : nan
+Affiliation precision : 0.5157
+Affiliation recall    : 0.9878
+R_AUC_ROC             : 0.9666
+R_AUC_PR              : 0.9434
+VUS_ROC               : 0.9544
+VUS_PR                : 0.9328
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 53
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 185249, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 303560, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200, 408351
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9900, Precision : 0.9351, Recall : 0.9901, F-score : 0.9618 
+
+
+
+
+
+
+2025-06-18 05:08:08 | Divergence: tsallis(q=0.5) | Epochs: 2 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 2
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 120
+====================  Train  ===================
+Wed Jun 18 05:09:57 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   50C    P0             55W /  250W |    5692MiB /  32768MiB |     86%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          174215      C   python                                 5688MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 248.945s, Loss: 0.000000
+Wed Jun 18 05:14:05 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   51C    P0             51W /  250W |    8914MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          174215      C   python                                 8910MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 2, Cost time: 248.312s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.05413929771632257[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9895
+pa_precision          : 0.9362
+pa_recall             : 0.9848
+pa_f_score            : 0.9599
+MCC_score             : nan
+Affiliation precision : 0.5097
+Affiliation recall    : 0.9865
+R_AUC_ROC             : 0.9640
+R_AUC_PR              : 0.9416
+VUS_ROC               : 0.9517
+VUS_PR                : 0.9309
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 50
+Detected anomaly starts at indices: 21129, 29309, 48185, 55185, 63560, 72485, 80719, 96587, 104397, 111309, 120810, 129450, 137498, 145196, 153150, 169976, 176742, 184648, 185249, 193767, 202277, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 311106, 318835, 326366, 343305, 349995, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200, 408351
+Total number of indices: 414720
+====================  FINAL METRICS  ===================
+Accuracy : 0.9895, Precision : 0.9362, Recall : 0.9848, F-score : 0.9599 
+
+
+
+
+
+
+2025-06-18 05:20:02 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 135
+====================  Train  ===================
+Wed Jun 18 05:22:07 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   50C    P0             57W /  250W |   18044MiB /  32768MiB |     66%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          182148      C   python                                18040MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 286.839s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.01638413093983984[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9900
+pa_precision          : 0.9369
+pa_recall             : 0.9883
+pa_f_score            : 0.9619
+MCC_score             : nan
+Affiliation precision : 0.5145
+Affiliation recall    : 0.9856
+R_AUC_ROC             : 0.9657
+R_AUC_PR              : 0.9433
+VUS_ROC               : 0.9520
+VUS_PR                : 0.9315
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 53
+Detected anomaly starts at indices: 4690, 13090, 21129, 39422, 48185, 55185, 63560, 72485, 80719, 88248, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 184648, 185249, 193153, 193767, 201667, 202277, 211628, 219417, 227445, 236108, 244612, 261000, 269316, 277998, 286142, 295003, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200, 408351
+Total number of indices: 414720
+====================  FINAL METRICS  ===================
+Accuracy : 0.9900, Precision : 0.9369, Recall : 0.9883, F-score : 0.9619 
+
+
+
+
+
+
+2025-06-18 05:31:29 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 150
+====================  Train  ===================
+Wed Jun 18 05:33:51 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   49C    P0             49W /  250W |   18044MiB /  32768MiB |     28%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          187850      C   python                                18040MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 326.689s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.03761486116796818[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9882
+pa_precision          : 0.9347
+pa_recall             : 0.9770
+pa_f_score            : 0.9554
+MCC_score             : nan
+Affiliation precision : 0.5164
+Affiliation recall    : 0.9832
+R_AUC_ROC             : 0.9604
+R_AUC_PR              : 0.9380
+VUS_ROC               : 0.9310
+VUS_PR                : 0.9125
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 66
+Detected anomaly starts: 45
+Detected anomaly starts at indices: 21129, 29309, 39422, 48185, 55185, 63560, 80719, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 169976, 176742, 184648, 185249, 193767, 202277, 211628, 219417, 227445, 244612, 261000, 269316, 277998, 286142, 295003, 311106, 326366, 343305, 353905, 356523, 357913, 358910, 368280, 373522, 376142, 384105, 391736, 399770, 404200, 417253, 421136
+Total number of indices: 422400
+====================  FINAL METRICS  ===================
+Accuracy : 0.9882, Precision : 0.9347, Recall : 0.9770, F-score : 0.9554 
+
+
+
+
+
+
+2025-06-18 05:41:17 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 165
+====================  Train  ===================
+Wed Jun 18 05:43:57 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   50C    P0             54W /  250W |   18046MiB /  32768MiB |     88%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          193528      C   python                                18042MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 368.127s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.12079928815364838[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9888
+pa_precision          : 0.9366
+pa_recall             : 0.9800
+pa_f_score            : 0.9578
+MCC_score             : nan
+Affiliation precision : 0.5141
+Affiliation recall    : 0.9807
+R_AUC_ROC             : 0.9479
+R_AUC_PR              : 0.9280
+VUS_ROC               : 0.9287
+VUS_PR                : 0.9114
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 66
+Detected anomaly starts: 48
+Detected anomaly starts at indices: 21129, 29309, 39422, 48185, 55185, 63560, 80719, 88248, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 169976, 176742, 185249, 193767, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 295003, 311106, 326366, 334763, 343305, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 399770, 404200, 408351, 417253
+Total number of indices: 422400
+====================  FINAL METRICS  ===================
+Accuracy : 0.9888, Precision : 0.9366, Recall : 0.9800, F-score : 0.9578 
+
+
+
+
+
+
+2025-06-18 05:57:11 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 180
+====================  Train  ===================
+Wed Jun 18 06:00:07 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   50C    P0             58W /  250W |   18046MiB /  32768MiB |     73%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          199234      C   python                                18042MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 407.711s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.0055398407299071875[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9880
+pa_precision          : 0.9337
+pa_recall             : 0.9750
+pa_f_score            : 0.9539
+MCC_score             : 6.1296
+Affiliation precision : 0.5168
+Affiliation recall    : 0.9819
+R_AUC_ROC             : 0.9376
+R_AUC_PR              : 0.9176
+VUS_ROC               : 0.9182
+VUS_PR                : 0.9007
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 44
+Detected anomaly starts at indices: 13090, 21129, 29309, 39422, 48185, 55185, 63560, 72485, 80719, 96587, 104397, 111309, 120810, 129450, 137498, 145196, 153150, 169976, 176742, 184648, 185249, 193767, 202277, 210779, 211628, 219417, 227445, 236108, 244612, 261000, 269316, 277998, 286142, 295003, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 399770, 404200
+Total number of indices: 414720
+====================  FINAL METRICS  ===================
+Accuracy : 0.9880, Precision : 0.9337, Recall : 0.9750, F-score : 0.9539 
+
+
+
+
+
+
+2025-06-18 06:08:05 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 195
+====================  Train  ===================
+Wed Jun 18 06:11:21 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   52C    P0             56W /  250W |   18046MiB /  32768MiB |     64%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          204981      C   python                                18042MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 447.459s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.07706951647996907[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9886
+pa_precision          : 0.9396
+pa_recall             : 0.9739
+pa_f_score            : 0.9564
+MCC_score             : nan
+Affiliation precision : 0.5039
+Affiliation recall    : 0.9803
+R_AUC_ROC             : 0.9453
+R_AUC_PR              : 0.9269
+VUS_ROC               : 0.9173
+VUS_PR                : 0.9026
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 67
+Detected anomaly starts: 46
+Detected anomaly starts at indices: 4690, 21129, 48185, 55185, 63560, 72485, 80719, 96587, 104397, 111309, 120810, 129450, 153150, 169976, 176742, 184648, 185249, 193767, 202277, 210779, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 295003, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 373522, 376142, 384105, 391736, 399770, 404200, 417253, 421136
+Total number of indices: 424320
+====================  FINAL METRICS  ===================
+Accuracy : 0.9886, Precision : 0.9396, Recall : 0.9739, F-score : 0.9564 
+
+
+
+
+
+
+2025-06-18 06:19:51 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 210
+====================  Train  ===================
+Wed Jun 18 06:23:26 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   50C    P0             53W /  250W |   18046MiB /  32768MiB |     49%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          210682      C   python                                18042MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 490.688s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.08664481177926026[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9862
+pa_precision          : 0.9292
+pa_recall             : 0.9648
+pa_f_score            : 0.9467
+MCC_score             : 9.5610
+Affiliation precision : 0.5316
+Affiliation recall    : 0.9743
+R_AUC_ROC             : 0.8809
+R_AUC_PR              : 0.8666
+VUS_ROC               : 0.8688
+VUS_PR                : 0.8559
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 62
+Detected anomaly starts: 37
+Detected anomaly starts at indices: 21129, 29309, 48185, 55185, 63560, 80719, 96587, 111309, 120810, 129450, 153150, 160222, 169976, 176742, 185249, 193153, 193767, 202277, 219417, 227445, 236108, 244612, 261000, 269316, 277998, 286142, 295003, 311106, 349995, 356523, 357913, 358910, 368280, 372322, 373522, 384105, 399770
+Total number of indices: 403200
+====================  FINAL METRICS  ===================
+Accuracy : 0.9862, Precision : 0.9292, Recall : 0.9648, F-score : 0.9467 
+
+
+
+
+
+
+2025-06-21 02:59:40 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 256
+d_model: 128
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Sat Jun 21 03:00:30 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   43C    P0             55W /  250W |   12820MiB /  32768MiB |     67%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          552921      C   python                                12816MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 110.307s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.38754560768604285[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9897
+pa_precision          : 0.9352
+pa_recall             : 0.9873
+pa_f_score            : 0.9605
+MCC_score             : 6.2381
+Affiliation precision : 0.5113
+Affiliation recall    : 0.9858
+R_AUC_ROC             : 0.9577
+R_AUC_PR              : 0.9358
+VUS_ROC               : 0.9440
+VUS_PR                : 0.9239
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 62
+Detected anomaly starts: 51
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 88248, 96587, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 184648, 185249, 193153, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 303560, 311106, 343305, 349995, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 399770
+Total number of indices: 403200
+====================  FINAL METRICS  ===================
+Accuracy : 0.9897, Precision : 0.9352, Recall : 0.9873, F-score : 0.9605 
+
+
+
+
+
+
+2025-06-21 03:04:44 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 256
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Sat Jun 21 03:06:18 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   49C    P0             53W /  250W |    9856MiB /  32768MiB |     56%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          558600      C   python                                 9852MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 211.364s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.38787009984254894[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9899
+pa_precision          : 0.9349
+pa_recall             : 0.9890
+pa_f_score            : 0.9612
+MCC_score             : 6.0277
+Affiliation precision : 0.5158
+Affiliation recall    : 0.9877
+R_AUC_ROC             : 0.9661
+R_AUC_PR              : 0.9429
+VUS_ROC               : 0.9539
+VUS_PR                : 0.9323
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 62
+Detected anomaly starts: 50
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 185249, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770
+Total number of indices: 403200
+====================  FINAL METRICS  ===================
+Accuracy : 0.9899, Precision : 0.9349, Recall : 0.9890, F-score : 0.9612 
+
+
+
+
+
+
+2025-06-21 03:11:34 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 256
+d_model: 512
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Sat Jun 21 03:15:35 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   55C    P0            231W /  250W |   18242MiB /  32768MiB |     99%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          564304      C   python                                18238MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 528.579s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.4146528241038355[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9904
+pa_precision          : 0.9358
+pa_recall             : 0.9922
+pa_f_score            : 0.9632
+MCC_score             : nan
+Affiliation precision : 0.5151
+Affiliation recall    : 0.9880
+R_AUC_ROC             : 0.9676
+R_AUC_PR              : 0.9445
+VUS_ROC               : 0.9568
+VUS_PR                : 0.9352
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 62
+Detected anomaly starts: 53
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 88248, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 184648, 185249, 193153, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770
+Total number of indices: 403200
+====================  FINAL METRICS  ===================
+Accuracy : 0.9904, Precision : 0.9358, Recall : 0.9922, F-score : 0.9632 
+
+
+
+
+
+
+2025-06-21 03:25:18 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 256
+d_model: 1024
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Sat Jun 21 03:38:10 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   55C    P0            217W /  250W |   23726MiB /  32768MiB |     99%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          570280      C   python                                23722MiB |
++-----------------------------------------------------------------------------------------+
+
+====================  Test in progress  ===================
+
+
+
+2025-06-21 03:45:14 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 1024
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Sat Jun 21 03:58:06 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   55C    P0            258W /  250W |   18288MiB /  32768MiB |     99%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          572954      C   python                                18284MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 1663.123s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.40732581973074033[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9899
+pa_precision          : 0.9343
+pa_recall             : 0.9901
+pa_f_score            : 0.9614
+MCC_score             : nan
+Affiliation precision : 0.5177
+Affiliation recall    : 0.9877
+R_AUC_ROC             : 0.9665
+R_AUC_PR              : 0.9431
+VUS_ROC               : 0.9543
+VUS_PR                : 0.9324
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 53
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 185249, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 303560, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200, 408351
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9899, Precision : 0.9343, Recall : 0.9901, F-score : 0.9614 
+
+
+
+
+
+
+2025-06-21 05:18:52 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 1
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Sat Jun 21 05:19:31 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   43C    P0             55W /  250W |    5686MiB /  32768MiB |     72%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          641775      C   python                                 5682MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 86.266s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.028914673663675783[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9839
+pa_precision          : 0.9429
+pa_recall             : 0.9289
+pa_f_score            : 0.9358
+MCC_score             : nan
+Affiliation precision : 0.4432
+Affiliation recall    : 0.8301
+R_AUC_ROC             : 0.7876
+R_AUC_PR              : 0.7913
+VUS_ROC               : 0.7818
+VUS_PR                : 0.7862
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 34
+Detected anomaly starts at indices: 13090, 21129, 29309, 48185, 55185, 63560, 80719, 96587, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 184648, 193153, 210488, 211628, 219417, 227445, 236108, 261000, 269316, 277998, 295003, 311106, 356523, 357913, 358910, 368280, 384105, 399770, 404200
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9839, Precision : 0.9429, Recall : 0.9289, F-score : 0.9358 
+
+
+
+
+
+
+2025-06-21 05:23:10 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 2
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Sat Jun 21 05:24:18 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   47C    P0             57W /  250W |    5690MiB /  32768MiB |     82%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          647442      C   python                                 5686MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 153.048s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.3983505538105905[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9900
+pa_precision          : 0.9348
+pa_recall             : 0.9901
+pa_f_score            : 0.9616
+MCC_score             : nan
+Affiliation precision : 0.5131
+Affiliation recall    : 0.9878
+R_AUC_ROC             : 0.9665
+R_AUC_PR              : 0.9432
+VUS_ROC               : 0.9541
+VUS_PR                : 0.9324
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 53
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 185249, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 303560, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200, 408351
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9900, Precision : 0.9348, Recall : 0.9901, F-score : 0.9616 
+
+
+
+
+
+
+2025-06-21 05:33:26 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Sat Jun 21 05:35:03 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   49C    P0             50W /  250W |    5692MiB /  32768MiB |     31%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          653358      C   python                                 5688MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 219.974s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.40169510275125075[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9900
+pa_precision          : 0.9350
+pa_recall             : 0.9901
+pa_f_score            : 0.9618
+MCC_score             : nan
+Affiliation precision : 0.5161
+Affiliation recall    : 0.9878
+R_AUC_ROC             : 0.9666
+R_AUC_PR              : 0.9434
+VUS_ROC               : 0.9542
+VUS_PR                : 0.9326
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 53
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 185249, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 303560, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200, 408351
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9900, Precision : 0.9350, Recall : 0.9901, F-score : 0.9618 
+
+
+
+
+
+
+2025-06-21 05:40:56 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 4
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Sat Jun 21 05:43:02 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   50C    P0             53W /  250W |    5832MiB /  32768MiB |     26%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          659040      C   python                                 5828MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 287.396s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.1875381776690479[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9890
+pa_precision          : 0.9428
+pa_recall             : 0.9721
+pa_f_score            : 0.9572
+MCC_score             : 6.1794
+Affiliation precision : 0.4773
+Affiliation recall    : 0.9439
+R_AUC_ROC             : 0.8726
+R_AUC_PR              : 0.8652
+VUS_ROC               : 0.8737
+VUS_PR                : 0.8660
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 42
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 48185, 55185, 63560, 80719, 96587, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 185249, 193767, 201667, 202277, 211628, 219417, 227445, 236108, 244612, 261000, 269316, 277998, 295003, 311106, 343305, 353905, 356523, 357913, 358910, 368280, 373522, 384105, 391736, 399770, 404200
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9890, Precision : 0.9428, Recall : 0.9721, F-score : 0.9572 
+
+
+
+
+
+
+2025-06-21 05:50:53 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 5
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+
+
+
+2025-06-21 05:53:09 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 5
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Sat Jun 21 05:55:45 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   52C    P0             52W /  250W |   12502MiB /  32768MiB |     98%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          666018      C   python                                12498MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 355.346s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.14571482717990847[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9870
+pa_precision          : 0.9425
+pa_recall             : 0.9554
+pa_f_score            : 0.9489
+MCC_score             : 9.6320
+Affiliation precision : 0.4644
+Affiliation recall    : 0.9102
+R_AUC_ROC             : 0.8804
+R_AUC_PR              : 0.8718
+VUS_ROC               : 0.8766
+VUS_PR                : 0.8683
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 45
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 48185, 55185, 63560, 80719, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 176742, 184648, 185249, 193153, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 261000, 269316, 277998, 286142, 295003, 311106, 349995, 356523, 357913, 358910, 368280, 372322, 384105, 391736, 399770, 404200
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9870, Precision : 0.9425, Recall : 0.9554, F-score : 0.9489 
+
+
+
+
+
+
+2025-06-21 06:54:05 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Sat Jun 21 06:55:42 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   50C    P0             52W /  250W |    5692MiB /  32768MiB |     98%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          724228      C   python                                 5688MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 219.861s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.12386789247393604[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9887
+pa_precision          : 0.9418
+pa_recall             : 0.9709
+pa_f_score            : 0.9561
+MCC_score             : 6.1789
+Affiliation precision : 0.4822
+Affiliation recall    : 0.9451
+R_AUC_ROC             : 0.8936
+R_AUC_PR              : 0.8828
+VUS_ROC               : 0.8889
+VUS_PR                : 0.8787
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 45
+Detected anomaly starts at indices: 21129, 29309, 35589, 48185, 55185, 63560, 80719, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 184648, 193153, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 261000, 269316, 277998, 286142, 295003, 311106, 349995, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 384105, 391736, 399770, 404200
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9887, Precision : 0.9418, Recall : 0.9709, F-score : 0.9561 
+
+
+
+
+
+
+2025-06-21 07:00:54 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 2
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Sat Jun 21 07:02:55 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   50C    P0             52W /  250W |    5964MiB /  32768MiB |     95%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          729929      C   python                                 5960MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 274.363s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.37705040395259015[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9899
+pa_precision          : 0.9346
+pa_recall             : 0.9894
+pa_f_score            : 0.9612
+MCC_score             : nan
+Affiliation precision : 0.5146
+Affiliation recall    : 0.9878
+R_AUC_ROC             : 0.9662
+R_AUC_PR              : 0.9429
+VUS_ROC               : 0.9539
+VUS_PR                : 0.9321
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 52
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 185249, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 303560, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9899, Precision : 0.9346, Recall : 0.9894, F-score : 0.9612 
+
+
+
+
+
+
+2025-06-21 07:08:22 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 4
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Sat Jun 21 07:11:00 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   51C    P0             57W /  250W |    7854MiB /  32768MiB |     89%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          735632      C   python                                 7850MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 358.593s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.367142271697507[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9899
+pa_precision          : 0.9343
+pa_recall             : 0.9894
+pa_f_score            : 0.9611
+MCC_score             : nan
+Affiliation precision : 0.5126
+Affiliation recall    : 0.9879
+R_AUC_ROC             : 0.9662
+R_AUC_PR              : 0.9427
+VUS_ROC               : 0.9538
+VUS_PR                : 0.9320
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 52
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 185249, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 303560, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9899, Precision : 0.9343, Recall : 0.9894, F-score : 0.9611 
+
+
+
+
+
+
+2025-06-21 07:17:48 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 8
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Sat Jun 21 07:21:41 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   52C    P0             54W /  250W |   11088MiB /  32768MiB |     99%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          741357      C   python                                11084MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 530.369s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.3783219379186624[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9900
+pa_precision          : 0.9351
+pa_recall             : 0.9901
+pa_f_score            : 0.9618
+MCC_score             : nan
+Affiliation precision : 0.5152
+Affiliation recall    : 0.9878
+R_AUC_ROC             : 0.9665
+R_AUC_PR              : 0.9433
+VUS_ROC               : 0.9541
+VUS_PR                : 0.9325
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 53
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 185249, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 303560, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200, 408351
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9900, Precision : 0.9351, Recall : 0.9901, F-score : 0.9618 
+
+
+
+
+
+
+2025-06-22 10:19:54 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 8
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Sun Jun 22 10:23:47 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   52C    P0             58W /  250W |   11088MiB /  32768MiB |     99%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          822031      C   python                                11084MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 529.883s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.34779452294106905[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9899
+pa_precision          : 0.9344
+pa_recall             : 0.9894
+pa_f_score            : 0.9612
+MCC_score             : nan
+Affiliation precision : 0.5157
+Affiliation recall    : 0.9878
+R_AUC_ROC             : 0.9662
+R_AUC_PR              : 0.9428
+VUS_ROC               : 0.9539
+VUS_PR                : 0.9321
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 52
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 185249, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 303560, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9899, Precision : 0.9344, Recall : 0.9894, F-score : 0.9612 
+
+
+
+
+
+
+2025-06-26 07:15:40 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [1]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Thu Jun 26 07:18:01 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   51C    P0             48W /  250W |    7472MiB /  32768MiB |     99%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         1347549      C   python                                 7468MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 309.023s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.025478701423853584[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9905
+pa_precision          : 0.9357
+pa_recall             : 0.9931
+pa_f_score            : 0.9635
+MCC_score             : nan
+Affiliation precision : 0.5134
+Affiliation recall    : 0.9882
+R_AUC_ROC             : 0.9679
+R_AUC_PR              : 0.9448
+VUS_ROC               : 0.9575
+VUS_PR                : 0.9357
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 55
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 72485, 80719, 88248, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 184648, 185249, 193153, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9905, Precision : 0.9357, Recall : 0.9931, F-score : 0.9635 
+
+
+
+
+
+
+2025-06-26 07:25:23 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Thu Jun 26 07:26:21 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   46C    P0             51W /  250W |    5684MiB /  32768MiB |     34%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         1353247      C   python                                 5680MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 129.977s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.40625067859887976[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9897
+pa_precision          : 0.9352
+pa_recall             : 0.9868
+pa_f_score            : 0.9603
+MCC_score             : nan
+Affiliation precision : 0.5126
+Affiliation recall    : 0.9870
+R_AUC_ROC             : 0.9649
+R_AUC_PR              : 0.9420
+VUS_ROC               : 0.9463
+VUS_PR                : 0.9258
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 51
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 96587, 104397, 111309, 120810, 129450, 153150, 160222, 169976, 176742, 184648, 185249, 193153, 193767, 201667, 202277, 210488, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9897, Precision : 0.9352, Recall : 0.9868, F-score : 0.9603 
+
+
+
+
+
+
+2025-06-26 07:32:39 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Thu Jun 26 07:33:23 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   43C    P0             50W /  250W |   12686MiB /  32768MiB |     38%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         1358953      C   python                                12682MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 98.331s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.36773079752921767[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9899
+pa_precision          : 0.9348
+pa_recall             : 0.9892
+pa_f_score            : 0.9612
+MCC_score             : nan
+Affiliation precision : 0.5125
+Affiliation recall    : 0.9875
+R_AUC_ROC             : 0.9661
+R_AUC_PR              : 0.9428
+VUS_ROC               : 0.9508
+VUS_PR                : 0.9295
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 52
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 185249, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 303560, 311106, 343305, 349995, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200, 408351
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9899, Precision : 0.9348, Recall : 0.9892, F-score : 0.9612 
+
+
+
+
+
+
+2025-06-26 07:38:36 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [7]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Thu Jun 26 07:39:16 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   42C    P0             50W /  250W |   12722MiB /  32768MiB |     12%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         1364633      C   python                                12718MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 86.129s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.20345867544412455[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9847
+pa_precision          : 0.9411
+pa_recall             : 0.9381
+pa_f_score            : 0.9396
+MCC_score             : nan
+Affiliation precision : 0.4463
+Affiliation recall    : 0.8521
+R_AUC_ROC             : 0.8388
+R_AUC_PR              : 0.8350
+VUS_ROC               : 0.8187
+VUS_PR                : 0.8175
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 37
+Detected anomaly starts at indices: 13090, 21129, 48185, 55185, 63560, 80719, 96587, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 185249, 210488, 211628, 219417, 227445, 236108, 261000, 269316, 277998, 286142, 295003, 303560, 311106, 326366, 349995, 356523, 357913, 358910, 368280, 372322, 384105, 399770, 404200
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9847, Precision : 0.9411, Recall : 0.9381, F-score : 0.9396 
+
+
+
+
+
+
+2025-06-26 07:43:56 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [1, 3]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Thu Jun 26 07:47:11 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   51C    P0             52W /  250W |    8232MiB /  32768MiB |     93%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         1370320      C   python                                 8228MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 431.913s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.42164189040660016[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9903
+pa_precision          : 0.9355
+pa_recall             : 0.9917
+pa_f_score            : 0.9628
+MCC_score             : nan
+Affiliation precision : 0.5133
+Affiliation recall    : 0.9881
+R_AUC_ROC             : 0.9673
+R_AUC_PR              : 0.9442
+VUS_ROC               : 0.9567
+VUS_PR                : 0.9350
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 54
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 88248, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 184648, 185249, 193153, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9903, Precision : 0.9355, Recall : 0.9917, F-score : 0.9628 
+
+
+
+
+
+
+2025-06-26 07:55:56 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [1, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Thu Jun 26 07:58:57 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   50C    P0             46W /  250W |   12826MiB /  32768MiB |     99%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         1376036      C   python                                12822MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 399.865s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.3678437069058371[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9899
+pa_precision          : 0.9352
+pa_recall             : 0.9892
+pa_f_score            : 0.9614
+MCC_score             : nan
+Affiliation precision : 0.5140
+Affiliation recall    : 0.9877
+R_AUC_ROC             : 0.9661
+R_AUC_PR              : 0.9430
+VUS_ROC               : 0.9517
+VUS_PR                : 0.9305
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 52
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 185249, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 303560, 311106, 343305, 349995, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200, 408351
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9899, Precision : 0.9352, Recall : 0.9892, F-score : 0.9614 
+
+
+
+
+
+
+2025-06-26 08:06:24 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [1, 7]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Thu Jun 26 08:09:21 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   51C    P0             48W /  250W |   12826MiB /  32768MiB |     99%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         1381743      C   python                                12822MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 387.370s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.26800019413232645[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9874
+pa_precision          : 0.9402
+pa_recall             : 0.9612
+pa_f_score            : 0.9506
+MCC_score             : 7.3113
+Affiliation precision : 0.4700
+Affiliation recall    : 0.9476
+R_AUC_ROC             : 0.9038
+R_AUC_PR              : 0.8910
+VUS_ROC               : 0.8781
+VUS_PR                : 0.8686
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 40
+Detected anomaly starts at indices: 4690, 21129, 48185, 55185, 63560, 80719, 96587, 111309, 120810, 129450, 153150, 160222, 169976, 176742, 185249, 193767, 202277, 210488, 211628, 219417, 227445, 236108, 261000, 269316, 277998, 286142, 295003, 303560, 311106, 351395, 353905, 356523, 357913, 358910, 368280, 376142, 384105, 391736, 399770, 404200
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9874, Precision : 0.9402, Recall : 0.9612, F-score : 0.9506 
+
+
+
+
+
+
+2025-06-26 08:17:51 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Thu Jun 26 08:19:29 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   49C    P0             51W /  250W |    5692MiB /  32768MiB |     39%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         1387451      C   python                                 5688MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 220.179s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.36180199354886833[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9901
+pa_precision          : 0.9351
+pa_recall             : 0.9902
+pa_f_score            : 0.9619
+MCC_score             : nan
+Affiliation precision : 0.5149
+Affiliation recall    : 0.9880
+R_AUC_ROC             : 0.9666
+R_AUC_PR              : 0.9434
+VUS_ROC               : 0.9525
+VUS_PR                : 0.9311
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 53
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 88248, 96587, 104397, 111309, 120810, 129450, 153150, 160222, 169976, 176742, 184648, 185249, 193153, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9901, Precision : 0.9351, Recall : 0.9902, F-score : 0.9619 
+
+
+
+
+
+
+2025-06-26 08:25:16 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 7]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Thu Jun 26 08:26:49 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   49C    P0             53W /  250W |    5694MiB /  32768MiB |     98%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         1393147      C   python                                 5690MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 208.222s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.08142112068831919[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9896
+pa_precision          : 0.9379
+pa_recall             : 0.9832
+pa_f_score            : 0.9600
+MCC_score             : nan
+Affiliation precision : 0.4998
+Affiliation recall    : 0.9805
+R_AUC_ROC             : 0.9490
+R_AUC_PR              : 0.9293
+VUS_ROC               : 0.9352
+VUS_PR                : 0.9173
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 51
+Detected anomaly starts at indices: 4690, 13090, 21129, 35589, 48185, 55185, 63560, 72485, 80719, 88248, 96587, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 184648, 185249, 193153, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 311106, 343305, 349995, 353905, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9896, Precision : 0.9379, Recall : 0.9832, F-score : 0.9600 
+
+
+
+
+
+
+2025-06-26 08:33:24 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [5, 7]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Thu Jun 26 08:34:42 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   47C    P0             56W /  250W |   12696MiB /  32768MiB |     66%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         1398858      C   python                                12692MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 175.680s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.36948266148566944[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9899
+pa_precision          : 0.9350
+pa_recall             : 0.9892
+pa_f_score            : 0.9613
+MCC_score             : nan
+Affiliation precision : 0.5145
+Affiliation recall    : 0.9876
+R_AUC_ROC             : 0.9661
+R_AUC_PR              : 0.9430
+VUS_ROC               : 0.9506
+VUS_PR                : 0.9294
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 52
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 185249, 193767, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 303560, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200, 408351
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9899, Precision : 0.9350, Recall : 0.9892, F-score : 0.9613 
+
+
+
+
+
+
+2025-06-26 08:40:04 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [1, 3, 5]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Thu Jun 26 08:43:58 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   52C    P0             50W /  250W |   14642MiB /  32768MiB |     99%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         1404536      C   python                                14638MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 521.537s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.34476660281418736[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9903
+pa_precision          : 0.9356
+pa_recall             : 0.9917
+pa_f_score            : 0.9629
+MCC_score             : nan
+Affiliation precision : 0.5141
+Affiliation recall    : 0.9881
+R_AUC_ROC             : 0.9673
+R_AUC_PR              : 0.9442
+VUS_ROC               : 0.9566
+VUS_PR                : 0.9349
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 54
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 88248, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 184648, 185249, 193153, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9903, Precision : 0.9356, Recall : 0.9917, F-score : 0.9629 
+
+
+
+
+
+
+2025-06-26 08:54:15 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [1, 3, 7]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Thu Jun 26 08:58:05 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   51C    P0             52W /  250W |    9916MiB /  32768MiB |     94%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         1410246      C   python                                 9912MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 509.616s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.1326751244068145[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9901
+pa_precision          : 0.9384
+pa_recall             : 0.9864
+pa_f_score            : 0.9618
+MCC_score             : nan
+Affiliation precision : 0.5091
+Affiliation recall    : 0.9804
+R_AUC_ROC             : 0.9359
+R_AUC_PR              : 0.9181
+VUS_ROC               : 0.9308
+VUS_PR                : 0.9137
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 51
+Detected anomaly starts at indices: 13090, 21129, 29309, 35589, 48185, 55185, 63560, 72485, 80719, 88248, 96587, 104397, 111309, 120810, 129450, 137498, 145196, 153150, 160222, 169976, 176742, 184648, 185249, 193153, 193767, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 311106, 349995, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9901, Precision : 0.9384, Recall : 0.9864, F-score : 0.9618 
+
+
+
+
+
+
+2025-06-26 09:06:40 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [1, 5, 7]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Thu Jun 26 09:10:17 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   51C    P0             48W /  250W |   12842MiB /  32768MiB |     98%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         1415958      C   python                                12838MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 477.693s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.369282990694046[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9902
+pa_precision          : 0.9353
+pa_recall             : 0.9913
+pa_f_score            : 0.9625
+MCC_score             : nan
+Affiliation precision : 0.5160
+Affiliation recall    : 0.9879
+R_AUC_ROC             : 0.9671
+R_AUC_PR              : 0.9440
+VUS_ROC               : 0.9526
+VUS_PR                : 0.9313
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 54
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 88248, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 185249, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 303560, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200, 408351
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9902, Precision : 0.9353, Recall : 0.9913, F-score : 0.9625 
+
+
+
+
+
+
+2025-06-26 09:40:32 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [3, 5, 7]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Thu Jun 26 09:42:44 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   50C    P0             58W /  250W |   12744MiB /  32768MiB |     73%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   21C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         1421961      C   python                                12740MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 298.845s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.18587894454597875[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9901
+pa_precision          : 0.9351
+pa_recall             : 0.9901
+pa_f_score            : 0.9618
+MCC_score             : nan
+Affiliation precision : 0.5125
+Affiliation recall    : 0.9877
+R_AUC_ROC             : 0.9665
+R_AUC_PR              : 0.9434
+VUS_ROC               : 0.9534
+VUS_PR                : 0.9319
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 53
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 185249, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 303560, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200, 408351
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9901, Precision : 0.9351, Recall : 0.9901, F-score : 0.9618 
+
+
+
+
+
+
+2025-06-26 09:48:47 | Divergence: tsallis(q=0.5) | Epochs: 1 
+================ Hyperparameters ===============
+anormly_ratio: 1.0
+batch_size: 128
+d_model: 256
+data_path: SMAP
+dataset: SMAP
+device_ids: [0, 1, 2, 3]
+devices: 0,1,2,3
+divergence: tsallis
+e_layers: 3
+gpu: 0
+index: 137
+input_c: 25
+k: 3
+loss_fuc: MSE
+lr: 0.0001
+mode: train
+model_save_path: checkpoints
+n_heads: 1
+num_epochs: 1
+output_c: 25
+patch_size: [1, 3, 5, 7]
+q_param: 0.5
+rec_timeseries: True
+use_gpu: True
+use_multi_gpu: True
+win_size: 105
+====================  Train  ===================
+Thu Jun 26 09:53:17 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          Off |   00000000:21:00.0 Off |                    0 |
+| N/A   53C    P0             52W /  250W |   14652MiB /  32768MiB |     75%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100S-PCIE-32GB          Off |   00000000:E2:00.0 Off |                    0 |
+| N/A   22C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         1427651      C   python                                14648MiB |
++-----------------------------------------------------------------------------------------+
+
+Epoch: 1, Cost time: 599.414s, Loss: 0.000000
+====================  Test in progress  ===================
+====================  Threshhold  ===================
+
+[94mThreshold : 0.21261497959493814[0m
+
+==================== EVALUATION Metrics ===================
+
+pa_accuracy           : 0.9904
+pa_precision          : 0.9354
+pa_recall             : 0.9925
+pa_f_score            : 0.9631
+MCC_score             : nan
+Affiliation precision : 0.5143
+Affiliation recall    : 0.9882
+R_AUC_ROC             : 0.9677
+R_AUC_PR              : 0.9445
+VUS_ROC               : 0.9569
+VUS_PR                : 0.9351
+====================  MODEL DETECTION  ===================
+Ground truth anomaly starts: 64
+Detected anomaly starts: 55
+Detected anomaly starts at indices: 4690, 13090, 21129, 29309, 35589, 48185, 55185, 63560, 80719, 88248, 96587, 104397, 111309, 120810, 129450, 145196, 153150, 160222, 169976, 176742, 184648, 185249, 193153, 193767, 201667, 202277, 210488, 211628, 219417, 227445, 236108, 244612, 252916, 261000, 269316, 277998, 286142, 295003, 303560, 311106, 343305, 349995, 351395, 353905, 356523, 357913, 358910, 368280, 372322, 373522, 376142, 384105, 391736, 399770, 404200
+Total number of indices: 416640
+====================  FINAL METRICS  ===================
+Accuracy : 0.9904, Precision : 0.9354, Recall : 0.9925, F-score : 0.9631 
+
+
+
